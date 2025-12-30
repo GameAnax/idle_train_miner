@@ -10,7 +10,7 @@ public class BogeyDamage : MonoBehaviour
 
     // Isme hum track rakhenge ki abhi kaunse grids box ke andar hain
     private List<CustomeGrid> currentGridsInBox = new List<CustomeGrid>();
-    private List<CustomeGrid> gridsToRemove = new List<CustomeGrid>();
+    // private List<CustomeGrid> gridsToRemove = new List<CustomeGrid>();
 
     void FixedUpdate()
     {

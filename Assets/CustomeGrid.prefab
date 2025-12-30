@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5515764508117400114}
   - component: {fileID: 1143958717316056234}
   - component: {fileID: 7221834221178009513}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CustomeGrid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -122,8 +122,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isClear: 0
+  isUsable: 0
+  isOuterBoundary: 0
+  isPermanentlyDisabled: 0
+  gridLayerInt: 0
   gridPosition: {x: 0, y: 0}
+  objectIndex: 0
+  maxHealth: 100
+  currentHealth: 0
+  blinkColor: {r: 1, g: 1, b: 1, a: 1}
+  blinkDuration: 0.15
   rightGrid: {fileID: 0}
   leftGrid: {fileID: 0}
   topGrid: {fileID: 0}
   bottomGrid: {fileID: 0}
+  splineGenerator: {fileID: 0}
+  trainSplineDriver: {fileID: 0}

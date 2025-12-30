@@ -9,6 +9,9 @@ public class TrainSplineDriver : MonoBehaviour
 {
     private SplineFollower _splineFollower;
     private float _targetSpeed;
+    private List<CustomeGrid> _pendingGrids = new List<CustomeGrid>();
+
+
 
     [Header("Settings")]
     [SerializeField] private float moveSpeed = 5f;
@@ -27,6 +30,7 @@ public class TrainSplineDriver : MonoBehaviour
     void Update()
     {
         HandleInput();
+        CheckLastWagonPassed();
     }
 
     private void HandleInput()
@@ -71,6 +75,53 @@ public class TrainSplineDriver : MonoBehaviour
         foreach (var item in wegons)
         {
             item.followSpeed = speed;
+        }
+    }
+
+    private void CheckLastWagonPassed()
+    {
+        if (_pendingGrids.Count == 0) return;
+
+        // Aakhri wagon nikalne ka logic
+        SplineFollower lastWagon = (wegons != null && wegons.Count > 0) ? wegons[wegons.Count - 1] : _splineFollower;
+
+        // World position comparison sabse safe hai
+        Vector3 lastWagonPos = lastWagon.transform.position;
+
+        for (int i = _pendingGrids.Count - 1; i >= 0; i--)
+        {
+            CustomeGrid grid = _pendingGrids[i];
+            Vector3 gridPos = grid.transform.position;
+
+            // Distance check: Kya wagon grid se door ja chuki hai?
+            float distanceToGrid = Vector3.Distance(lastWagonPos, gridPos);
+            grid.distance = distanceToGrid;
+
+            // Logic: Agar wagon grid ko cross kar chuki hai 
+            // Hum dot product use karte hain check karne ke liye ki kya wagon aage nikal gayi hai
+            Vector3 directionToWagon = (lastWagonPos - gridPos).normalized;
+            Vector3 splineDirection = lastWagon.result.forward; // Spline jis taraf ja rahi hai
+
+            float dot = Vector3.Dot(directionToWagon, splineDirection);
+
+            // Agar dot > 0 hai, iska matlab wagon grid ke aage hai
+            // 3.0f ek buffer distance hai safety ke liye
+            if (dot > 0 && distanceToGrid > 3.0f)
+            {
+                grid.TriggerSplineUpdate();
+                _pendingGrids.RemoveAt(i);
+                Debug.Log("Last Wagon Passed: Spline Updated!");
+            }
+        }
+    }
+
+
+
+    public void RegisterPendingGrid(CustomeGrid grid)
+    {
+        if (!_pendingGrids.Contains(grid))
+        {
+            _pendingGrids.Add(grid);
         }
     }
 }

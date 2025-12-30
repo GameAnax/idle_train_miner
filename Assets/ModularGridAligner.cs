@@ -16,6 +16,7 @@ public class ModularGridAligner : MonoBehaviour
     [Header("Animation Settings")]
     public float startYOffset = 5f;
     public float animDuration = 0.6f;
+    public float rotationAnimDuration = 0.1f;
     public Vector3 fallingRotation = new Vector3(0, 180, 0);
 
     [Header("Settings")]
@@ -137,7 +138,7 @@ public class ModularGridAligner : MonoBehaviour
         newPiece.name = prefab.name;
 
         newPiece.transform.DOMove(finalPos, animDuration).SetEase(Ease.OutBounce);
-        newPiece.transform.DORotate(new Vector3(0, angle, 0), animDuration, RotateMode.FastBeyond360).SetEase(Ease.OutQuad);
+        newPiece.transform.DORotate(new Vector3(0, angle, 0), rotationAnimDuration, RotateMode.FastBeyond360).SetEase(Ease.OutQuad);
 
         activePieces.Add(gridKey, newPiece);
     }

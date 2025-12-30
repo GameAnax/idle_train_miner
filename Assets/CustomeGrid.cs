@@ -26,11 +26,16 @@ public class CustomeGrid : MonoBehaviour
     public CustomeGrid topGrid;
     public CustomeGrid bottomGrid;
 
+
+    public float distance; // Temp only for check
+
     public SplineGenerator splineGenerator;
+    public TrainSplineDriver trainSplineDriver;
 
     private MeshRenderer meshRenderer;
     private Color originalColor;
     private MaterialPropertyBlock propBlock;
+    private bool _isPendingSplineUpdate = false;
 
     private static readonly int BaseColorId = Shader.PropertyToID("_BaseColor");
 
@@ -50,7 +55,7 @@ public class CustomeGrid : MonoBehaviour
 
     public void UpdateUsability()
     {
-        if (gridPosition.x == 5 && gridPosition.y == 7)
+        if (gridPosition.x == 8 && gridPosition.y == 5)
         {
             Debug.Log("e");
         }
@@ -121,18 +126,18 @@ public class CustomeGrid : MonoBehaviour
             {
                 TL = TR = true;
             }
-            // if (!TR && !BR)
-            // {
-            //     TR = BR = true;
-            // }
+            if (topGrid != null && rightGrid == null && bottomGrid != null && rightGrid == null && !TR && !BR)
+            {
+                TR = BR = true;
+            }
             if (bottomGrid == null && !BL && !BR)
             {
                 BL = BR = true;
             }
-            // if (!TL && !BL)
-            // {
-            //     TL = BL = true;
-            // }
+            if (topGrid != null && leftGrid == null && bottomGrid != null && leftGrid == null && !TL && !BL)
+            {
+                TL = BL = true;
+            }
         }
 
         // --- 3x3 Logic (8-way Check) ---
@@ -142,6 +147,7 @@ public class CustomeGrid : MonoBehaviour
         {
             isPermanentlyDisabled = true;
             isUsable = false;
+            gameObject.SetActive(false);
         }
         else
         {
@@ -175,7 +181,8 @@ public class CustomeGrid : MonoBehaviour
         if (currentHealth <= 0)
         {
             currentHealth = 0;
-            OnGridDestroyed();
+            if (meshRenderer != null) meshRenderer.enabled = false;
+            // OnGridDestroyed();
         }
     }
     public void OnGridDestroyed()
@@ -192,7 +199,17 @@ public class CustomeGrid : MonoBehaviour
 
         if (splineGenerator != null)
         {
+            _isPendingSplineUpdate = true;
+            // splineGenerator.GenerateSpline();
+            trainSplineDriver.RegisterPendingGrid(this);
+        }
+    }
+    public void TriggerSplineUpdate()
+    {
+        if (_isPendingSplineUpdate && splineGenerator != null)
+        {
             splineGenerator.GenerateSpline();
+            _isPendingSplineUpdate = false;
         }
     }
     // Editor mein changes hote hi ye apne aap call hoga
@@ -251,4 +268,5 @@ public class CustomeGrid : MonoBehaviour
 
         return false;
     }
+
 }

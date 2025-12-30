@@ -23,6 +23,7 @@ public class ClockwiseRingGenerator : MonoBehaviour
     public List<CustomeGrid> spawnedCubes = new List<CustomeGrid>();
 
     public SplineGenerator splineGen;
+    public TrainSplineDriver trainSplineDriver;
 
     [Button]
     public void Generate()
@@ -89,6 +90,8 @@ public class ClockwiseRingGenerator : MonoBehaviour
         newGrid.objectIndex = globalIndexCounter++;
         newGrid.name = $"Grid_{posX}_{posZ}";
         newGrid.splineGenerator = splineGen;
+        newGrid.trainSplineDriver = trainSplineDriver;
+        // newGrid.gameObject.layer = 7; //grid layer on 7 index //asign direct on prefab
 
         spawnedCubes.Add(newGrid);
         gridLookup[newGrid.gridPosition] = newGrid;
