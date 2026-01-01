@@ -2,12 +2,17 @@ using UnityEngine;
 using System.Collections.Generic;
 using EasyButtons;
 using Dreamteck.Splines;
+using System.Linq;
 
 [RequireComponent(typeof(SplineComputer))]
 public class SplineGenerator : MonoBehaviour
 {
     public SplineComputer splineComputer;
     public SplineComputer trainSpline;
+
+    public TrainLoopHandler trainLoopHandler;
+
+    // public TrainSplineDriver trainSplineDriver;
 
     public bool isLoop = true;
     public List<CustomeGrid> splineGridPath = new List<CustomeGrid>();
@@ -25,12 +30,19 @@ public class SplineGenerator : MonoBehaviour
         splineGridPath.Clear();
         HashSet<CustomeGrid> visited = new HashSet<CustomeGrid>();
 
-        CustomeGrid startNode = allGrids.Find(g => g.isClear && g.isUsable && IsOnBoundary(g));
-        if (startNode == null) startNode = allGrids.Find(g => g.isClear && g.isUsable);
+        // --- STEP 1: Hamesha Leftmost aur Topmost grid ko StartNode banana ---
+        // Isse agar left mein koi naya grid add hoga, toh wo automatic startNode ban jayega.
+        CustomeGrid startNode = allGrids
+            .Where(g => g.isClear && g.isUsable)
+            .OrderBy(g => g.transform.position.x) // Sabse chhota X (Left)
+            .ThenByDescending(g => g.transform.position.z) // Phir Sabse bada Z (Top)
+            .FirstOrDefault();
+
         if (startNode == null) return;
 
         CustomeGrid current = startNode;
-        Vector2[] dirs = { Vector2.right, Vector2.up, Vector2.left, Vector2.down };
+        // Direction Priority: Right -> Down -> Left -> Up (Clockwise flow)
+        Vector2[] dirs = { Vector2.right, Vector2.down, Vector2.left, Vector2.up };
         int currentDirIndex = 0;
 
         while (current != null)
@@ -40,31 +52,27 @@ public class SplineGenerator : MonoBehaviour
 
             CustomeGrid next = null;
 
-            // --- STEP 1: Loop Closing Check ---
-            if (splineGridPath.Count > 5)
+            // Loop Check
+            if (splineGridPath.Count > 2)
             {
                 foreach (Vector2 dir in dirs)
                 {
-                    CustomeGrid neighbor = GetNeighborByDir(current, dir);
-                    if (neighbor == startNode)
+                    if (GetNeighborByDir(current, dir) == startNode)
                     {
-                        current = null;
                         goto EndLoop;
                     }
                 }
             }
 
-            // --- STEP 2: Pathfinding with Viability & Boundary Priority ---
+            // Pathfinding logic (Aapka original priority logic)
             int[] checkOrder = { (currentDirIndex + 1) % 4, currentDirIndex, (currentDirIndex + 3) % 4 };
 
-            // Pehle viable boundary nodes check karein (Sabse best option)
             foreach (int i in checkOrder)
             {
                 CustomeGrid neighbor = GetNeighborByDir(current, dirs[i]);
-
                 if (neighbor != null && neighbor.isClear && neighbor.isUsable && !visited.Contains(neighbor))
                 {
-                    if (IsOnBoundary(neighbor) && IsPathViable(neighbor, visited, startNode))
+                    if (IsPathViable(neighbor, visited, startNode))
                     {
                         next = neighbor;
                         currentDirIndex = i;
@@ -72,31 +80,39 @@ public class SplineGenerator : MonoBehaviour
                     }
                 }
             }
-
-            // Agar viable boundary node nahi mila, toh koi bhi viable usable neighbor le lo
-            if (next == null)
-            {
-                foreach (int i in checkOrder)
-                {
-                    CustomeGrid neighbor = GetNeighborByDir(current, dirs[i]);
-                    if (neighbor != null && neighbor.isClear && neighbor.isUsable && !visited.Contains(neighbor))
-                    {
-                        if (IsPathViable(neighbor, visited, startNode))
-                        {
-                            next = neighbor;
-                            currentDirIndex = i;
-                            break;
-                        }
-                    }
-                }
-            }
             current = next;
+
+            // Safety break
+            if (splineGridPath.Count > allGrids.Count) break;
         }
 
+
     EndLoop:
+        // Final check: Winding order fix (Shoelace Formula)
+        // Taaki train hamesha Forward direction mein chale
+        EnsureCorrectWinding();
+
         ApplyToDreamteckSpline();
     }
+    private void EnsureCorrectWinding()
+    {
+        if (splineGridPath.Count < 3) return;
 
+        float area = 0;
+        for (int i = 0; i < splineGridPath.Count; i++)
+        {
+            Vector3 p1 = splineGridPath[i].transform.position;
+            Vector3 p2 = splineGridPath[(i + 1) % splineGridPath.Count].transform.position;
+            area += (p2.x - p1.x) * (p2.z + p1.z);
+        }
+
+        // Agar area positive hai matlab path clockwise hai.
+        // Train direction ke hisaab se agar reverse hai toh:
+        if (area < 0)
+        {
+            splineGridPath.Reverse();
+        }
+    }
     private bool IsPathViable(CustomeGrid node, HashSet<CustomeGrid> visited, CustomeGrid startNode)
     {
         // Agar node usable nahi hai, toh viable bhi nahi hai
@@ -118,34 +134,7 @@ public class SplineGenerator : MonoBehaviour
         return false;
     }
 
-    // Look-ahead logic: Kya is node par jane ke baad aage rasta mil raha hai?
-    // private bool IsPathViable(CustomeGrid node, HashSet<CustomeGrid> visited, CustomeGrid startNode)
-    // {
-    //     CustomeGrid[] neighbors = { node.topGrid, node.rightGrid, node.bottomGrid, node.leftGrid };
 
-    //     foreach (var n in neighbors)
-    //     {
-    //         // Case 1: Start node mil gaya (Loop complete)
-    //         if (n == startNode && splineGridPath.Count > 2) return true;
-
-    //         // Case 2: Agla step check karein
-    //         if (n != null && n.isClear && n.isUsable && !visited.Contains(n))
-    //         {
-    //             // LOOK-AHEAD: Check neighbor's neighbors
-    //             CustomeGrid[] nextNeighbors = { n.topGrid, n.rightGrid, n.bottomGrid, n.leftGrid };
-    //             foreach (var nn in nextNeighbors)
-    //             {
-    //                 if (nn == startNode) return true;
-    //                 // Agar agla padosi available hai aur wo 'current' node nahi hai jahan se hum aa rahe hain
-    //                 if (nn != null && nn.isClear && nn.isUsable && !visited.Contains(nn) && nn != node)
-    //                 {
-    //                     return true;
-    //                 }
-    //             }
-    //         }
-    //     }
-    //     return false;
-    // }
 
     private bool IsOnBoundary(CustomeGrid g)
     {
@@ -189,8 +178,11 @@ public class SplineGenerator : MonoBehaviour
         }
 
         splineComputer.SetPoints(points);
+        splineComputer.RebuildImmediate();
         if (isLoop) splineComputer.Close();
         else splineComputer.Break();
+
+
     }
 
     private CustomeGrid GetNeighborByDir(CustomeGrid current, Vector2 dir)
@@ -211,13 +203,15 @@ public class SplineGenerator : MonoBehaviour
         {
             if (grid != null) grid.UpdateUsability();
         }
-        Debug.Log("All Grids usability updated in Editor!");
+        // Debug.Log("All Grids usability updated in Editor!");
     }
 
     public void UpdateTrainSplineNow()
     {
+        // ApplyToSpline(trainSpline);
+
+
         // if (pendingPoints.Count < 2) return;
-        ApplyToSpline(trainSpline);
 
         // SplineFollower[] followers = FindObjectsOfType<SplineFollower>();
         // foreach (var f in followers)
@@ -230,6 +224,8 @@ public class SplineGenerator : MonoBehaviour
     {
         if (target == null || splineGridPath.Count < 2) return;
 
+        // trainLoopHandler.BeforeCalculate();
+
         SplinePoint[] points = new SplinePoint[splineGridPath.Count];
         for (int i = 0; i < splineGridPath.Count; i++)
         {
@@ -238,6 +234,8 @@ public class SplineGenerator : MonoBehaviour
             points[i].size = 1f;
         }
         target.SetPoints(points);
+        target.RebuildImmediate();
         if (isLoop) target.Close(); else target.Break();
+        // trainLoopHandler.AfterRebuildCalculation();
     }
 }

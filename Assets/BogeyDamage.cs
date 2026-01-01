@@ -34,7 +34,7 @@ public class BogeyDamage : MonoBehaviour
                     {
                         grid.TakeDamage(damageValue);
                         currentGridsInBox.Add(grid);
-                        Debug.Log("New Damage to: " + hit.name);
+                        // Debug.Log("New Damage to: " + hit.name);
                     }
                 }
             }

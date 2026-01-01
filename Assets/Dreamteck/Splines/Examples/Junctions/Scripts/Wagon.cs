@@ -54,11 +54,13 @@ namespace Dreamteck.Splines.Examples
                 float traveled = 0f;
                 double result = spline.Travel(percent, distance, out traveled, direction);
                 moved += traveled;
-                if (loop && moved < distance) {
+                if (loop && moved < distance)
+                {
                     if (direction == Spline.Direction.Forward && Mathf.Approximately((float)result, 1f))
                     {
                         result = spline.Travel(0.0, distance - moved, out traveled, direction);
-                    } else if (direction == Spline.Direction.Backward && Mathf.Approximately((float)result, 0f))
+                    }
+                    else if (direction == Spline.Direction.Backward && Mathf.Approximately((float)result, 0f))
                     {
                         result = spline.Travel(1.0, distance - moved, out traveled, direction);
                     }
@@ -90,6 +92,7 @@ namespace Dreamteck.Splines.Examples
         public float offset = 0f;
         Wagon front;
         SplineSegment segment, tempSegment;
+        public SplineSegment GetSegment => segment;
 
         private void Awake()
         {
@@ -141,7 +144,7 @@ namespace Dreamteck.Splines.Examples
                 {
                     if (back != null) back.segment = segment;
                 }
-                if(segment != front.segment) segment = front.segment;
+                if (segment != front.segment) segment = front.segment;
                 ApplyTracer(spline, percent, front.tracer.direction);
                 return;
             }
@@ -164,7 +167,7 @@ namespace Dreamteck.Splines.Examples
             bool same = true;
             while (current != null)
             {
-                if(current.segment != segment)
+                if (current.segment != segment)
                 {
                     same = false;
                     break;
@@ -172,7 +175,7 @@ namespace Dreamteck.Splines.Examples
                 current = current.back;
             }
             //if all wagons are on the same segment, remove the segment entrance so that they can loop
-            if(same) segment.start = -1; 
+            if (same) segment.start = -1;
         }
 
         void ApplyTracer(SplineComputer spline, double percent, Spline.Direction direction)

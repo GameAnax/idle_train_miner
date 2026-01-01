@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class CustomeGrid : MonoBehaviour
@@ -57,7 +58,7 @@ public class CustomeGrid : MonoBehaviour
     {
         if (gridPosition.x == 8 && gridPosition.y == 5)
         {
-            Debug.Log("e");
+            // Debug.Log("e");
         }
 
         if (!isClear || isPermanentlyDisabled)
@@ -147,7 +148,7 @@ public class CustomeGrid : MonoBehaviour
         {
             isPermanentlyDisabled = true;
             isUsable = false;
-            gameObject.SetActive(false);
+            // gameObject.SetActive(false);
         }
         else
         {
@@ -210,6 +211,7 @@ public class CustomeGrid : MonoBehaviour
         {
             splineGenerator.GenerateSpline();
             _isPendingSplineUpdate = false;
+            splineGenerator.UpdateTrainSplineNow();
         }
     }
     // Editor mein changes hote hi ye apne aap call hoga

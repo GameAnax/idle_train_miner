@@ -3,12 +3,18 @@ using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
 using Dreamteck.Splines;
 using System.Collections.Generic;
+using Dreamteck.Splines.Examples;
+using System;
 
-[RequireComponent(typeof(SplineFollower))]
+// [RequireComponent(typeof(SplineFollower))]
+// [RequireComponent(typeof(TrainLoopHandler))]
 public class TrainSplineDriver : MonoBehaviour
 {
+    private TrainLoopHandler trainLoopHandler;
     private SplineFollower _splineFollower;
+    public SplineFollower GetSplineFollower => _splineFollower;
     private float _targetSpeed;
+    private float currentDistance = 0;
     private List<CustomeGrid> _pendingGrids = new List<CustomeGrid>();
 
 
@@ -16,15 +22,40 @@ public class TrainSplineDriver : MonoBehaviour
     [Header("Settings")]
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private bool useSmoothStop = true;
-    [SerializeField] private float smoothTime = 10f;
+    [SerializeField] private float manualDistance = 0;
+    [SerializeField] private float smoothTime = 0.5f;
 
-    public List<SplineFollower> wegons;
+    public List<Boggy> boggies;
 
     void Awake()
     {
+        trainLoopHandler = GetComponent<TrainLoopHandler>();
         _splineFollower = GetComponent<SplineFollower>();
-        // Shuruat me speed 0 rakhenge
+        _splineFollower.spline.onRebuild += OnRebuild;
+        // // Shuruat me speed 0 rakhenge
         _splineFollower.followSpeed = 0;
+
+        foreach (var item in boggies)
+        {
+            item.splineFollower.onEndReached += d =>
+            {
+                Debug.Log($"Boggy Path Completed");
+                item.wagon.GetSegment.spline = trainLoopHandler.GetCurrentSplineComputer;
+                item.splineFollower.SetPercent(0);
+                item.splineFollower.RebuildImmediate();
+            };
+        }
+    }
+
+
+
+    private void OnRebuild()
+    {
+        // SplineSample temp = new();
+        // _splineFollower.Project(transform.position, ref temp);
+        // float currentDistance = _splineFollower.spline.CalculateLength(0, temp.percent);
+        // Debug.Log($"Current Distance - {currentDistance}");
+
     }
 
     void Update()
@@ -44,22 +75,34 @@ public class TrainSplineDriver : MonoBehaviour
         if (isPressing && !IsPointerOverUI())
         {
             _targetSpeed = moveSpeed;
-            SetWegonSpeed(_targetSpeed);
+            // SetWegonSpeed(_targetSpeed);
         }
         else
         {
             _targetSpeed = 0;
-            SetWegonSpeed(_targetSpeed);
+            // SetWegonSpeed(_targetSpeed);
         }
 
         // 3. Apply Speed (Smooth or Instant)
         if (useSmoothStop)
         {
             _splineFollower.followSpeed = Mathf.Lerp(_splineFollower.followSpeed, _targetSpeed, Time.deltaTime * smoothTime);
+            // currentDistance += _targetSpeed * Time.deltaTime;
+
+            // float totalLength = _splineFollower.spline.CalculateLength();
+            // if (currentDistance > totalLength) currentDistance %= totalLength;
+
+            // _splineFollower.SetDistance(currentDistance);
         }
         else
         {
             _splineFollower.followSpeed = _targetSpeed;
+            // currentDistance += _targetSpeed * Time.deltaTime;
+
+            // float totalLength = _splineFollower.spline.CalculateLength();
+            // if (currentDistance > totalLength) currentDistance %= totalLength;
+
+            // _splineFollower.SetDistance(currentDistance);
         }
     }
 
@@ -70,20 +113,14 @@ public class TrainSplineDriver : MonoBehaviour
         return EventSystem.current.IsPointerOverGameObject();
     }
 
-    private void SetWegonSpeed(float speed)
-    {
-        foreach (var item in wegons)
-        {
-            item.followSpeed = speed;
-        }
-    }
+
 
     private void CheckLastWagonPassed()
     {
         if (_pendingGrids.Count == 0) return;
 
         // Aakhri wagon nikalne ka logic
-        SplineFollower lastWagon = (wegons != null && wegons.Count > 0) ? wegons[wegons.Count - 1] : _splineFollower;
+        SplineFollower lastWagon = (boggies != null && boggies.Count > 0) ? boggies[boggies.Count - 1].splineFollower : _splineFollower;
 
         // World position comparison sabse safe hai
         Vector3 lastWagonPos = lastWagon.transform.position;
@@ -110,11 +147,10 @@ public class TrainSplineDriver : MonoBehaviour
             {
                 grid.TriggerSplineUpdate();
                 _pendingGrids.RemoveAt(i);
-                Debug.Log("Last Wagon Passed: Spline Updated!");
+                // Debug.Log("Last Wagon Passed: Spline Updated!");
             }
         }
     }
-
 
 
     public void RegisterPendingGrid(CustomeGrid grid)

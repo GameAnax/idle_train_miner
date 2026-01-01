@@ -29,7 +29,7 @@ public class DummyBogeyLogic : MonoBehaviour
                     // Logic processing yahan hogi
                     grid.OnGridDestroyed();
                     trackNeedsUpdate = true;
-                    Debug.Log("Dummy Bogey Processed Logic for: " + hit.name);
+                    // Debug.Log("Dummy Bogey Processed Logic for: " + hit.name);
                 }
             }
         }
