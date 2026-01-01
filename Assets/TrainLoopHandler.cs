@@ -142,22 +142,57 @@ public class TrainLoopHandler : MonoBehaviour
             if (index != -1) currentIndex = index;
 
         }
-        SplinePoint[] newPoints = new SplinePoint[pointsPerSpline];
+
+        List<Vector3> pointPositions = new List<Vector3>();
         for (int i = 0; i < pointsPerSpline; i++)
         {
             lastCustomeGridAddedInSpline = customeGrids[currentIndex];
-            newPoints[i] = new SplinePoint(customeGrids[currentIndex].transform.position);
-            newPoints[i].normal = Vector3.up;
-            newPoints[i].size = 1f;
-
+            Vector3 currentPos = customeGrids[currentIndex].transform.position;
+            pointPositions.Add(currentPos);
+            if (i < pointsPerSpline)
+            {
+                int tempIndex = currentIndex + 1;
+                if (tempIndex >= customeGrids.Count)
+                {
+                    tempIndex = 0;
+                }
+                Vector3 nextPos = customeGrids[tempIndex].transform.position;
+                pointPositions.Add(Vector3.Lerp(currentPos, nextPos, 0.5f));
+            }
             lastIndexAdded = currentIndex;
             currentIndex++;
             if (currentIndex >= customeGrids.Count)
             {
                 currentIndex = 0; // Wapas 0 se start
             }
-            spline.SetPoints(newPoints);
         }
+        SplinePoint[] newPoints = new SplinePoint[pointPositions.Count];
+        for (int i = 0; i < pointPositions.Count; i++)
+        {
+            newPoints[i] = new SplinePoint();
+            newPoints[i].position = pointPositions[i];
+            newPoints[i].normal = Vector3.up;
+            newPoints[i].size = 1f;
+        }
+
+
+        // SplinePoint[] newPoints = new SplinePoint[pointsPerSpline];
+        // for (int i = 0; i < pointsPerSpline; i++)
+        // {
+        //     lastCustomeGridAddedInSpline = customeGrids[currentIndex];
+        //     newPoints[i] = new SplinePoint(customeGrids[currentIndex].transform.position);
+        //     newPoints[i].normal = Vector3.up;
+        //     newPoints[i].size = 1f;
+
+        //     lastIndexAdded = currentIndex;
+        //     currentIndex++;
+        //     if (currentIndex >= customeGrids.Count)
+        //     {
+        //         currentIndex = 0; // Wapas 0 se start
+        //     }
+        //     spline.SetPoints(newPoints);
+        // }
+        spline.SetPoints(newPoints);
         currentIndex = lastIndexAdded;
         spline.RebuildImmediate();
     }
