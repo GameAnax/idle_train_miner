@@ -27,6 +27,11 @@ public class CustomeGrid : MonoBehaviour
     public CustomeGrid topGrid;
     public CustomeGrid bottomGrid;
 
+    [Header("Track References")]
+    public GameObject myStraightPiece;
+    public GameObject myCornerPiece;
+    private GameObject currentActivePiece;
+
 
     public float distance; // Temp only for check
 
@@ -270,4 +275,43 @@ public class CustomeGrid : MonoBehaviour
         return false;
     }
 
+
+    //For Track
+    public void SetTrackState(GameObject prefabToUse, float targetRotation, float animDuration, float startY)
+    {
+        // Yahan hum prefab ki script/type ke bajaye direct reference check karte hain
+        // Taki name change ka issue na ho
+        bool isStraight = (prefabToUse.name.ToLower().Contains("straight"));
+
+        GameObject targetPiece = isStraight ? myStraightPiece : myCornerPiece;
+        GameObject otherPiece = isStraight ? myCornerPiece : myStraightPiece;
+
+        if (otherPiece != null) otherPiece.SetActive(false);
+        if (targetPiece == null) return;
+
+        // Piece ko enable karein
+        if (!targetPiece.activeSelf)
+        {
+            targetPiece.SetActive(true);
+
+            // Animation se pehle initial state set karein
+            Vector3 finalPos = transform.position + Vector3.up * 0.1f;
+            targetPiece.transform.position = finalPos + Vector3.up * startY;
+            targetPiece.transform.rotation = Quaternion.Euler(0, targetRotation, 0);
+
+            targetPiece.transform.DOKill();
+            targetPiece.transform.DOMove(finalPos, animDuration).SetEase(Ease.OutBounce);
+        }
+        else
+        {
+            // Agar piece type wahi hai, toh sirf rotation smoothly change karein
+            targetPiece.transform.DORotate(new Vector3(0, targetRotation, 0), 0.2f);
+        }
+    }
+    public void HideAllTracks()
+    {
+        if (myStraightPiece != null) myStraightPiece.SetActive(false);
+        if (myCornerPiece != null) myCornerPiece.SetActive(false);
+        currentActivePiece = null;
+    }
 }

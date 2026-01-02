@@ -34,10 +34,10 @@ public class DummyBogeyLogic : MonoBehaviour
             }
         }
 
-        if (trackNeedsUpdate && trackAligner != null)
-        {
-            trackAligner.StartGeneration();
-        }
+        // if (trackNeedsUpdate && trackAligner != null)
+        // {
+        //     trackAligner.StartGeneration();
+        // }
     }
 
     private void OnDrawGizmos()
