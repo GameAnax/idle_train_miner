@@ -12,6 +12,7 @@ public class TrainSplineDriver : MonoBehaviour
 {
     private TrainLoopHandler trainLoopHandler;
     private SplineFollower _splineFollower;
+    public ModularGridAligner modularGridAligner;
     public SplineFollower GetSplineFollower => _splineFollower;
     private float _targetSpeed;
     private float currentDistance = 0;
@@ -35,14 +36,6 @@ public class TrainSplineDriver : MonoBehaviour
         _splineFollower = GetComponent<SplineFollower>();
         // // Shuruat me speed 0 rakhenge
         _splineFollower.followSpeed = 0;
-
-        // foreach (var item in boggies)
-        // {
-        //     item.splineFollower.onEndReached += d =>
-        //     {
-        //         Debug.Log($"Boggy Path Completed");
-        //     };
-        // }
     }
 
 
@@ -85,7 +78,7 @@ public class TrainSplineDriver : MonoBehaviour
             {
                 if (boggies[i].splineFollower.spline != _splineFollower.spline)
                 {
-                    Debug.Log($"Train and Boggy spline not same at {targetDistanceForThisBogey}, and Train distance - {leaderCurrentDist}");
+                    // Debug.Log($"Train and Boggy spline not same at {targetDistanceForThisBogey}, and Train distance - {leaderCurrentDist}");
                     boggies[i].splineFollower.spline = _splineFollower.spline;
                     boggies[i].splineFollower.Rebuild();
                 }
@@ -176,6 +169,7 @@ public class TrainSplineDriver : MonoBehaviour
             {
                 grid.TriggerSplineUpdate();
                 _pendingGrids.RemoveAt(i);
+                modularGridAligner.StartGeneration();
                 // Debug.Log("Last Wagon Passed: Spline Updated!");
             }
         }

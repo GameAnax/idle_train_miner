@@ -205,37 +205,4 @@ public class SplineGenerator : MonoBehaviour
         }
         // Debug.Log("All Grids usability updated in Editor!");
     }
-
-    public void UpdateTrainSplineNow()
-    {
-        // ApplyToSpline(trainSpline);
-
-
-        // if (pendingPoints.Count < 2) return;
-
-        // SplineFollower[] followers = FindObjectsOfType<SplineFollower>();
-        // foreach (var f in followers)
-        // {
-        //     if (f.spline == trainSpline) f.Rebuild();
-        // }
-    }
-
-    private void ApplyToSpline(SplineComputer target)
-    {
-        if (target == null || splineGridPath.Count < 2) return;
-
-        // trainLoopHandler.BeforeCalculate();
-
-        SplinePoint[] points = new SplinePoint[splineGridPath.Count];
-        for (int i = 0; i < splineGridPath.Count; i++)
-        {
-            points[i] = new SplinePoint(splineGridPath[i].transform.position);
-            points[i].normal = Vector3.up;
-            points[i].size = 1f;
-        }
-        target.SetPoints(points);
-        target.RebuildImmediate();
-        if (isLoop) target.Close(); else target.Break();
-        // trainLoopHandler.AfterRebuildCalculation();
-    }
 }

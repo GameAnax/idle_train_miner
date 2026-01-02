@@ -211,7 +211,6 @@ public class CustomeGrid : MonoBehaviour
         {
             splineGenerator.GenerateSpline();
             _isPendingSplineUpdate = false;
-            splineGenerator.UpdateTrainSplineNow();
         }
     }
     // Editor mein changes hote hi ye apne aap call hoga

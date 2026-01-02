@@ -16924,6 +16924,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cea47412dcfb4fffb008b2ebc58d999, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  modularGridAligner: {fileID: 120609459}
   moveSpeed: 3
   useSmoothStop: 0
   manualDistance: 0

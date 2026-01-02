@@ -16,7 +16,7 @@ public class ModularGridAligner : MonoBehaviour
     [Header("Animation Settings")]
     public float startYOffset = 5f;
     public float animDuration = 0.6f;
-    public float rotationAnimDuration = 0.1f;
+    public float rotationAnimDuration = 0.3f; // Slightly increased for smoothness
     public Vector3 fallingRotation = new Vector3(0, 180, 0);
 
     [Header("Settings")]
@@ -24,13 +24,12 @@ public class ModularGridAligner : MonoBehaviour
     public float yOffset = 0.1f;
     public bool isLoop = true;
 
-    // Is dictionary mein hum track karenge ki kis grid par konsa piece hai
     private Dictionary<CustomeGrid, GameObject> activePieces = new Dictionary<CustomeGrid, GameObject>();
 
     [Button("Generate/Update Modular Track")]
     public void StartGeneration()
     {
-        if (splineGen == null || splineGen.splineGridPath.Count == 0) return;
+        if (splineGen == null || splineGen.splineGridPath == null || splineGen.splineGridPath.Count == 0) return;
 
         if (!Application.isPlaying)
         {
@@ -43,39 +42,39 @@ public class ModularGridAligner : MonoBehaviour
 
     public void UpdateTrackWithAnimation(List<CustomeGrid> newPath)
     {
-        // return;
         if (piecesParent == null) piecesParent = this.transform;
 
-        // --- STEP 1: Filter the path ---
-        // Hum sirf unhi nodes ko use karenge jo "CustomeGrid" hain
-        // Taki spline ke extra mid-points track piece generation ko kharab na karein
-        List<CustomeGrid> gridOnlyPath = new List<CustomeGrid>();
-        foreach (var grid in newPath)
+        // Create a HashSet for faster lookup
+        HashSet<CustomeGrid> newPathSet = new HashSet<CustomeGrid>(newPath);
+
+        // 1. Remove pieces that are no longer in the path
+        List<CustomeGrid> toRemove = new List<CustomeGrid>();
+        foreach (var grid in activePieces.Keys)
         {
-            if (grid != null) gridOnlyPath.Add(grid);
+            if (!newPathSet.Contains(grid)) toRemove.Add(grid);
         }
 
-        // 1. Purane pieces hatao
-        List<CustomeGrid> gridsToRemove = new List<CustomeGrid>();
-        foreach (var kvp in activePieces)
+        foreach (var grid in toRemove)
         {
-            if (!gridOnlyPath.Contains(kvp.Key)) gridsToRemove.Add(kvp.Key);
-        }
-        foreach (var grid in gridsToRemove)
-        {
-            if (activePieces.ContainsKey(grid))
+            if (activePieces.TryGetValue(grid, out GameObject obj))
             {
-                Destroy(activePieces[grid]);
+                if (obj != null)
+                {
+                    obj.transform.DOKill(); // Stop animations before destroying
+                    Destroy(obj);
+                }
                 activePieces.Remove(grid);
             }
         }
 
-        // 2. Naye path ke hisaab se pieces update (Using gridOnlyPath)
-        for (int i = 0; i < gridOnlyPath.Count; i++)
+        // 2. Process existing or new pieces
+        for (int i = 0; i < newPath.Count; i++)
         {
-            CustomeGrid curr = gridOnlyPath[i];
-            CustomeGrid prev = (i == 0) ? (isLoop ? gridOnlyPath[gridOnlyPath.Count - 1] : null) : gridOnlyPath[i - 1];
-            CustomeGrid next = (i == gridOnlyPath.Count - 1) ? (isLoop ? gridOnlyPath[0] : null) : gridOnlyPath[i + 1];
+            CustomeGrid curr = newPath[i];
+            if (curr == null) continue;
+
+            CustomeGrid prev = (i == 0) ? (isLoop ? newPath[newPath.Count - 1] : null) : newPath[i - 1];
+            CustomeGrid next = (i == newPath.Count - 1) ? (isLoop ? newPath[0] : null) : newPath[i + 1];
 
             if (prev != null && next != null)
             {
@@ -92,6 +91,7 @@ public class ModularGridAligner : MonoBehaviour
         GameObject prefabToUse;
         float targetYRotation = 0;
 
+        // Determine if straight or corner
         if (Mathf.Abs(Vector3.Dot(dP, dN) + 1.0f) < 0.1f)
         {
             prefabToUse = straightPiece;
@@ -100,6 +100,7 @@ public class ModularGridAligner : MonoBehaviour
         else
         {
             prefabToUse = cornerPiece;
+            // Logic for corner rotations
             if ((dP.x > 0.5f && dN.z > 0.5f) || (dN.x > 0.5f && dP.z > 0.5f)) targetYRotation = 0;
             else if ((dP.x > 0.5f && dN.z < -0.5f) || (dN.x > 0.5f && dP.z < -0.5f)) targetYRotation = 90;
             else if ((dP.x < -0.5f && dN.z < -0.5f) || (dN.x < -0.5f && dP.z < -0.5f)) targetYRotation = 180;
@@ -108,61 +109,68 @@ public class ModularGridAligner : MonoBehaviour
 
         Vector3 finalPos = curr.transform.position + Vector3.up * yOffset;
 
-        if (activePieces.ContainsKey(curr))
+        if (activePieces.TryGetValue(curr, out GameObject existingPiece) && existingPiece != null)
         {
-            GameObject existingPiece = activePieces[curr];
-            if (existingPiece.name.Replace("(Clone)", "").Trim() != prefabToUse.name)
+            // Check if the prefab type changed (Straight vs Corner)
+            bool isSameType = existingPiece.name == prefabToUse.name;
+
+            if (!isSameType)
             {
+                // Different piece type: Replace it
+                existingPiece.transform.DOKill();
                 Destroy(existingPiece);
                 activePieces.Remove(curr);
                 SpawnNewAnimatedPiece(prefabToUse, finalPos, targetYRotation, curr);
             }
             else
             {
-                if (Mathf.Abs(existingPiece.transform.eulerAngles.y - targetYRotation) > 0.1f)
+                // Same piece type: Just check if rotation needs update
+                float currentRot = existingPiece.transform.eulerAngles.y;
+                if (Mathf.Abs(Mathf.DeltaAngle(currentRot, targetYRotation)) > 0.1f)
                 {
-                    existingPiece.transform.DORotate(new Vector3(0, targetYRotation, 0), 0.3f);
+                    existingPiece.transform.DORotate(new Vector3(0, targetYRotation, 0), rotationAnimDuration).SetEase(Ease.Linear);
                 }
             }
         }
         else
         {
+            // Grid is empty: Spawn new
             SpawnNewAnimatedPiece(prefabToUse, finalPos, targetYRotation, curr);
         }
     }
+
     void SpawnNewAnimatedPiece(GameObject prefab, Vector3 finalPos, float angle, CustomeGrid gridKey)
     {
         Vector3 spawnPos = finalPos + Vector3.up * startYOffset;
         GameObject newPiece = Instantiate(prefab, spawnPos, Quaternion.Euler(fallingRotation), piecesParent);
 
-        // Assign name to compare later
-        newPiece.name = prefab.name;
+        newPiece.name = prefab.name; // Crucial for type checking later
 
+        // Animation
         newPiece.transform.DOMove(finalPos, animDuration).SetEase(Ease.OutBounce);
-        newPiece.transform.DORotate(new Vector3(0, angle, 0), rotationAnimDuration, RotateMode.FastBeyond360).SetEase(Ease.OutQuad);
+        newPiece.transform.DORotate(new Vector3(0, angle, 0), animDuration, RotateMode.FastBeyond360).SetEase(Ease.OutQuad);
 
-        activePieces.Add(gridKey, newPiece);
+        activePieces[gridKey] = newPiece;
     }
+
     [Button("Clear All Pieces")]
     public void ClearModularTrack()
     {
-        foreach (var kvp in activePieces)
+        foreach (var obj in activePieces.Values)
         {
-            if (kvp.Value != null) DestroyImmediate(kvp.Value);
+            if (obj != null)
+            {
+                obj.transform.DOKill();
+                if (Application.isPlaying) Destroy(obj);
+                else DestroyImmediate(obj);
+            }
         }
         activePieces.Clear();
-
-        if (piecesParent != null)
-        {
-            for (int i = piecesParent.childCount - 1; i >= 0; i--)
-                DestroyImmediate(piecesParent.GetChild(i).gameObject);
-        }
     }
 
     void GenerateInstant()
     {
-        // Editor mode ke liye normal generation
         ClearModularTrack();
-        // ... (Optional: Fast loop for editor)
+        // Standard loop without DOTween for editor mode...
     }
 }
