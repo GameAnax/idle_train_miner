@@ -490,7 +490,6 @@ GameObject:
   - component: {fileID: 38703216}
   - component: {fileID: 38703214}
   - component: {fileID: 38703213}
-  - component: {fileID: 38703219}
   - component: {fileID: 38703220}
   - component: {fileID: 38703221}
   m_Layer: 8
@@ -635,21 +634,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 38703211}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &38703219
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 38703211}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c5b28aa5a478e44297c3dd32a5c35f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isEngine: 0
-  back: {fileID: 0}
-  offset: 2
 --- !u!114 &38703220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -773,7 +757,130 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   splineFollower: {fileID: 38703220}
-  wagon: {fileID: 38703219}
+--- !u!1 &45490979
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 45490981}
+  - component: {fileID: 45490980}
+  m_Layer: 0
+  m_Name: PreviewsSpline
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &45490980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 45490979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 598e68924c9f6324bbfd049d3bae754c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  editorDrawPivot: 1
+  editorPathColor: {r: 1, g: 1, b: 1, a: 1}
+  editorAlwaysDraw: 0
+  editorDrawThickness: 0
+  editorBillboardThickness: 1
+  isNewlyCreated: 0
+  editorUpdateMode: 0
+  multithreaded: 0
+  updateMode: 0
+  triggerGroups: []
+  _spline:
+    points: []
+    type: 1
+    linearAverageDirection: 1
+    customValueInterpolation:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    customNormalInterpolation:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    sampleRate: 20
+    closed: 0
+    _knotParametrization: 0
+  _originalSamplePercents:
+  - 0
+  - 0.052631780111989386
+  - 0.10526335906118034
+  - 0.15789493800672622
+  - 0.21052651695591718
+  - 0.2631580959032856
+  - 0.31578967484883147
+  - 0.36842125379802243
+  - 0.4210528327435683
+  - 0.47368441169275927
+  - 0.5263159906383051
+  - 0.5789475695874962
+  - 0.631579148533042
+  - 0.684210727482233
+  - 0.7368423064296014
+  - 0.7894738853751473
+  - 0.8421054643243382
+  - 0.8947370432698841
+  - 0.947368622219075
+  - 1
+  _is2D: 0
+  hasSamples: 1
+  _optimizeAngleThreshold: 0.5
+  _space: 1
+  _sampleMode: 1
+  _subscribers:
+  - {fileID: 630482649}
+  - {fileID: 38703220}
+  - {fileID: 967056072}
+  - {fileID: 1969495827}
+  _rawSamples: []
+  _nodes: []
+--- !u!4 &45490981
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 45490979}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &53102309
 GameObject:
   m_ObjectHideFlags: 0
@@ -6706,7 +6813,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 407551448}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -16671,8 +16778,6 @@ GameObject:
   - component: {fileID: 630482649}
   - component: {fileID: 630482651}
   - component: {fileID: 630482652}
-  - component: {fileID: 630482654}
-  - component: {fileID: 630482653}
   - component: {fileID: 630482656}
   - component: {fileID: 630482655}
   m_Layer: 0
@@ -16819,10 +16924,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cea47412dcfb4fffb008b2ebc58d999, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1
+  moveSpeed: 3
   useSmoothStop: 0
   manualDistance: 0
   smoothTime: 0.5
+  carriageSpacing: 1
   boggies:
   - {fileID: 1969495828}
   - {fileID: 967056073}
@@ -16847,34 +16953,8 @@ MonoBehaviour:
   - {fileID: 502663547}
   - {fileID: 1138103375}
   combinedSplineComputer: {fileID: 1243834275}
+  previewsCombinedSplineComputer: {fileID: 45490980}
   customeGrids: []
---- !u!114 &630482653
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 630482648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c5b28aa5a478e44297c3dd32a5c35f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isEngine: 1
-  back: {fileID: 1969495826}
-  offset: 0
---- !u!114 &630482654
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 630482648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ba50a673a77e124fa87e009ea3055d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!23 &630482655
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -19802,7 +19882,6 @@ GameObject:
   - component: {fileID: 967056068}
   - component: {fileID: 967056066}
   - component: {fileID: 967056065}
-  - component: {fileID: 967056071}
   - component: {fileID: 967056072}
   - component: {fileID: 967056073}
   m_Layer: 8
@@ -19867,7 +19946,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5b58bae10b884effbbcbff318558310, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageValue: 0
+  damageValue: 50
   gridLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -19890,7 +19969,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -19901,7 +19980,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 967056062}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -19947,21 +20026,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 967056062}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &967056071
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 967056062}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c5b28aa5a478e44297c3dd32a5c35f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isEngine: 0
-  back: {fileID: 38703219}
-  offset: 1.5
 --- !u!114 &967056072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20085,7 +20149,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   splineFollower: {fileID: 967056072}
-  wagon: {fileID: 967056071}
 --- !u!1 &987631560
 GameObject:
   m_ObjectHideFlags: 0
@@ -20287,7 +20350,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1065062550}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -41028,7 +41091,6 @@ GameObject:
   - component: {fileID: 1969495818}
   - component: {fileID: 1969495825}
   - component: {fileID: 1969495824}
-  - component: {fileID: 1969495826}
   - component: {fileID: 1969495827}
   - component: {fileID: 1969495828}
   m_Layer: 8
@@ -41066,7 +41128,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1969495817}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -41167,27 +41229,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5b58bae10b884effbbcbff318558310, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageValue: 0
+  damageValue: 50
   gridLayer:
     serializedVersion: 2
     m_Bits: 128
   boxSize: {x: 0.5, y: 0.5, z: 0.5}
   leftOffset: 1
---- !u!114 &1969495826
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1969495817}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c5b28aa5a478e44297c3dd32a5c35f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isEngine: 0
-  back: {fileID: 967056071}
-  offset: 1
 --- !u!114 &1969495827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41311,7 +41358,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   splineFollower: {fileID: 1969495827}
-  wagon: {fileID: 1969495826}
 --- !u!1 &1982246447
 GameObject:
   m_ObjectHideFlags: 0
@@ -42819,6 +42865,7 @@ SceneRoots:
   - {fileID: 502663548}
   - {fileID: 1138103376}
   - {fileID: 1243834276}
+  - {fileID: 45490981}
   - {fileID: 758279108}
   - {fileID: 120609460}
   - {fileID: 24530652}

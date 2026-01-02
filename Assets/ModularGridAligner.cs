@@ -43,7 +43,7 @@ public class ModularGridAligner : MonoBehaviour
 
     public void UpdateTrackWithAnimation(List<CustomeGrid> newPath)
     {
-        return;
+        // return;
         if (piecesParent == null) piecesParent = this.transform;
 
         // --- STEP 1: Filter the path ---

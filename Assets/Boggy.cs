@@ -6,5 +6,4 @@ using UnityEngine;
 public class Boggy : MonoBehaviour
 {
     public SplineFollower splineFollower;
-    public Wagon wagon;
 }

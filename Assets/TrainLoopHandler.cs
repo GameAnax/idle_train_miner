@@ -15,22 +15,20 @@ public class TrainLoopHandler : MonoBehaviour
     public SplineComputer[] splines = new SplineComputer[3];
     private int currentIndex = 0;
     private CustomeGrid lastCustomeGridAddedInSpline;
-    private int pointsPerSpline = 10;
+    private int pointsPerSpline = 5;
     private int splineCurrentIndex = 0;
 
-    private SplineComputer currentSplineComputer;
-    public SplineComputer GetCurrentSplineComputer => currentSplineComputer;
-
     public SplineComputer combinedSplineComputer;
+    public SplineComputer previewsCombinedSplineComputer;
 
     public List<CustomeGrid> customeGrids;
 
     void Start()
     {
         customeGrids = new(splineGen.splineGridPath);
-        Debug.Log($"Total Grid - {customeGrids.Count}");
-        pointsPerSpline = customeGrids.Count / 2;
-        Debug.Log($"Point on Each spline - {pointsPerSpline}");
+        // Debug.Log($"Total Grid - {customeGrids.Count}");
+        pointsPerSpline = customeGrids.Count / 3;
+        // Debug.Log($"Point on Each spline - {pointsPerSpline}");
 
         UpdateSpline(spline: splines[0]);
         UpdateSpline(spline: splines[1]);
@@ -44,10 +42,14 @@ public class TrainLoopHandler : MonoBehaviour
         // Jab train loop khatam karegi tab ye event fire hoga
         follower.onEndReached += (double d) =>
         {
+            Debug.Log("Train Path complete");
+            CopySplineData();
+            trainSplineDriver.UpdateSpline();
+            Debug.Log("Previews Path Created");
 
             customeGrids = new(splineGen.splineGridPath);
 
-            pointsPerSpline = customeGrids.Count / 2;
+            // pointsPerSpline = customeGrids.Count / 3;
             UpdateSpline(spline: splines[0]);
             UpdateSpline(spline: splines[1]);
 
@@ -63,8 +65,9 @@ public class TrainLoopHandler : MonoBehaviour
             // int index_nextSplineForAsssignToTrain = splineCurrentIndex + 1;
             // index = index_nextSplineForAsssignToTrain % splines.Length;
             // follower.spline = splines[index];
-            follower.SetPercent(0);
-            follower.RebuildImmediate();
+
+            // follower.SetPercent(0);
+            // follower.RebuildImmediate();
 
             // currentSplineComputer = splines[index];
 
@@ -110,7 +113,11 @@ public class TrainLoopHandler : MonoBehaviour
         // 5. Main Spline ko naye points dena
         combinedSplineComputer.SetPoints(combinedPoints);
         combinedSplineComputer.RebuildImmediate();
-        Debug.Log("Splines Successfully Merged!");
+        // if (previewsCombinedSplineComputer == null)
+        // {
+        //     CopySplineData();
+        // }
+        // Debug.Log("Splines Successfully Merged!");
 
         // return;
 
@@ -128,7 +135,25 @@ public class TrainLoopHandler : MonoBehaviour
 
         // splineCurrentIndex += 2;
     }
+    public void CopySplineData()
+    {
+        if (combinedSplineComputer == null || previewsCombinedSplineComputer == null) return;
 
+        // 1. Saare points ko array mein nikalen
+        SplinePoint[] points = combinedSplineComputer.GetPoints();
+
+        // 2. Doosre spline computer par points set karein
+        previewsCombinedSplineComputer.SetPoints(points);
+
+        // 3. Settings copy karein (optional but recommended)
+        previewsCombinedSplineComputer.type = combinedSplineComputer.type;
+        previewsCombinedSplineComputer.sampleMode = combinedSplineComputer.sampleMode;
+
+        // 4. Sabse zaroori: Spline ko rebuild karein taaki changes apply hon
+        previewsCombinedSplineComputer.RebuildImmediate();
+
+        // Debug.Log("Spline copied successfully!");
+    }
 
 
 
@@ -138,7 +163,7 @@ public class TrainLoopHandler : MonoBehaviour
         if (lastCustomeGridAddedInSpline != null)
         {
             int index = customeGrids.IndexOf(lastCustomeGridAddedInSpline);
-            Debug.Log($"last custome grid index - {index}, Current Index - {currentIndex}");
+            // Debug.Log($"last custome grid index - {index}, Current Index - {currentIndex}");
             if (index != -1) currentIndex = index;
 
         }
@@ -155,6 +180,11 @@ public class TrainLoopHandler : MonoBehaviour
                 if (tempIndex >= customeGrids.Count)
                 {
                     tempIndex = 0;
+                }
+                if (i == pointsPerSpline - 1)
+                {
+                    // Debug.Log("Last index");
+                    continue;
                 }
                 Vector3 nextPos = customeGrids[tempIndex].transform.position;
                 pointPositions.Add(Vector3.Lerp(currentPos, nextPos, 0.5f));
