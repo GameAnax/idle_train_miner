@@ -11,6 +11,7 @@ public class CustomeGrid : MonoBehaviour
     public bool isPermanentlyDisabled = false;
     public int gridLayerInt;
     public Vector2 gridPosition;
+    public int gpuMeshIndex;
     public int objectIndex;
 
     [Header("Health System")]
@@ -44,6 +45,10 @@ public class CustomeGrid : MonoBehaviour
     private bool _isPendingSplineUpdate = false;
 
     private static readonly int BaseColorId = Shader.PropertyToID("_BaseColor");
+
+
+
+
 
 
     void Awake()
@@ -188,6 +193,7 @@ public class CustomeGrid : MonoBehaviour
         {
             currentHealth = 0;
             if (meshRenderer != null) meshRenderer.enabled = false;
+            GridRenderManager.instance.HideMesh(gpuMeshIndex: gpuMeshIndex);
             // OnGridDestroyed();
         }
     }
@@ -230,12 +236,14 @@ public class CustomeGrid : MonoBehaviour
     IEnumerator BlinkRoutine()
     {
         // Color change to Blink Color
-        SetColor(blinkColor);
+        // SetColor(blinkColor);
+        GridRenderManager.instance.BlinkMesh(gpuMeshIndex, blinkColor);
 
         yield return new WaitForSeconds(blinkDuration);
 
         // Back to Original Color
-        SetColor(originalColor);
+        // SetColor(originalColor);
+        GridRenderManager.instance.BlinkMesh(gpuMeshIndex, originalColor);
     }
     private void SetColor(Color color)
     {

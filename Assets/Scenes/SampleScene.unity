@@ -280,6 +280,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 1
   gridPosition: {x: 5, y: 7}
+  gpuMeshIndex: 0
   objectIndex: 3
   maxHealth: 100
   currentHealth: 0
@@ -396,6 +397,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 2
   gridPosition: {x: 8, y: 8}
+  gpuMeshIndex: 0
   objectIndex: 27
   maxHealth: 100
   currentHealth: 0
@@ -1419,6 +1421,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 2
   gridPosition: {x: 1, y: 6}
+  gpuMeshIndex: 0
   objectIndex: 46
   maxHealth: 100
   currentHealth: 0
@@ -1840,6 +1843,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 3
   gridPosition: {x: 0, y: 7}
+  gpuMeshIndex: 0
   objectIndex: 82
   maxHealth: 100
   currentHealth: 0
@@ -1983,6 +1987,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 2
   gridPosition: {x: 9, y: 4}
+  gpuMeshIndex: 0
   objectIndex: 32
   maxHealth: 100
   currentHealth: 0
@@ -2330,6 +2335,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 1
   gridPosition: {x: 2, y: 6}
+  gpuMeshIndex: 0
   objectIndex: 19
   maxHealth: 100
   currentHealth: 0
@@ -3263,6 +3269,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 2
   gridPosition: {x: 2, y: 2}
+  gpuMeshIndex: 0
   objectIndex: 41
   maxHealth: 100
   currentHealth: 0
@@ -3583,6 +3590,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 3
   gridPosition: {x: 10, y: 6}
+  gpuMeshIndex: 0
   objectIndex: 61
   maxHealth: 100
   currentHealth: 0
@@ -3935,6 +3943,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 3
   gridPosition: {x: 0, y: 5}
+  gpuMeshIndex: 0
   objectIndex: 80
   maxHealth: 100
   currentHealth: 0
@@ -7340,6 +7349,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 2
   gridPosition: {x: 5, y: 8}
+  gpuMeshIndex: 0
   objectIndex: 24
   maxHealth: 100
   currentHealth: 0
@@ -7864,6 +7874,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 2
   gridPosition: {x: 1, y: 7}
+  gpuMeshIndex: 0
   objectIndex: 47
   maxHealth: 100
   currentHealth: 0
@@ -8120,6 +8131,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 2
   gridPosition: {x: 7, y: 8}
+  gpuMeshIndex: 0
   objectIndex: 26
   maxHealth: 100
   currentHealth: 0
@@ -8225,6 +8237,138 @@ Transform:
   - {fileID: 2036947111}
   m_Father: {fileID: 758279108}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &268190615
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 268190617}
+  - component: {fileID: 268190616}
+  m_Layer: 0
+  m_Name: RenderManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &268190616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 268190615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5c0779adaac7489fa1759b30b0e873a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gridMesh: {fileID: 8254687373856176130, guid: f465b68b55cfbe747a0613811313b7a9, type: 3}
+  gridMaterial: {fileID: 2100000, guid: 404634fd6e089ec43abb5f561affd9e3, type: 2}
+  grassColor: {r: 0.4745098, g: 1, b: 0.34509805, a: 1}
+  allGridCells:
+  - {fileID: 923975423}
+  - {fileID: 1499032465}
+  - {fileID: 322147954}
+  - {fileID: 3141134}
+  - {fileID: 679005099}
+  - {fileID: 987631565}
+  - {fileID: 699881227}
+  - {fileID: 700463092}
+  - {fileID: 1158342599}
+  - {fileID: 360763220}
+  - {fileID: 749046344}
+  - {fileID: 1138097767}
+  - {fileID: 815532258}
+  - {fileID: 1853549785}
+  - {fileID: 2122458045}
+  - {fileID: 485354235}
+  - {fileID: 2104785292}
+  - {fileID: 1881938057}
+  - {fileID: 1303770889}
+  - {fileID: 117890675}
+  - {fileID: 1819356603}
+  - {fileID: 754830371}
+  - {fileID: 293149936}
+  - {fileID: 1604480615}
+  - {fileID: 236079254}
+  - {fileID: 1351662117}
+  - {fileID: 263558691}
+  - {fileID: 19202717}
+  - {fileID: 1288600956}
+  - {fileID: 1849461754}
+  - {fileID: 1809828183}
+  - {fileID: 865791649}
+  - {fileID: 106584763}
+  - {fileID: 1188797514}
+  - {fileID: 1674620476}
+  - {fileID: 483592871}
+  - {fileID: 2008115928}
+  - {fileID: 1209843406}
+  - {fileID: 317184454}
+  - {fileID: 598800723}
+  - {fileID: 717275303}
+  - {fileID: 144518320}
+  - {fileID: 1195189811}
+  - {fileID: 1437216851}
+  - {fileID: 2012066164}
+  - {fileID: 755558849}
+  - {fileID: 53102310}
+  - {fileID: 251681473}
+  - {fileID: 1739802540}
+  - {fileID: 627901433}
+  - {fileID: 2083186423}
+  - {fileID: 808939465}
+  - {fileID: 807510794}
+  - {fileID: 1706390530}
+  - {fileID: 1184038520}
+  - {fileID: 1862938857}
+  - {fileID: 1141079864}
+  - {fileID: 1581914753}
+  - {fileID: 1411592383}
+  - {fileID: 1660765972}
+  - {fileID: 2013111748}
+  - {fileID: 171412466}
+  - {fileID: 1065671575}
+  - {fileID: 691607067}
+  - {fileID: 1620935141}
+  - {fileID: 1896601836}
+  - {fileID: 1695051012}
+  - {fileID: 1628097983}
+  - {fileID: 496102154}
+  - {fileID: 819384585}
+  - {fileID: 2016573297}
+  - {fileID: 1559003095}
+  - {fileID: 1887782033}
+  - {fileID: 956987054}
+  - {fileID: 582218473}
+  - {fileID: 1219641784}
+  - {fileID: 420617594}
+  - {fileID: 1855291168}
+  - {fileID: 317893903}
+  - {fileID: 2005619393}
+  - {fileID: 184074844}
+  - {fileID: 1204255641}
+  - {fileID: 93948912}
+  - {fileID: 1937587108}
+--- !u!4 &268190617
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 268190615}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &268316801
 GameObject:
   m_ObjectHideFlags: 0
@@ -8327,6 +8471,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 2
   gridPosition: {x: 3, y: 8}
+  gpuMeshIndex: 0
   objectIndex: 22
   maxHealth: 100
   currentHealth: 0
@@ -8620,6 +8765,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 2
   gridPosition: {x: 5, y: 2}
+  gpuMeshIndex: 0
   objectIndex: 38
   maxHealth: 100
   currentHealth: 0
@@ -8854,6 +9000,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 3
   gridPosition: {x: 0, y: 3}
+  gpuMeshIndex: 0
   objectIndex: 78
   maxHealth: 100
   currentHealth: 0
@@ -9029,6 +9176,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 1
   gridPosition: {x: 4, y: 7}
+  gpuMeshIndex: 0
   objectIndex: 2
   maxHealth: 100
   currentHealth: 0
@@ -9491,6 +9639,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 1
   gridPosition: {x: 8, y: 4}
+  gpuMeshIndex: 0
   objectIndex: 9
   maxHealth: 100
   currentHealth: 0
@@ -10470,6 +10619,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 3
   gridPosition: {x: 0, y: 1}
+  gpuMeshIndex: 0
   objectIndex: 76
   maxHealth: 100
   currentHealth: 0
@@ -10945,6 +11095,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 2
   gridPosition: {x: 8, y: 2}
+  gpuMeshIndex: 0
   objectIndex: 35
   maxHealth: 100
   currentHealth: 0
@@ -11211,6 +11362,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 1
   gridPosition: {x: 3, y: 3}
+  gpuMeshIndex: 0
   objectIndex: 15
   maxHealth: 100
   currentHealth: 0
@@ -11349,6 +11501,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 3
   gridPosition: {x: 8, y: 1}
+  gpuMeshIndex: 0
   objectIndex: 68
   maxHealth: 100
   currentHealth: 0
@@ -17601,6 +17754,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 3
   gridPosition: {x: 2, y: 1}
+  gpuMeshIndex: 0
   objectIndex: 74
   maxHealth: 100
   currentHealth: 0
@@ -18039,6 +18193,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 2
   gridPosition: {x: 4, y: 2}
+  gpuMeshIndex: 0
   objectIndex: 39
   maxHealth: 100
   currentHealth: 0
@@ -18472,6 +18627,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 3
   gridPosition: {x: 1, y: 9}
+  gpuMeshIndex: 0
   objectIndex: 49
   maxHealth: 100
   currentHealth: 0
@@ -19400,6 +19556,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 1
   gridPosition: {x: 6, y: 7}
+  gpuMeshIndex: 0
   objectIndex: 4
   maxHealth: 100
   currentHealth: 0
@@ -19538,6 +19695,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 3
   gridPosition: {x: 10, y: 4}
+  gpuMeshIndex: 0
   objectIndex: 63
   maxHealth: 100
   currentHealth: 0
@@ -19772,6 +19930,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 1
   gridPosition: {x: 8, y: 7}
+  gpuMeshIndex: 0
   objectIndex: 6
   maxHealth: 100
   currentHealth: 0
@@ -19915,6 +20074,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 1
   gridPosition: {x: 8, y: 6}
+  gpuMeshIndex: 0
   objectIndex: 7
   maxHealth: 100
   currentHealth: 0
@@ -20225,6 +20385,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 2
   gridPosition: {x: 3, y: 2}
+  gpuMeshIndex: 0
   objectIndex: 40
   maxHealth: 100
   currentHealth: 0
@@ -20921,6 +21082,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 1
   gridPosition: {x: 8, y: 3}
+  gpuMeshIndex: 0
   objectIndex: 10
   maxHealth: 100
   currentHealth: 0
@@ -21005,6 +21167,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 2
   gridPosition: {x: 2, y: 8}
+  gpuMeshIndex: 0
   objectIndex: 21
   maxHealth: 100
   currentHealth: 0
@@ -21148,6 +21311,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 2
   gridPosition: {x: 1, y: 5}
+  gpuMeshIndex: 0
   objectIndex: 45
   maxHealth: 100
   currentHealth: 0
@@ -22193,6 +22357,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 3
   gridPosition: {x: 4, y: 9}
+  gpuMeshIndex: 0
   objectIndex: 52
   maxHealth: 100
   currentHealth: 0
@@ -22368,6 +22533,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 3
   gridPosition: {x: 3, y: 9}
+  gpuMeshIndex: 0
   objectIndex: 51
   maxHealth: 100
   currentHealth: 0
@@ -22602,6 +22768,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 1
   gridPosition: {x: 6, y: 3}
+  gpuMeshIndex: 0
   objectIndex: 12
   maxHealth: 100
   currentHealth: 0
@@ -22654,6 +22821,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 3
   gridPosition: {x: 7, y: 1}
+  gpuMeshIndex: 0
   objectIndex: 69
   maxHealth: 100
   currentHealth: 0
@@ -23362,6 +23530,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 2
   gridPosition: {x: 9, y: 5}
+  gpuMeshIndex: 0
   objectIndex: 31
   maxHealth: 100
   currentHealth: 0
@@ -24250,6 +24419,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 1
   gridPosition: {x: 2, y: 7}
+  gpuMeshIndex: 0
   objectIndex: 0
   maxHealth: 100
   currentHealth: 0
@@ -24516,6 +24686,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 3
   gridPosition: {x: 3, y: 1}
+  gpuMeshIndex: 0
   objectIndex: 73
   maxHealth: 100
   currentHealth: 0
@@ -24699,7 +24870,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5b58bae10b884effbbcbff318558310, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageValue: 50
+  damageValue: 0
   gridLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -25117,6 +25288,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 1
   gridPosition: {x: 7, y: 7}
+  gpuMeshIndex: 0
   objectIndex: 5
   maxHealth: 100
   currentHealth: 0
@@ -26017,6 +26189,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 3
   gridPosition: {x: 10, y: 5}
+  gpuMeshIndex: 0
   objectIndex: 62
   maxHealth: 100
   currentHealth: 0
@@ -27163,6 +27336,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 1
   gridPosition: {x: 7, y: 3}
+  gpuMeshIndex: 0
   objectIndex: 11
   maxHealth: 100
   currentHealth: 0
@@ -27215,6 +27389,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 3
   gridPosition: {x: 8, y: 9}
+  gpuMeshIndex: 0
   objectIndex: 56
   maxHealth: 100
   currentHealth: 0
@@ -27653,6 +27828,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 1
   gridPosition: {x: 8, y: 5}
+  gpuMeshIndex: 0
   objectIndex: 8
   maxHealth: 100
   currentHealth: 0
@@ -27791,6 +27967,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 3
   gridPosition: {x: 6, y: 9}
+  gpuMeshIndex: 0
   objectIndex: 54
   maxHealth: 100
   currentHealth: 0
@@ -27934,6 +28111,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 2
   gridPosition: {x: 9, y: 3}
+  gpuMeshIndex: 0
   objectIndex: 33
   maxHealth: 100
   currentHealth: 0
@@ -28163,6 +28341,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 2
   gridPosition: {x: 1, y: 2}
+  gpuMeshIndex: 0
   objectIndex: 42
   maxHealth: 100
   currentHealth: 0
@@ -28751,6 +28930,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 3
   gridPosition: {x: 0, y: 6}
+  gpuMeshIndex: 0
   objectIndex: 81
   maxHealth: 100
   currentHealth: 0
@@ -28889,6 +29069,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 2
   gridPosition: {x: 6, y: 2}
+  gpuMeshIndex: 0
   objectIndex: 37
   maxHealth: 100
   currentHealth: 0
@@ -29064,6 +29245,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 3
   gridPosition: {x: 1, y: 1}
+  gpuMeshIndex: 0
   objectIndex: 75
   maxHealth: 100
   currentHealth: 0
@@ -38703,6 +38885,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 2
   gridPosition: {x: 9, y: 8}
+  gpuMeshIndex: 0
   objectIndex: 28
   maxHealth: 100
   currentHealth: 0
@@ -39227,6 +39410,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 1
   gridPosition: {x: 2, y: 5}
+  gpuMeshIndex: 0
   objectIndex: 18
   maxHealth: 100
   currentHealth: 0
@@ -39805,6 +39989,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 2
   gridPosition: {x: 6, y: 8}
+  gpuMeshIndex: 0
   objectIndex: 25
   maxHealth: 100
   currentHealth: 0
@@ -40324,6 +40509,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 3
   gridPosition: {x: 10, y: 9}
+  gpuMeshIndex: 0
   objectIndex: 58
   maxHealth: 100
   currentHealth: 0
@@ -40617,6 +40803,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 2
   gridPosition: {x: 1, y: 3}
+  gpuMeshIndex: 0
   objectIndex: 43
   maxHealth: 100
   currentHealth: 0
@@ -41473,6 +41660,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 1
   gridPosition: {x: 3, y: 7}
+  gpuMeshIndex: 0
   objectIndex: 1
   maxHealth: 100
   currentHealth: 0
@@ -41965,6 +42153,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 3
   gridPosition: {x: 5, y: 1}
+  gpuMeshIndex: 0
   objectIndex: 71
   maxHealth: 100
   currentHealth: 0
@@ -42344,6 +42533,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 3
   gridPosition: {x: 9, y: 9}
+  gpuMeshIndex: 0
   objectIndex: 57
   maxHealth: 100
   currentHealth: 0
@@ -42583,6 +42773,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 2
   gridPosition: {x: 4, y: 8}
+  gpuMeshIndex: 0
   objectIndex: 23
   maxHealth: 100
   currentHealth: 0
@@ -42930,6 +43121,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 3
   gridPosition: {x: 10, y: 3}
+  gpuMeshIndex: 0
   objectIndex: 64
   maxHealth: 100
   currentHealth: 0
@@ -43191,6 +43383,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 3
   gridPosition: {x: 9, y: 1}
+  gpuMeshIndex: 0
   objectIndex: 67
   maxHealth: 100
   currentHealth: 0
@@ -43452,6 +43645,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 3
   gridPosition: {x: 10, y: 8}
+  gpuMeshIndex: 0
   objectIndex: 59
   maxHealth: 100
   currentHealth: 0
@@ -43627,6 +43821,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 2
   gridPosition: {x: 9, y: 2}
+  gpuMeshIndex: 0
   objectIndex: 34
   maxHealth: 100
   currentHealth: 0
@@ -43866,6 +44061,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 3
   gridPosition: {x: 10, y: 1}
+  gpuMeshIndex: 0
   objectIndex: 66
   maxHealth: 100
   currentHealth: 0
@@ -44073,6 +44269,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 3
   gridPosition: {x: 5, y: 9}
+  gpuMeshIndex: 0
   objectIndex: 53
   maxHealth: 100
   currentHealth: 0
@@ -44624,6 +44821,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 3
   gridPosition: {x: 0, y: 9}
+  gpuMeshIndex: 0
   objectIndex: 48
   maxHealth: 100
   currentHealth: 0
@@ -45261,6 +45459,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 2
   gridPosition: {x: 9, y: 6}
+  gpuMeshIndex: 0
   objectIndex: 30
   maxHealth: 100
   currentHealth: 0
@@ -45404,6 +45603,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 2
   gridPosition: {x: 1, y: 8}
+  gpuMeshIndex: 0
   objectIndex: 20
   maxHealth: 100
   currentHealth: 0
@@ -45643,6 +45843,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 2
   gridPosition: {x: 9, y: 7}
+  gpuMeshIndex: 0
   objectIndex: 29
   maxHealth: 100
   currentHealth: 0
@@ -45877,6 +46078,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 1
   gridPosition: {x: 5, y: 3}
+  gpuMeshIndex: 0
   objectIndex: 13
   maxHealth: 100
   currentHealth: 0
@@ -46106,6 +46308,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 3
   gridPosition: {x: 0, y: 2}
+  gpuMeshIndex: 0
   objectIndex: 77
   maxHealth: 100
   currentHealth: 0
@@ -46190,6 +46393,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 3
   gridPosition: {x: 7, y: 9}
+  gpuMeshIndex: 0
   objectIndex: 55
   maxHealth: 100
   currentHealth: 0
@@ -46510,6 +46714,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 1
   gridPosition: {x: 2, y: 4}
+  gpuMeshIndex: 0
   objectIndex: 17
   maxHealth: 100
   currentHealth: 0
@@ -46626,6 +46831,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 3
   gridPosition: {x: 4, y: 1}
+  gpuMeshIndex: 0
   objectIndex: 72
   maxHealth: 100
   currentHealth: 0
@@ -46801,6 +47007,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 3
   gridPosition: {x: 10, y: 2}
+  gpuMeshIndex: 0
   objectIndex: 65
   maxHealth: 100
   currentHealth: 0
@@ -47271,6 +47478,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 3
   gridPosition: {x: 0, y: 8}
+  gpuMeshIndex: 0
   objectIndex: 83
   maxHealth: 100
   currentHealth: 0
@@ -47865,7 +48073,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5b58bae10b884effbbcbff318558310, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageValue: 50
+  damageValue: 0
   gridLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -48305,6 +48513,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 3
   gridPosition: {x: 0, y: 4}
+  gpuMeshIndex: 0
   objectIndex: 79
   maxHealth: 100
   currentHealth: 0
@@ -48357,6 +48566,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 2
   gridPosition: {x: 7, y: 2}
+  gpuMeshIndex: 0
   objectIndex: 36
   maxHealth: 100
   currentHealth: 0
@@ -48650,6 +48860,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 2
   gridPosition: {x: 1, y: 4}
+  gpuMeshIndex: 0
   objectIndex: 44
   maxHealth: 100
   currentHealth: 0
@@ -48793,6 +49004,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 3
   gridPosition: {x: 10, y: 7}
+  gpuMeshIndex: 0
   objectIndex: 60
   maxHealth: 100
   currentHealth: 0
@@ -48936,6 +49148,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 3
   gridPosition: {x: 6, y: 1}
+  gpuMeshIndex: 0
   objectIndex: 70
   maxHealth: 100
   currentHealth: 0
@@ -50153,6 +50366,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 3
   gridPosition: {x: 2, y: 9}
+  gpuMeshIndex: 0
   objectIndex: 50
   maxHealth: 100
   currentHealth: 0
@@ -50451,6 +50665,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 1
   gridPosition: {x: 2, y: 3}
+  gpuMeshIndex: 0
   objectIndex: 16
   maxHealth: 100
   currentHealth: 0
@@ -50830,6 +51045,7 @@ MonoBehaviour:
   isPermanentlyDisabled: 0
   gridLayerInt: 1
   gridPosition: {x: 4, y: 3}
+  gpuMeshIndex: 0
   objectIndex: 14
   maxHealth: 100
   currentHealth: 0
@@ -51179,3 +51395,4 @@ SceneRoots:
   - {fileID: 630482650}
   - {fileID: 638932676}
   - {fileID: 761392652}
+  - {fileID: 268190617}
