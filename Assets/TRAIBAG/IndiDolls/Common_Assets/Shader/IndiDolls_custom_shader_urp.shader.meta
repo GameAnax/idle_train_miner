@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 12a54bba963c3a340b89b938903e586f
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures: []
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 331730
+  packageName: 'IndiDolls : Common Assets / URP'
+  packageVersion: 1.0
+  assetPath: Assets/TRAIBAG/IndiDolls/Common_Assets/Shader/IndiDolls_custom_shader_urp.shader
+  uploadId: 787130

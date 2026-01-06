@@ -7,6 +7,7 @@ public class BogeyDamage : MonoBehaviour
     public LayerMask gridLayer;
     public Vector3 boxSize = new Vector3(1.5f, 1.5f, 1.5f);
     public float leftOffset = 2.0f;
+    public float forwardOffset = 0f;
 
     // Isme hum track rakhenge ki abhi kaunse grids box ke andar hain
     private List<CustomeGrid> currentGridsInBox = new List<CustomeGrid>();
@@ -14,7 +15,7 @@ public class BogeyDamage : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector3 detectionPoint = transform.TransformPoint(new Vector3(-leftOffset, 0, 0));
+        Vector3 detectionPoint = transform.TransformPoint(new Vector3(-leftOffset, 0, forwardOffset));
 
         // 1. Current frame mein jitne grids box ke andar hain unhe pakadna
         Collider[] hitColliders = Physics.OverlapBox(detectionPoint, boxSize / 2, transform.rotation, gridLayer);
@@ -54,7 +55,7 @@ public class BogeyDamage : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green; // Clear color for active detection
-        Vector3 detectionPoint = transform.TransformPoint(new Vector3(-leftOffset, 0, 0));
+        Vector3 detectionPoint = transform.TransformPoint(new Vector3(-leftOffset, 0, forwardOffset));
         Gizmos.matrix = Matrix4x4.TRS(detectionPoint, transform.rotation, Vector3.one);
         Gizmos.DrawWireCube(Vector3.zero, boxSize);
     }

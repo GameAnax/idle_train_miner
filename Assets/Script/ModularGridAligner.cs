@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using EasyButtons;
 using DG.Tweening;
 
+[ExecuteInEditMode]
 public class ModularGridAligner : MonoBehaviour
 {
     [Header("Dependencies")]
@@ -83,10 +84,10 @@ public class ModularGridAligner : MonoBehaviour
     {
         if (splineGen == null || splineGen.splineGridPath == null || splineGen.splineGridPath.Count == 0) return;
 
-        if (!Application.isPlaying)
-        {
-            return;
-        }
+        // if (!Application.isPlaying)
+        // {
+        //     return;
+        // }
 
         UpdateTrackWithAnimation(splineGen.splineGridPath);
     }

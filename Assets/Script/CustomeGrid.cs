@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class CustomeGrid : MonoBehaviour
 {
+    public MeshType meshType;
     public bool isClear;
     public bool isUsable = true;
     public bool isOuterBoundary = false;
@@ -60,6 +61,7 @@ public class CustomeGrid : MonoBehaviour
         if (meshRenderer != null)
         {
             // Original color ko initial material se lena
+            meshRenderer.enabled = false;
             originalColor = meshRenderer.sharedMaterial.GetColor(BaseColorId);
         }
     }
@@ -193,7 +195,7 @@ public class CustomeGrid : MonoBehaviour
         {
             currentHealth = 0;
             if (meshRenderer != null) meshRenderer.enabled = false;
-            GridRenderManager.instance.HideMesh(gpuMeshIndex: gpuMeshIndex);
+            GridRenderManager.instance.HideMesh(meshType: meshType, gpuMeshIndex: gpuMeshIndex);
             // OnGridDestroyed();
         }
     }
@@ -237,13 +239,13 @@ public class CustomeGrid : MonoBehaviour
     {
         // Color change to Blink Color
         // SetColor(blinkColor);
-        GridRenderManager.instance.BlinkMesh(gpuMeshIndex, blinkColor);
+        GridRenderManager.instance.BlinkMesh(meshType: meshType, gpuMeshIndex, blinkColor);
 
         yield return new WaitForSeconds(blinkDuration);
 
         // Back to Original Color
         // SetColor(originalColor);
-        GridRenderManager.instance.BlinkMesh(gpuMeshIndex, originalColor);
+        GridRenderManager.instance.BlinkMesh(meshType: meshType, gpuMeshIndex, originalColor);
     }
     private void SetColor(Color color)
     {
@@ -297,23 +299,38 @@ public class CustomeGrid : MonoBehaviour
         if (otherPiece != null) otherPiece.SetActive(false);
         if (targetPiece == null) return;
 
-        // Piece ko enable karein
-        if (!targetPiece.activeSelf)
+        if (!Application.isPlaying)
         {
-            targetPiece.SetActive(true);
-
-            // Animation se pehle initial state set karein
-            Vector3 finalPos = transform.position + Vector3.up * 0.1f;
-            targetPiece.transform.position = finalPos + Vector3.up * startY;
-            targetPiece.transform.rotation = Quaternion.Euler(0, targetRotation, 0);
-
-            targetPiece.transform.DOKill();
-            targetPiece.transform.DOMove(finalPos, animDuration).SetEase(Ease.OutBounce);
+            if (!targetPiece.activeSelf)
+            {
+                targetPiece.SetActive(true);
+                targetPiece.transform.rotation = Quaternion.Euler(0, targetRotation, 0);
+            }
+            else
+                targetPiece.transform.rotation = Quaternion.Euler(new Vector3(0, targetRotation, 0));
         }
         else
         {
-            // Agar piece type wahi hai, toh sirf rotation smoothly change karein
-            targetPiece.transform.DORotate(new Vector3(0, targetRotation, 0), 0.2f);
+
+            // Piece ko enable karein
+            if (!targetPiece.activeSelf)
+            {
+                targetPiece.SetActive(true);
+
+                // Animation se pehle initial state set karein
+                // Vector3 finalPos = transform.position + Vector3.up * 0.1f;
+                Vector3 finalPos = transform.position + Vector3.up * 0f;
+                targetPiece.transform.position = finalPos + Vector3.up * startY;
+                targetPiece.transform.rotation = Quaternion.Euler(0, targetRotation, 0);
+
+                targetPiece.transform.DOKill();
+                targetPiece.transform.DOMove(finalPos, animDuration).SetEase(Ease.OutBounce);
+            }
+            else
+            {
+                // Agar piece type wahi hai, toh sirf rotation smoothly change karein
+                targetPiece.transform.DORotate(new Vector3(0, targetRotation, 0), 0.2f);
+            }
         }
     }
     public void HideAllTracks()
@@ -321,5 +338,10 @@ public class CustomeGrid : MonoBehaviour
         if (myStraightPiece != null) myStraightPiece.SetActive(false);
         if (myCornerPiece != null) myCornerPiece.SetActive(false);
         currentActivePiece = null;
+    }
+
+    private void SetWithoutPlay()
+    {
+
     }
 }
