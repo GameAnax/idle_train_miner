@@ -15,6 +15,7 @@ public class TrainSplineDriver : MonoBehaviour
     private SplineFollower _splineFollower;
     public ModularGridAligner modularGridAligner;
     public SplineFollower GetSplineFollower => _splineFollower;
+    public TrainLoopHandler GetTrainLoopHandler => trainLoopHandler;
     private float _targetSpeed;
     private float currentDistance = 0;
     private List<CustomeGrid> _pendingGrids = new List<CustomeGrid>();
@@ -48,19 +49,23 @@ public class TrainSplineDriver : MonoBehaviour
     }
     void LateUpdate()
     {
-        MoveBogeys();
+        // MoveBogeys();
     }
 
-    private void MoveBogeys()
+    public bool isMainComplete;
+    public float bridgeDistance;
+    public float targetDistanceForThisBogey;
+
+    public void MoveBogeys()
     {
         float leaderCurrentDist = (float)_splineFollower.CalculateLength() * (float)_splineFollower.result.percent;
         for (int i = 0; i < boggies.Count; i++)
         {
             var boggyItem = boggies[i];
-            float targetDistanceForThisBogey = leaderCurrentDist - ((i + 1) * boggyItem.space);
+            targetDistanceForThisBogey = leaderCurrentDist - ((i + 1) * boggyItem.space);
 
             // Agar targetDistance negative hai, iska matlab bogey abhi purani spline par honi chahiye
-            if (targetDistanceForThisBogey < 0)
+            if (targetDistanceForThisBogey < 0 || isMainComplete)
             {
                 // Yahan aap logic laga sakte hain ki bogey purani spline ke end par ruk jaye
                 // Ya phir use purani spline par hi movement karwayein
@@ -70,9 +75,11 @@ public class TrainSplineDriver : MonoBehaviour
                     if (boggyItem.splineFollower.spline != trainLoopHandler.previewsCombinedSplineComputer)
                     {
                         boggyItem.splineFollower.spline = trainLoopHandler.previewsCombinedSplineComputer;
+                        boggyItem.splineFollower.RebuildImmediate();
                     }
+                    isMainComplete = false;
                     float prevLength = (float)trainLoopHandler.previewsCombinedSplineComputer.CalculateLength();
-                    float bridgeDistance = prevLength + targetDistanceForThisBogey;
+                    bridgeDistance = prevLength + targetDistanceForThisBogey;
                     boggyItem.splineFollower.SetDistance(bridgeDistance);
                 }
             }
@@ -82,7 +89,7 @@ public class TrainSplineDriver : MonoBehaviour
                 {
                     // Debug.Log($"Train and Boggy spline not same at {targetDistanceForThisBogey}, and Train distance - {leaderCurrentDist}");
                     boggyItem.splineFollower.spline = _splineFollower.spline;
-                    boggyItem.splineFollower.Rebuild();
+                    boggyItem.splineFollower.RebuildImmediate();
                 }
                 boggyItem.splineFollower.SetDistance(targetDistanceForThisBogey);
             }
@@ -190,6 +197,8 @@ public class TrainSplineDriver : MonoBehaviour
         foreach (var item in boggies)
         {
             item.splineFollower.spline = trainLoopHandler.previewsCombinedSplineComputer;
+            item.splineFollower.RebuildImmediate();
+            item.splineFollower.SetDistance(bridgeDistance);
         }
     }
 

@@ -41,9 +41,9 @@ public class TrainLoopHandler : MonoBehaviour
         // Jab train loop khatam karegi tab ye event fire hoga
         follower.onEndReached += (double d) =>
         {
+            trainSplineDriver.isMainComplete = true;
             // Debug.Log("Train Path complete");
             CopySplineData();
-            trainSplineDriver.UpdateSpline();
             // Debug.Log("Previews Path Created");
 
             customeGrids = new(splineGen.splineGridPath);
@@ -126,6 +126,7 @@ public class TrainLoopHandler : MonoBehaviour
 
         // 4. Sabse zaroori: Spline ko rebuild karein taaki changes apply hon
         previewsCombinedSplineComputer.RebuildImmediate();
+        trainSplineDriver.UpdateSpline();
 
         // Debug.Log("Spline copied successfully!");
     }
