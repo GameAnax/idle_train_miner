@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
 
     public TrainManager trainManager;
 
-    public List<BogeyConfig> boggyConfigs;
+    public List<BoggyConfig> boggyConfigs;
     public List<BoggyData> boggyDatas = new();
     public BoggyData currentBoggyData = null;
 
@@ -39,14 +39,14 @@ public class GameManager : MonoBehaviour
         }
         if (currentBoggyData == null)
         {
-            BogeyConfig bogeyConfig = boggyConfigs[0];
+            BoggyConfig bogeyConfig = boggyConfigs[0];
             currentBoggyData = new(maxBoggyCount: bogeyConfig.maxBoggy, currentBoggyCount: bogeyConfig.totalSpawn, boggyType: bogeyConfig.boggyType, isLimitReached: false, boggyDamage: bogeyConfig.boggyDamage);
             boggyDatas.Add(currentBoggyData);
         }
     }
 
     [Button]
-    private void ADDBoggy()
+    public void ADDBoggy()
     {
         if (currentBoggyData == null)
         {
@@ -61,41 +61,36 @@ public class GameManager : MonoBehaviour
             int index = boggyDatas.Count; //for get next index
             index = Mathf.Min(boggyConfigs.Count - 1, index);
             //TODO:- Assign next level boggy
-            BogeyConfig bogeyConfig = boggyConfigs[index];
+            BoggyConfig bogeyConfig = boggyConfigs[index];
             currentBoggyData = new(maxBoggyCount: bogeyConfig.maxBoggy, currentBoggyCount: bogeyConfig.totalSpawn, boggyType: bogeyConfig.boggyType, isLimitReached: false, boggyDamage: bogeyConfig.boggyDamage);
             boggyDatas.Add(currentBoggyData);
         }
     }
     [Button]
-    private void MeargeBoggy()
+    public void MeargeBoggy()
     {
         List<Boggy> boggies = trainManager.trainSplineDriver.boggies;
-        bool hasMerged;
-        do
+        for (int i = 0; i < boggies.Count - 1; i++)
         {
-            hasMerged = false;
-            for (int i = 0; i < boggies.Count - 1; i++)
+            Boggy first = boggies[i];
+            Boggy second = boggies[i + 1];
+
+            if (first.boggyType == second.boggyType)
             {
-                // if(i == 0)
-                Boggy first = boggies[i];
-                Boggy second = boggies[i + 1];
-
-                if (first.boggyType == second.boggyType)
-                {
-                    first.UpdateBoggy();
-                    boggies.RemoveAt(i + 1);
-                    second.DestroyObj();
-
-                    hasMerged = true;
-                    break;
-                }
+                first.UpdateBoggy();
+                boggies.RemoveAt(i + 1);
+                second.DestroyObj();
+                break;
             }
         }
-        while (hasMerged);
         for (int i = 0; i < boggies.Count; i++)
         {
             boggies[i].index = i;
         }
+    }
+    public void IncreaseTrainSpeed()
+    {
+        trainManager.trainSplineDriver.UpdateSpeed(1);
     }
 }
 

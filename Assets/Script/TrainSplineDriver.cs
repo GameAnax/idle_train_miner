@@ -201,7 +201,10 @@ public class TrainSplineDriver : MonoBehaviour
             item.splineFollower.SetDistance(bridgeDistance);
         }
     }
-
+    public void UpdateSpeed(int amount)
+    {
+        moveSpeed += amount;
+    }
     [EasyButtons.Button]
     private void CalculatePosition()
     {

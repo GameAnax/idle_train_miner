@@ -7,7 +7,7 @@ public partial class Boggy : MonoBehaviour
 {
     public SplineFollower splineFollower;
     public TrainSplineDriver trainSplineDriver;
-    public BogeyDamage boggyDamage;
+    public BoggyDamage boggyDamage;
 
     public BoggyType boggyType;
     public float space;
@@ -62,5 +62,51 @@ public partial class Boggy : MonoBehaviour
     // void OnValidate()
     // {
     //     CalculateDistance();
+    // }
+    // void Update()
+    // {
+    //     MoveBogeys();
+    // }
+    // void LateUpdate()
+    // {
+    //     MoveBogeys();
+    // }
+    // private void MoveBogeys()
+    // {
+    //     float leaderCurrentDist = (float)trainSplineDriver.GetSplineFollower.CalculateLength() * (float)trainSplineDriver.GetSplineFollower.result.percent;
+    //     // for (int i = 0; i < boggies.Count; i++)
+    //     // {
+    //     // var boggyItem = boggies[i];
+    //     float targetDistanceForThisBogey = leaderCurrentDist - ((index + 1) * space);
+
+    //     // Agar targetDistance negative hai, iska matlab bogey abhi purani spline par honi chahiye
+    //     if (targetDistanceForThisBogey < 0)
+    //     {
+    //         // Yahan aap logic laga sakte hain ki bogey purani spline ke end par ruk jaye
+    //         // Ya phir use purani spline par hi movement karwayein
+    //         if (trainSplineDriver.GetTrainLoopHandler.previewsCombinedSplineComputer != null)
+    //         {
+    //             // Debug.Log("Call When Calculation Negitive");
+    //             if (splineFollower.spline != trainSplineDriver.GetTrainLoopHandler.previewsCombinedSplineComputer)
+    //             {
+    //                 splineFollower.spline = trainSplineDriver.GetTrainLoopHandler.previewsCombinedSplineComputer;
+    //                 splineFollower.Rebuild();
+    //             }
+    //             float prevLength = (float)trainSplineDriver.GetTrainLoopHandler.previewsCombinedSplineComputer.CalculateLength();
+    //             float bridgeDistance = prevLength + targetDistanceForThisBogey;
+    //             splineFollower.SetDistance(bridgeDistance);
+    //         }
+    //     }
+    //     else
+    //     {
+    //         if (splineFollower.spline != trainSplineDriver.GetSplineFollower.spline)
+    //         {
+    //             // Debug.Log($"Train and Boggy spline not same at {targetDistanceForThisBogey}, and Train distance - {leaderCurrentDist}");
+    //             splineFollower.spline = trainSplineDriver.GetSplineFollower.spline;
+    //             splineFollower.Rebuild();
+    //         }
+    //         splineFollower.SetDistance(targetDistanceForThisBogey);
+    //     }
+    //     // }
     // }
 }
