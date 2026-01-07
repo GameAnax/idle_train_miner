@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class CustomeGrid : MonoBehaviour
@@ -39,6 +40,7 @@ public class CustomeGrid : MonoBehaviour
 
     public SplineGenerator splineGenerator;
     public TrainSplineDriver trainSplineDriver;
+    public JumpEffect jumpEffectPrefab;
 
     private MeshRenderer meshRenderer;
     private Color originalColor;
@@ -47,7 +49,8 @@ public class CustomeGrid : MonoBehaviour
 
     private static readonly int BaseColorId = Shader.PropertyToID("_BaseColor");
 
-
+    [Header("References")]
+    private Transform cubeContainer;
 
 
 
@@ -284,7 +287,19 @@ public class CustomeGrid : MonoBehaviour
 
         return false;
     }
+    private Vector3 GetRandom(Vector3 orignalPosition)
+    {
+        orignalPosition.x = GetNewPos(orignalPosition.x);
+        orignalPosition.z = GetNewPos(orignalPosition.z);
+        return orignalPosition;
 
+        float GetNewPos(float value)
+        {
+            float tempRandom = UnityEngine.Random.Range(-0.3f, 0.3f);
+            value += tempRandom;
+            return value;
+        }
+    }
 
     //For Track
     public void SetTrackState(GameObject prefabToUse, float targetRotation, float animDuration, float startY)
@@ -340,8 +355,20 @@ public class CustomeGrid : MonoBehaviour
         currentActivePiece = null;
     }
 
-    private void SetWithoutPlay()
+    public void SetCube(Vector3 hitPosition)
     {
+        if (cubeContainer == null)
+        {
+            GameObject containerObj = new GameObject("CubeContainer");
+            cubeContainer = containerObj.transform;
+            cubeContainer.SetParent(this.transform);
+            cubeContainer.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+        }
 
+        JumpEffect cube = Instantiate(jumpEffectPrefab, transform.position, Quaternion.identity, transform);
+        cube.transform.SetParent(cubeContainer);
+        cube.StartJump(transform.position, GetRandom(hitPosition), 1, 0.5f);
+        // cube.transform.position = GetRandom(hitPosition);
+        // cube.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
     }
 }

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5528999065733252939
+--- !u!1 &5862059191133035117
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,48 +8,47 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8864284049539457617}
-  - component: {fileID: 6039028304081432594}
-  - component: {fileID: 5515764508117400114}
-  - component: {fileID: 1143958717316056234}
-  - component: {fileID: 7221834221178009513}
-  m_Layer: 7
-  m_Name: CustomeGrid
+  - component: {fileID: 5855019125090945427}
+  - component: {fileID: 58259098804209425}
+  - component: {fileID: 2420653085423636503}
+  - component: {fileID: 489291634633412513}
+  m_Layer: 0
+  m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8864284049539457617
+--- !u!4 &5855019125090945427
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5528999065733252939}
+  m_GameObject: {fileID: 5862059191133035117}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 1
+  m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 3657930330947842859}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &6039028304081432594
+--- !u!33 &58259098804209425
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5528999065733252939}
+  m_GameObject: {fileID: 5862059191133035117}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &5515764508117400114
+--- !u!23 &2420653085423636503
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5528999065733252939}
+  m_GameObject: {fileID: 5862059191133035117}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -66,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 179f52a50c7994e7eb575d487de3db9d, type: 2}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -88,13 +87,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1143958717316056234
+--- !u!65 &489291634633412513
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5528999065733252939}
+  m_GameObject: {fileID: 5862059191133035117}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -103,44 +102,54 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7221834221178009513
+--- !u!1 &8443108559656993769
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3657930330947842859}
+  - component: {fileID: 5751293474449507817}
+  m_Layer: 0
+  m_Name: ShardCube
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3657930330947842859
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8443108559656993769}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.201, y: 0, z: 3.488}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_ConstrainProportionsScale: 1
+  m_Children:
+  - {fileID: 5855019125090945427}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5751293474449507817
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5528999065733252939}
+  m_GameObject: {fileID: 8443108559656993769}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d43630f16b6b4170aac99a408d3a133, type: 3}
+  m_Script: {fileID: 11500000, guid: 29455ccf84aa64a7bbb6d3eebc49a423, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meshType: 0
-  isClear: 0
-  isUsable: 0
-  isOuterBoundary: 0
-  isPermanentlyDisabled: 0
-  gridLayerInt: 0
-  gridPosition: {x: 0, y: 0}
-  gpuMeshIndex: 0
-  objectIndex: 0
-  maxHealth: 100
-  currentHealth: 0
-  blinkColor: {r: 1, g: 1, b: 1, a: 1}
-  blinkDuration: 0.15
-  rightGrid: {fileID: 0}
-  leftGrid: {fileID: 0}
-  topGrid: {fileID: 0}
-  bottomGrid: {fileID: 0}
-  myStraightPiece: {fileID: 0}
-  myCornerPiece: {fileID: 0}
-  distance: 0
-  splineGenerator: {fileID: 0}
-  trainSplineDriver: {fileID: 0}
-  jumpEffectPrefab: {fileID: 5751293474449507817, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}

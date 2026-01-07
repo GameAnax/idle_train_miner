@@ -34,6 +34,7 @@ public class BoggyDamage : MonoBehaviour
                 {
                     grid.TakeDamage(damageValue);
                     currentGridsInBox.Add(grid);
+                    grid.SetCube(transform.position);
                 }
             }
         }
