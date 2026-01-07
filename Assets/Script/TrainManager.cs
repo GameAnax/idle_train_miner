@@ -4,6 +4,7 @@ using UnityEngine;
 public class TrainManager : MonoBehaviour
 {
     public TrainSplineDriver trainSplineDriver;
+    public StorageBoggy storageBoggy;
 
     public Boggy boggyPrefab;
     public Transform boggyParent;

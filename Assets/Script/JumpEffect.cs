@@ -1,14 +1,19 @@
 using UnityEngine;
 using System.Collections;
+using System;
 
 public class JumpEffect : MonoBehaviour
 {
+    public void StartJump(Vector3 start, Vector3 end, float height, float duration, Action Oncomplete)
+    {
+        StartCoroutine(JumpRoutine(start, end, height, duration, Oncomplete));
+    }
     public void StartJump(Vector3 start, Vector3 end, float height, float duration)
     {
-        StartCoroutine(JumpRoutine(start, end, height, duration));
+        StartCoroutine(JumpRoutine(start, end, height, duration, null));
     }
 
-    IEnumerator JumpRoutine(Vector3 start, Vector3 end, float height, float duration)
+    IEnumerator JumpRoutine(Vector3 start, Vector3 end, float height, float duration, Action OnComplete = null)
     {
         float elapsed = 0;
 
@@ -33,6 +38,7 @@ public class JumpEffect : MonoBehaviour
 
         // Exact end position par set karein aur destroy karein
         transform.position = end;
+        OnComplete?.Invoke();
         // Destroy(gameObject, 0.5f);
     }
 }

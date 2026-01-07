@@ -40,12 +40,13 @@ public class CustomeGrid : MonoBehaviour
 
     public SplineGenerator splineGenerator;
     public TrainSplineDriver trainSplineDriver;
-    public JumpEffect jumpEffectPrefab;
+    public Debries debriPrefab;
 
     private MeshRenderer meshRenderer;
     private Color originalColor;
     private MaterialPropertyBlock propBlock;
     private bool _isPendingSplineUpdate = false;
+    private float lastDamageValue;
 
     private static readonly int BaseColorId = Shader.PropertyToID("_BaseColor");
 
@@ -189,6 +190,7 @@ public class CustomeGrid : MonoBehaviour
         if (isClear) return;
 
         currentHealth -= amount;
+        lastDamageValue = amount;
 
         // Blink effect start karein
         StopAllCoroutines();
@@ -357,6 +359,8 @@ public class CustomeGrid : MonoBehaviour
 
     public void SetCube(Vector3 hitPosition)
     {
+
+
         if (cubeContainer == null)
         {
             GameObject containerObj = new GameObject("CubeContainer");
@@ -365,9 +369,10 @@ public class CustomeGrid : MonoBehaviour
             cubeContainer.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
         }
 
-        JumpEffect cube = Instantiate(jumpEffectPrefab, transform.position, Quaternion.identity, transform);
-        cube.transform.SetParent(cubeContainer);
-        cube.StartJump(transform.position, GetRandom(hitPosition), 1, 0.5f);
+        Debries debri = Instantiate(debriPrefab, transform.position, Quaternion.identity, transform);
+        debri.transform.SetParent(cubeContainer);
+        debri.jumpEffect.StartJump(transform.position, GetRandom(hitPosition), 1, 0.5f);
+        debri.debriCapacity = (int)lastDamageValue;
         // cube.transform.position = GetRandom(hitPosition);
         // cube.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
     }

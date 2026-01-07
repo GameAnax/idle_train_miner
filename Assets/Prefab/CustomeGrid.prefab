@@ -143,4 +143,4 @@ MonoBehaviour:
   distance: 0
   splineGenerator: {fileID: 0}
   trainSplineDriver: {fileID: 0}
-  jumpEffectPrefab: {fileID: 5751293474449507817, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
