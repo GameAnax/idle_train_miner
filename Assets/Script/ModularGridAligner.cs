@@ -128,45 +128,54 @@ public class ModularGridAligner : MonoBehaviour
 
         foreach (var oldGrid in lastPath)
         {
-            if (!newPathSet.Contains(oldGrid))
+            if (newPathSet.Contains(oldGrid)) continue;
+            if (oldGrid.cubeContainer == null) continue;
+
+            Vector2 currentPos = oldGrid.gridPosition;
+            CustomeGrid nearestEmpty = null;
+            CustomeGrid nearestAny = null;
+
+            float minDistanceEmpty = float.MaxValue;
+            float minDistanceAny = float.MaxValue;
+
+            // Manual loop instead of LINQ OrderBy
+            foreach (var g in newPathSet)
             {
-                Vector2 currentPos = oldGrid.gridPosition;
-                CustomeGrid nearestEmpty = newPathSet
-        .Where(g => g != oldGrid && g.cubeContainer == null)
-        .OrderBy(g => Vector2.Distance(currentPos, g.gridPosition))
-        .FirstOrDefault();
-                if (nearestEmpty != null)
+                if (g == oldGrid) continue;
+
+                float distSq = (currentPos - g.gridPosition).sqrMagnitude; // Use square magnitude (faster)
+
+                // Track nearest any grid
+                if (distSq < minDistanceAny)
                 {
-                    if (oldGrid.cubeContainer != null)
-                    {
-                        oldGrid.cubeContainer.SetParent(nearestEmpty.transform, false);
-                        nearestEmpty.cubeContainer = oldGrid.cubeContainer;
-                        nearestEmpty.SetUpNeighbourDebries();
-                        continue;
-                    }
+                    minDistanceAny = distSq;
+                    nearestAny = g;
                 }
-                else
+
+                // Track nearest empty grid
+                if (g.cubeContainer == null && distSq < minDistanceEmpty)
                 {
-                    CustomeGrid nearestAny = newPathSet
-        .Where(g => g != oldGrid)
-        .OrderBy(g => Vector2.Distance(currentPos, g.gridPosition))
-        .FirstOrDefault();
-                    if (nearestAny != null)
-                    {
-                        Debug.Log($"Found Non empty grid {nearestAny.gridPosition}");
-                        if (oldGrid.cubeContainer != null)
-                        {
-                            Debug.Log($"old grid contain -  {oldGrid.gridPosition}");
-                            foreach (Transform item in oldGrid.cubeContainer)
-                            {
-                                Debug.Log("Transfering derbies");
-                                item.SetParent(nearestAny.cubeContainer, false);
-                            }
-                            nearestAny.SetUpNeighbourDebries();
-                        }
-                        continue;
-                    }
+                    minDistanceEmpty = distSq;
+                    nearestEmpty = g;
                 }
+            }
+
+            // Logic Execution
+            if (nearestEmpty != null)
+            {
+                oldGrid.cubeContainer.SetParent(nearestEmpty.transform, false);
+                nearestEmpty.cubeContainer = oldGrid.cubeContainer;
+                nearestEmpty.SetUpNeighbourDebries();
+            }
+            else if (nearestAny != null)
+            {
+                // Move children manually to avoid nested LINQ or unnecessary allocations
+                int childCount = oldGrid.cubeContainer.childCount;
+                for (int i = childCount - 1; i >= 0; i--)
+                {
+                    oldGrid.cubeContainer.GetChild(i).SetParent(nearestAny.cubeContainer, false);
+                }
+                nearestAny.SetUpNeighbourDebries();
             }
         }
 

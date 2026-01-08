@@ -268,6 +268,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &4969687
 GameObject:
   m_ObjectHideFlags: 0
@@ -994,7 +995,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &26575322
 Transform:
   m_ObjectHideFlags: 0
@@ -1003,7 +1004,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 26575321}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: -0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2454,6 +2455,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &88243676
 GameObject:
   m_ObjectHideFlags: 0
@@ -2980,6 +2982,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &113971017
 GameObject:
   m_ObjectHideFlags: 0
@@ -3647,6 +3650,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &134391817
 GameObject:
   m_ObjectHideFlags: 0
@@ -3915,6 +3919,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &142212550
 GameObject:
   m_ObjectHideFlags: 0
@@ -4150,6 +4155,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &146584531
 GameObject:
   m_ObjectHideFlags: 0
@@ -4881,6 +4887,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &175928015
 GameObject:
   m_ObjectHideFlags: 0
@@ -5063,6 +5070,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &179166988
 GameObject:
   m_ObjectHideFlags: 0
@@ -9559,6 +9567,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &292161044
 GameObject:
   m_ObjectHideFlags: 0
@@ -9794,6 +9803,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &296666934
 GameObject:
   m_ObjectHideFlags: 0
@@ -10115,6 +10125,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &308060874
 GameObject:
   m_ObjectHideFlags: 0
@@ -10264,6 +10275,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &309478476
 GameObject:
   m_ObjectHideFlags: 0
@@ -10499,6 +10511,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &312740373
 GameObject:
   m_ObjectHideFlags: 0
@@ -10853,6 +10866,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &328064360
 GameObject:
   m_ObjectHideFlags: 0
@@ -11037,6 +11051,7 @@ RectTransform:
   - {fileID: 806995963}
   - {fileID: 1318756400}
   - {fileID: 1062590632}
+  - {fileID: 1320163819}
   m_Father: {fileID: 1978118356}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -11503,6 +11518,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &350988165
 GameObject:
   m_ObjectHideFlags: 0
@@ -12375,6 +12391,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &394601759
 GameObject:
   m_ObjectHideFlags: 0
@@ -13429,6 +13446,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &431406192
 GameObject:
   m_ObjectHideFlags: 0
@@ -14021,6 +14039,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &450285224
 GameObject:
   m_ObjectHideFlags: 0
@@ -14342,6 +14361,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &461541147
 GameObject:
   m_ObjectHideFlags: 0
@@ -14357,7 +14377,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &461541148
 Transform:
   m_ObjectHideFlags: 0
@@ -14366,7 +14386,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 461541147}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -14610,6 +14630,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &472809287
 GameObject:
   m_ObjectHideFlags: 0
@@ -15256,6 +15277,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &481020817
 GameObject:
   m_ObjectHideFlags: 0
@@ -21719,6 +21741,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!65 &532414187
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21959,6 +21982,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &534029986
 GameObject:
   m_ObjectHideFlags: 0
@@ -22862,6 +22886,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &576027169
 GameObject:
   m_ObjectHideFlags: 0
@@ -22877,7 +22902,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &576027170
 Transform:
   m_ObjectHideFlags: 0
@@ -23784,6 +23809,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trainManager: {fileID: 630482657}
+  clockwiseRingGenerator: {fileID: 758279109}
+  uIHandler: {fileID: 1978118355}
   boggyConfigs:
   - {fileID: 11400000, guid: 102b43289d1f54e7c8c99dbd9dc9b978, type: 2}
   - {fileID: 11400000, guid: 03c1ecaad4a0b4b81a272908700d6eef, type: 2}
@@ -24111,6 +24138,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &658552746
 GameObject:
   m_ObjectHideFlags: 0
@@ -24379,6 +24407,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &664958946
 GameObject:
   m_ObjectHideFlags: 0
@@ -24786,6 +24815,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &691154106
 GameObject:
   m_ObjectHideFlags: 0
@@ -25173,6 +25203,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &696977147
 GameObject:
   m_ObjectHideFlags: 0
@@ -26109,6 +26140,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &748672195
 GameObject:
   m_ObjectHideFlags: 0
@@ -26157,7 +26189,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &757159490
 Transform:
   m_ObjectHideFlags: 0
@@ -26166,7 +26198,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 757159489}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: -0.00000004371139}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -26787,6 +26819,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &769133731
 GameObject:
   m_ObjectHideFlags: 0
@@ -27121,6 +27154,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &793377239
 GameObject:
   m_ObjectHideFlags: 0
@@ -27505,7 +27539,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &808440494
 Transform:
   m_ObjectHideFlags: 0
@@ -28237,6 +28271,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &834950268
 GameObject:
   m_ObjectHideFlags: 0
@@ -29198,6 +29233,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &865542983
 GameObject:
   m_ObjectHideFlags: 0
@@ -30359,6 +30395,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &915891252
 GameObject:
   m_ObjectHideFlags: 0
@@ -30546,7 +30583,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &920136981
 Transform:
   m_ObjectHideFlags: 0
@@ -30555,7 +30592,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 920136980}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -31531,6 +31568,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &952366247
 GameObject:
   m_ObjectHideFlags: 0
@@ -32573,6 +32611,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &978808668
 GameObject:
   m_ObjectHideFlags: 0
@@ -32927,6 +32966,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &984014627
 GameObject:
   m_ObjectHideFlags: 0
@@ -33076,6 +33116,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &993610815
 GameObject:
   m_ObjectHideFlags: 0
@@ -33549,6 +33590,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &1040493026
 GameObject:
   m_ObjectHideFlags: 0
@@ -34250,7 +34292,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1077871879
 Transform:
   m_ObjectHideFlags: 0
@@ -34259,7 +34301,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1077871878}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -35138,6 +35180,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &1103975633
 GameObject:
   m_ObjectHideFlags: 0
@@ -35353,6 +35396,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &1108987954
 GameObject:
   m_ObjectHideFlags: 0
@@ -35588,6 +35632,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &1113464488
 GameObject:
   m_ObjectHideFlags: 0
@@ -35636,7 +35681,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1115009357
 Transform:
   m_ObjectHideFlags: 0
@@ -35645,7 +35690,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1115009356}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: -0.00000004371139}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -35836,6 +35881,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &1124063158
 GameObject:
   m_ObjectHideFlags: 0
@@ -37149,6 +37195,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &1194376082
 GameObject:
   m_ObjectHideFlags: 0
@@ -37521,7 +37568,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1212189390
 Transform:
   m_ObjectHideFlags: 0
@@ -37530,7 +37577,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1212189389}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -37554,7 +37601,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1213617282
 Transform:
   m_ObjectHideFlags: 0
@@ -37563,7 +37610,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1213617281}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -38303,6 +38350,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &1241963728
 GameObject:
   m_ObjectHideFlags: 0
@@ -47662,6 +47710,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &1274709071
 GameObject:
   m_ObjectHideFlags: 0
@@ -47811,6 +47860,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &1275072337
 GameObject:
   m_ObjectHideFlags: 0
@@ -47912,7 +47962,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1279967754
 Transform:
   m_ObjectHideFlags: 0
@@ -48198,6 +48248,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &1305841713
 GameObject:
   m_ObjectHideFlags: 0
@@ -48433,6 +48484,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &1314748132
 GameObject:
   m_ObjectHideFlags: 0
@@ -48534,7 +48586,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1317426650
 Transform:
   m_ObjectHideFlags: 0
@@ -48543,7 +48595,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1317426649}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: -0.00000004371139}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -48628,6 +48680,142 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1318756399}
+  m_CullTransparentMesh: 1
+--- !u!1 &1320163818
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1320163819}
+  - component: {fileID: 1320163821}
+  - component: {fileID: 1320163820}
+  m_Layer: 5
+  m_Name: Level Complete Progress - Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1320163819
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1320163818}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 328919616}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -150}
+  m_SizeDelta: {x: 498.1, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1320163820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1320163818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Level Complete - 00%
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 36
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1320163821
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1320163818}
   m_CullTransparentMesh: 1
 --- !u!1 &1323138735
 GameObject:
@@ -49016,6 +49204,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &1338539027
 GameObject:
   m_ObjectHideFlags: 0
@@ -49165,6 +49354,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &1339474720
 GameObject:
   m_ObjectHideFlags: 0
@@ -49314,6 +49504,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &1343888783
 GameObject:
   m_ObjectHideFlags: 0
@@ -49721,6 +49912,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &1352658688
 GameObject:
   m_ObjectHideFlags: 0
@@ -49870,6 +50062,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &1352771140
 GameObject:
   m_ObjectHideFlags: 0
@@ -50237,6 +50430,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &1367004712
 GameObject:
   m_ObjectHideFlags: 0
@@ -50735,6 +50929,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &1394930063
 GameObject:
   m_ObjectHideFlags: 0
@@ -50884,6 +51079,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &1399322584
 GameObject:
   m_ObjectHideFlags: 0
@@ -51481,7 +51677,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1444471272
 Transform:
   m_ObjectHideFlags: 0
@@ -51490,7 +51686,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1444471271}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: -0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -51681,6 +51877,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &1466534673
 GameObject:
   m_ObjectHideFlags: 0
@@ -52174,6 +52371,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &1482183753
 GameObject:
   m_ObjectHideFlags: 0
@@ -53229,6 +53427,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &1539930357
 GameObject:
   m_ObjectHideFlags: 0
@@ -53550,6 +53749,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &1552867326
 GameObject:
   m_ObjectHideFlags: 0
@@ -53904,6 +54104,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &1567328096
 GameObject:
   m_ObjectHideFlags: 0
@@ -54688,6 +54889,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &1593913663
 GameObject:
   m_ObjectHideFlags: 0
@@ -54903,6 +55105,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &1604049339
 GameObject:
   m_ObjectHideFlags: 0
@@ -55258,6 +55461,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &1614612796
 GameObject:
   m_ObjectHideFlags: 0
@@ -55440,6 +55644,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &1620632771
 GameObject:
   m_ObjectHideFlags: 0
@@ -55627,7 +55832,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1624782630
 Transform:
   m_ObjectHideFlags: 0
@@ -55636,7 +55841,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1624782629}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: -0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -55794,6 +55999,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &1631601699
 GameObject:
   m_ObjectHideFlags: 0
@@ -56368,7 +56574,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1663534079
 Transform:
   m_ObjectHideFlags: 0
@@ -56377,7 +56583,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1663534078}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: -0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -56826,6 +57032,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &1677819004
 GameObject:
   m_ObjectHideFlags: 0
@@ -57816,6 +58023,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &1696660895
 GameObject:
   m_ObjectHideFlags: 0
@@ -58203,6 +58411,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &1719764351
 GameObject:
   m_ObjectHideFlags: 0
@@ -58383,6 +58592,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &1727261837
 GameObject:
   m_ObjectHideFlags: 0
@@ -59013,7 +59223,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1751264342
 Transform:
   m_ObjectHideFlags: 0
@@ -59022,7 +59232,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1751264341}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: -0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -59213,6 +59423,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &1770414955
 GameObject:
   m_ObjectHideFlags: 0
@@ -59228,7 +59439,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1770414956
 Transform:
   m_ObjectHideFlags: 0
@@ -59237,7 +59448,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1770414955}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: -0.00000004371139}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -59461,6 +59672,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &1782951624
 GameObject:
   m_ObjectHideFlags: 0
@@ -59767,7 +59979,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1788924536
 Transform:
   m_ObjectHideFlags: 0
@@ -59776,7 +59988,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1788924535}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: -0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -60344,6 +60556,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &1818853245
 GameObject:
   m_ObjectHideFlags: 0
@@ -62186,6 +62399,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &1884468599
 GameObject:
   m_ObjectHideFlags: 0
@@ -62421,6 +62635,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &1888099877
 GameObject:
   m_ObjectHideFlags: 0
@@ -63658,6 +63873,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &1953543859
 GameObject:
   m_ObjectHideFlags: 0
@@ -63840,6 +64056,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &1964680770
 GameObject:
   m_ObjectHideFlags: 0
@@ -64236,6 +64453,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1001 &1968004931
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -64333,7 +64551,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1968061006
 Transform:
   m_ObjectHideFlags: 0
@@ -64500,6 +64718,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &1973239215
 GameObject:
   m_ObjectHideFlags: 0
@@ -64705,6 +64924,7 @@ MonoBehaviour:
   meargeBoggy: {fileID: 1604049341}
   speedBoggy: {fileID: 246743458}
   capcityBoggy: {fileID: 1684222356}
+  levelCompleteProgressText: {fileID: 1320163820}
 --- !u!4 &1978118356
 Transform:
   m_ObjectHideFlags: 0
@@ -64871,6 +65091,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &1981905462
 GameObject:
   m_ObjectHideFlags: 0
@@ -65516,6 +65737,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &2024510720
 GameObject:
   m_ObjectHideFlags: 0
@@ -66421,7 +66643,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2061203325
 Transform:
   m_ObjectHideFlags: 0
@@ -66430,7 +66652,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2061203324}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -67084,6 +67306,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &2088999804
 GameObject:
   m_ObjectHideFlags: 0
@@ -67233,6 +67456,7 @@ MonoBehaviour:
   splineGenerator: {fileID: 205702564}
   trainSplineDriver: {fileID: 630482651}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  cubeContainer: {fileID: 0}
 --- !u!1 &2089875947
 GameObject:
   m_ObjectHideFlags: 0

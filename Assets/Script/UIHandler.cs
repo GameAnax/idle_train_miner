@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +9,7 @@ public class UIHandler : MonoBehaviour
     public Button meargeBoggy;
     public Button speedBoggy;
     public Button capcityBoggy;
+    public TextMeshProUGUI levelCompleteProgressText;
 
     void Start()
     {
@@ -17,9 +19,14 @@ public class UIHandler : MonoBehaviour
         capcityBoggy.onClick.AddListener(OnClickIncreaseStorageCapacity);
     }
 
+    public void UpdateLevelProgress(float levelProgress)
+    {
+        levelCompleteProgressText.text = $"Level Completed - {levelProgress:F2}%";
+    }
+
     private void OnClickIncreaseStorageCapacity()
     {
-        throw new NotImplementedException();
+        GameManager.instance.UpdateStorageCapacity();
     }
 
     private void OnClickIncreaseBoggySpeed()

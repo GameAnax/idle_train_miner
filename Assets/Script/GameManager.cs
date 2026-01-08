@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using EasyButtons;
 using UnityEngine;
 
@@ -8,6 +9,8 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     public TrainManager trainManager;
+    public ClockwiseRingGenerator clockwiseRingGenerator;
+    public UIHandler uIHandler;
 
     public List<BoggyConfig> boggyConfigs;
     public List<BoggyData> boggyDatas = new();
@@ -91,6 +94,33 @@ public class GameManager : MonoBehaviour
     public void IncreaseTrainSpeed()
     {
         trainManager.trainSplineDriver.UpdateSpeed(1);
+    }
+    public void UpdateStorageCapacity()
+    {
+        trainManager.storageBoggy.UpdateStorage(amountToUpdate: 10);
+    }
+    public void CheckIsAllGridClear()
+    {
+        bool isLevelFinished = clockwiseRingGenerator.spawnedCubes.All(g => g.isClear);
+        if (isLevelFinished)
+        {
+            Debug.Log($"Level Complte");
+        }
+        UpdateProgress();
+    }
+    private void UpdateProgress()
+    {
+        if (clockwiseRingGenerator.spawnedCubes.Count == 0) return;
+
+        float clearedCount = clockwiseRingGenerator.spawnedCubes.Count(g => g.isClear);
+        float totalCount = clockwiseRingGenerator.spawnedCubes.Count;
+
+        // Percentage Formula: (Cleared / Total) * 100
+        float progressPercent = (clearedCount / totalCount) * 100f;
+
+        //TODO:- UI Update
+        uIHandler.UpdateLevelProgress(progressPercent);
+
     }
 }
 

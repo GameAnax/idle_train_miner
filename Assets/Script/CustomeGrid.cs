@@ -230,6 +230,8 @@ public class CustomeGrid : MonoBehaviour
         if (leftGrid != null) leftGrid.UpdateUsability();
         if (rightGrid != null) rightGrid.UpdateUsability();
 
+        GameManager.instance.CheckIsAllGridClear();
+
         // if (splineGenerator != null)
         // {
         //     _isPendingSplineUpdate = true;

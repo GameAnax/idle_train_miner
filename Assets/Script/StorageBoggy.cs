@@ -23,7 +23,10 @@ public class StorageBoggy : MonoBehaviour
         ADDDebriesInStorage(tempDebrie.debriCapacity);
         StartCoroutine(MoveCubeToStackLocal(tempDebrie.transform));
     }
-
+    public void UpdateStorage(int amountToUpdate)
+    {
+        capcity += amountToUpdate;
+    }
 
 
     public bool CheckIsStorageFull(int amountToStore)
