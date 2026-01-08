@@ -53,10 +53,19 @@ public class CrusherArea : MonoBehaviour
                 {
                     debrie.transform.SetParent(debriesStorePoint, false);
                 }
+                Invoke(nameof(ClearStorage), 1f);
                 break;
             }
         }
 
+    }
+
+    private void ClearStorage()
+    {
+        foreach (Transform temp in debriesStorePoint)
+        {
+            Destroy(temp.gameObject);
+        }
     }
 
     private bool CheckBoggyInsideStorageArea(Vector3 position)
