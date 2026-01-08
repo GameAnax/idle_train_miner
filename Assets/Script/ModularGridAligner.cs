@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using EasyButtons;
 using DG.Tweening;
+using System.Linq;
 
 [ExecuteInEditMode]
 public class ModularGridAligner : MonoBehaviour
@@ -28,6 +29,11 @@ public class ModularGridAligner : MonoBehaviour
 
     private HashSet<CustomeGrid> lastPath = new HashSet<CustomeGrid>();
 
+
+    void Start()
+    {
+        StartGeneration();
+    }
 
     [Button("Setup All Grids (Pre-Spawn)")]
     public void SetupGrids()
@@ -117,6 +123,50 @@ public class ModularGridAligner : MonoBehaviour
             if (prev != null && next != null)
             {
                 ProcessGridPiece(prev, curr, next);
+            }
+        }
+
+        foreach (var oldGrid in lastPath)
+        {
+            if (!newPathSet.Contains(oldGrid))
+            {
+                Vector2 currentPos = oldGrid.gridPosition;
+                CustomeGrid nearestEmpty = newPathSet
+        .Where(g => g != oldGrid && g.cubeContainer == null)
+        .OrderBy(g => Vector2.Distance(currentPos, g.gridPosition))
+        .FirstOrDefault();
+                if (nearestEmpty != null)
+                {
+                    if (oldGrid.cubeContainer != null)
+                    {
+                        oldGrid.cubeContainer.SetParent(nearestEmpty.transform, false);
+                        nearestEmpty.cubeContainer = oldGrid.cubeContainer;
+                        nearestEmpty.SetUpNeighbourDebries();
+                        continue;
+                    }
+                }
+                else
+                {
+                    CustomeGrid nearestAny = newPathSet
+        .Where(g => g != oldGrid)
+        .OrderBy(g => Vector2.Distance(currentPos, g.gridPosition))
+        .FirstOrDefault();
+                    if (nearestAny != null)
+                    {
+                        Debug.Log($"Found Non empty grid {nearestAny.gridPosition}");
+                        if (oldGrid.cubeContainer != null)
+                        {
+                            Debug.Log($"old grid contain -  {oldGrid.gridPosition}");
+                            foreach (Transform item in oldGrid.cubeContainer)
+                            {
+                                Debug.Log("Transfering derbies");
+                                item.SetParent(nearestAny.cubeContainer, false);
+                            }
+                            nearestAny.SetUpNeighbourDebries();
+                        }
+                        continue;
+                    }
+                }
             }
         }
 

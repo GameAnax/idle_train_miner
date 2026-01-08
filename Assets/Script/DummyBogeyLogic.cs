@@ -27,7 +27,8 @@ public class DummyBogeyLogic : MonoBehaviour
                 if (grid.currentHealth <= 0 && !grid.isClear)
                 {
                     // Logic processing yahan hogi
-                    grid.OnGridDestroyed();
+                    grid.RegisterGridForUpdate();
+                    // grid.OnGridDestroyed();
                     trackNeedsUpdate = true;
                     // Debug.Log("Dummy Bogey Processed Logic for: " + hit.name);
                 }
