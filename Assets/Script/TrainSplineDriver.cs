@@ -174,8 +174,9 @@ public class TrainSplineDriver : MonoBehaviour
 
             // Agar dot > 0 hai, iska matlab wagon grid ke aage hai
             // 3.0f ek buffer distance hai safety ke liye
-            if (dot > 0 && distanceToGrid > 3.0f)
+            if (dot > 0 && distanceToGrid > 2.0f)
             {
+                grid.OnGridDestroyed();
                 grid.TriggerSplineUpdate();
                 _pendingGrids.RemoveAt(i);
                 modularGridAligner.StartGeneration();
