@@ -111,6 +111,10 @@ public class TrainSplineDriver : MonoBehaviour
         else
         {
             _targetSpeed = 0;
+            if (GameManager.instance.crusherArea != null)
+            {
+                GameManager.instance.crusherArea.TransferDebries();
+            }
             // SetWegonSpeed(_targetSpeed);
         }
 

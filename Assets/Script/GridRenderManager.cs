@@ -154,6 +154,14 @@ public class GridRenderManager : MonoBehaviour
         int instanceIndex = gpuMeshIndex % batchCount;
         meshData.listOfColors[batchIndex][instanceIndex] = color;
     }
+    // public void TouchEffect(MeshType meshType, int gpuMeshIndex, float scaleMultiplier)
+    // {
+    //     MeshData meshData = keyValuePairs[meshType];
+    //     int batchIndex = gpuMeshIndex / batchCount;
+    //     int instanceIndex = gpuMeshIndex % batchCount;
+    //     meshData.matrixBatches[batchIndex][instanceIndex] = Matrix4x4.TRS(meshData.matrixBatches[batchIndex][instanceIndex].GetPosition(), meshData.matrixBatches[batchIndex][instanceIndex].rotation, Vector3.one * scaleMultiplier);
+    //     // meshData.matrixBatches[batchIndex][instanceIndex] = Matrix4x4.Scale(Vector3.one * scaleMultiplier);
+    // }
 }
 
 

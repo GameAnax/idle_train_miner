@@ -231,13 +231,7 @@ public class CustomeGrid : MonoBehaviour
         if (rightGrid != null) rightGrid.UpdateUsability();
 
         GameManager.instance.CheckIsAllGridClear();
-
-        // if (splineGenerator != null)
-        // {
-        //     _isPendingSplineUpdate = true;
-        //     // splineGenerator.GenerateSpline();
-        //     trainSplineDriver.RegisterPendingGrid(this);
-        // }
+        GameManager.instance.crusherArea.UpdateArePosition();
     }
     public void TriggerSplineUpdate()
     {
@@ -261,12 +255,15 @@ public class CustomeGrid : MonoBehaviour
         // Color change to Blink Color
         // SetColor(blinkColor);
         GridRenderManager.instance.BlinkMesh(meshType: meshType, gpuMeshIndex, blinkColor);
+        // GridRenderManager.instance.TouchEffect(meshType: meshType, gpuMeshIndex, 0.5f);
+
 
         yield return new WaitForSeconds(blinkDuration);
 
         // Back to Original Color
         // SetColor(originalColor);
         GridRenderManager.instance.BlinkMesh(meshType: meshType, gpuMeshIndex, originalColor);
+        // GridRenderManager.instance.TouchEffect(meshType: meshType, gpuMeshIndex, 1);
     }
     private void SetColor(Color color)
     {
@@ -422,50 +419,6 @@ public class CustomeGrid : MonoBehaviour
                 return;
             }
         }
-        return;
-
-        // if (cubeContainer == null)
-        // {
-        //     GameObject containerObj = new GameObject("CubeContainer");
-        //     cubeContainer = containerObj.transform;
-        //     cubeContainer.SetParent(this.transform);
-        //     cubeContainer.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
-        // }
-
-        Debries debri = Instantiate(debriPrefab, transform.position, Quaternion.identity, transform);
-        debri.transform.SetParent(cubeContainer);
-        debri.debriCapacity = (int)lastDamageValue;
-        debri.jumpEffect.StartJump(transform.position, GetRandom(hitPosition), 1, 0.2f, () =>
-        {
-
-            Vector3 center = debri.transform.position;
-            Vector3 halfExtents = debri.transform.localScale / 2;
-
-            Collider[] hitColliders = Physics.OverlapBox(center, halfExtents, debri.transform.rotation, layerMaskForDebriePerentSet);
-            foreach (var hitCollider in hitColliders)
-            {
-                if (hitCollider.TryGetComponent(out CustomeGrid customeGrid))
-                {
-                    if (customeGrid.cubeContainer == null)
-                    {
-                        GameObject containerObj = new("CubeContainer");
-                        customeGrid.cubeContainer = containerObj.transform;
-                        customeGrid.cubeContainer.SetParent(customeGrid.transform);
-                        customeGrid.cubeContainer.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
-                    }
-                    debri.transform.SetParent(customeGrid.cubeContainer);
-
-                    if (!customeGrid.isUsable)
-                    {
-                        // UpdateDerbiesPosition();
-                        Debug.Log("Grid is not used in track, but derie drop here");
-                    }
-                }
-                break;
-            }
-        });
-        // cube.transform.position = GetRandom(hitPosition);
-        // cube.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
     }
 
     private void GenerateDebrie(Vector3 startPosition)

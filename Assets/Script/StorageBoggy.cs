@@ -53,6 +53,14 @@ public class StorageBoggy : MonoBehaviour
         // Local position calculation
         return debriesContainer.TransformPoint(localPos);
     }
+    public List<Debries> TransferAndClearStorage()
+    {
+        List<Debries> temp = new(collectedDebries);
+        collectedDebries.Clear();
+        filled = 0;
+        collectedCount = 0;
+        return temp;
+    }
 
     IEnumerator MoveCubeToStackLocal(Transform cubeTransform)
     {

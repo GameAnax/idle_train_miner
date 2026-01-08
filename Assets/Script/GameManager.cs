@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public TrainManager trainManager;
     public ClockwiseRingGenerator clockwiseRingGenerator;
     public UIHandler uIHandler;
+    public CrusherArea crusherArea;
 
     public List<BoggyConfig> boggyConfigs;
     public List<BoggyData> boggyDatas = new();
