@@ -2968,7 +2968,7 @@ MonoBehaviour:
   layerMaskForDebriePerentSet:
     serializedVersion: 2
     m_Bits: 128
-  maxHealth: 100
+  maxHealth: 21
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
   blinkDuration: 0.15
@@ -3636,7 +3636,7 @@ MonoBehaviour:
   layerMaskForDebriePerentSet:
     serializedVersion: 2
     m_Bits: 128
-  maxHealth: 100
+  maxHealth: 21
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
   blinkDuration: 0.15
@@ -3905,7 +3905,7 @@ MonoBehaviour:
   layerMaskForDebriePerentSet:
     serializedVersion: 2
     m_Bits: 128
-  maxHealth: 100
+  maxHealth: 21
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
   blinkDuration: 0.15
@@ -4141,7 +4141,7 @@ MonoBehaviour:
   layerMaskForDebriePerentSet:
     serializedVersion: 2
     m_Bits: 128
-  maxHealth: 100
+  maxHealth: 21
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
   blinkDuration: 0.15
@@ -5056,7 +5056,7 @@ MonoBehaviour:
   layerMaskForDebriePerentSet:
     serializedVersion: 2
     m_Bits: 128
-  maxHealth: 100
+  maxHealth: 21
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
   blinkDuration: 0.15
@@ -9661,7 +9661,7 @@ MonoBehaviour:
   layerMaskForDebriePerentSet:
     serializedVersion: 2
     m_Bits: 128
-  maxHealth: 100
+  maxHealth: 21
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
   blinkDuration: 0.15
@@ -10369,7 +10369,7 @@ MonoBehaviour:
   layerMaskForDebriePerentSet:
     serializedVersion: 2
     m_Bits: 128
-  maxHealth: 100
+  maxHealth: 21
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
   blinkDuration: 0.15
@@ -10605,7 +10605,7 @@ MonoBehaviour:
   layerMaskForDebriePerentSet:
     serializedVersion: 2
     m_Bits: 128
-  maxHealth: 100
+  maxHealth: 21
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
   blinkDuration: 0.15
@@ -22980,7 +22980,7 @@ MonoBehaviour:
   layerMaskForDebriePerentSet:
     serializedVersion: 2
     m_Bits: 128
-  maxHealth: 100
+  maxHealth: 21
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
   blinkDuration: 0.15
@@ -24502,7 +24502,7 @@ MonoBehaviour:
   layerMaskForDebriePerentSet:
     serializedVersion: 2
     m_Bits: 128
-  maxHealth: 100
+  maxHealth: 21
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
   blinkDuration: 0.15
@@ -25298,7 +25298,7 @@ MonoBehaviour:
   layerMaskForDebriePerentSet:
     serializedVersion: 2
     m_Bits: 128
-  maxHealth: 100
+  maxHealth: 21
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
   blinkDuration: 0.15
@@ -26235,7 +26235,7 @@ MonoBehaviour:
   layerMaskForDebriePerentSet:
     serializedVersion: 2
     m_Bits: 128
-  maxHealth: 100
+  maxHealth: 21
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
   blinkDuration: 0.15
@@ -27249,7 +27249,7 @@ MonoBehaviour:
   layerMaskForDebriePerentSet:
     serializedVersion: 2
     m_Bits: 128
-  maxHealth: 100
+  maxHealth: 21
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
   blinkDuration: 0.15
@@ -32706,7 +32706,7 @@ MonoBehaviour:
   layerMaskForDebriePerentSet:
     serializedVersion: 2
     m_Bits: 128
-  maxHealth: 100
+  maxHealth: 21
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
   blinkDuration: 0.15
@@ -33061,7 +33061,7 @@ MonoBehaviour:
   layerMaskForDebriePerentSet:
     serializedVersion: 2
     m_Bits: 128
-  maxHealth: 100
+  maxHealth: 21
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
   blinkDuration: 0.15
@@ -33211,7 +33211,7 @@ MonoBehaviour:
   layerMaskForDebriePerentSet:
     serializedVersion: 2
     m_Bits: 128
-  maxHealth: 100
+  maxHealth: 21
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
   blinkDuration: 0.15
@@ -35306,7 +35306,7 @@ MonoBehaviour:
   layerMaskForDebriePerentSet:
     serializedVersion: 2
     m_Bits: 128
-  maxHealth: 100
+  maxHealth: 21
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
   blinkDuration: 0.15
@@ -35522,7 +35522,7 @@ MonoBehaviour:
   layerMaskForDebriePerentSet:
     serializedVersion: 2
     m_Bits: 128
-  maxHealth: 100
+  maxHealth: 21
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
   blinkDuration: 0.15
@@ -48374,7 +48374,7 @@ MonoBehaviour:
   layerMaskForDebriePerentSet:
     serializedVersion: 2
     m_Bits: 128
-  maxHealth: 100
+  maxHealth: 21
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
   blinkDuration: 0.15
@@ -48610,7 +48610,7 @@ MonoBehaviour:
   layerMaskForDebriePerentSet:
     serializedVersion: 2
     m_Bits: 128
-  maxHealth: 100
+  maxHealth: 21
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
   blinkDuration: 0.15
@@ -49330,7 +49330,7 @@ MonoBehaviour:
   layerMaskForDebriePerentSet:
     serializedVersion: 2
     m_Bits: 128
-  maxHealth: 100
+  maxHealth: 21
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
   blinkDuration: 0.15
@@ -50188,7 +50188,7 @@ MonoBehaviour:
   layerMaskForDebriePerentSet:
     serializedVersion: 2
     m_Bits: 128
-  maxHealth: 100
+  maxHealth: 21
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
   blinkDuration: 0.15
@@ -51055,7 +51055,7 @@ MonoBehaviour:
   layerMaskForDebriePerentSet:
     serializedVersion: 2
     m_Bits: 128
-  maxHealth: 100
+  maxHealth: 21
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
   blinkDuration: 0.15
@@ -53553,7 +53553,7 @@ MonoBehaviour:
   layerMaskForDebriePerentSet:
     serializedVersion: 2
     m_Bits: 128
-  maxHealth: 100
+  maxHealth: 21
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
   blinkDuration: 0.15
@@ -54230,7 +54230,7 @@ MonoBehaviour:
   layerMaskForDebriePerentSet:
     serializedVersion: 2
     m_Bits: 128
-  maxHealth: 100
+  maxHealth: 21
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
   blinkDuration: 0.15
@@ -55770,7 +55770,7 @@ MonoBehaviour:
   layerMaskForDebriePerentSet:
     serializedVersion: 2
     m_Bits: 128
-  maxHealth: 100
+  maxHealth: 21
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
   blinkDuration: 0.15
@@ -60682,7 +60682,7 @@ MonoBehaviour:
   layerMaskForDebriePerentSet:
     serializedVersion: 2
     m_Bits: 128
-  maxHealth: 100
+  maxHealth: 21
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
   blinkDuration: 0.15
@@ -62761,7 +62761,7 @@ MonoBehaviour:
   layerMaskForDebriePerentSet:
     serializedVersion: 2
     m_Bits: 128
-  maxHealth: 100
+  maxHealth: 21
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
   blinkDuration: 0.15

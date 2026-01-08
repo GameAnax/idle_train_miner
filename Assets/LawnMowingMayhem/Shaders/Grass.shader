@@ -36,7 +36,7 @@
 
             // Global uniforms (Non-instanced)
             float _CutoutThresh;
-            float _Speed;
+            // float _Speed;
             float _Amount;
             float _NoiseScale;
             float _Height;
@@ -62,6 +62,7 @@
                 UNITY_DEFINE_INSTANCED_PROP(fixed4, _CollisionBending)
                 UNITY_DEFINE_INSTANCED_PROP(fixed4, _TintColor1)
                 UNITY_DEFINE_INSTANCED_PROP(fixed4, _TintColor2)
+                UNITY_DEFINE_INSTANCED_PROP(float,  _Speed)
             UNITY_INSTANCING_BUFFER_END(Props)
 
             float hash(float n) { return frac(sin(n)*43758.5453); }
@@ -87,6 +88,7 @@
                 o.uv = TRANSFORM_TEX(input.uv, _MainTex);
                 
                 fixed4 collisionBend = UNITY_ACCESS_INSTANCED_PROP(Props, _CollisionBending);
+                float tempSpeed = UNITY_ACCESS_INSTANCED_PROP(Props, _Speed);
                 
                 // Apply height scale
                 input.vertex.y *= (collisionBend.y > 0 ? collisionBend.y : 1.0); 
@@ -97,8 +99,8 @@
                 
                 // Wind and Displacement
                 float heightNoise = (noise(worldPosxz * _NoiseScale) + 1.0);
-                float worldNoise = noise(worldPosxz * _NoiseScale + float3(1, 0, 0) * _Time.y * _Speed) - 0.5;
-                float worldNoise2 = noise(worldPosxz * _NoiseScale + float3(1, 0, 0) * _Time.y * _Speed + 100.0) - 0.5;
+                float worldNoise = noise(worldPosxz * _NoiseScale + float3(1, 0, 0) * _Time.y * tempSpeed) - 0.5;
+                float worldNoise2 = noise(worldPosxz * _NoiseScale + float3(1, 0, 0) * _Time.y * tempSpeed + 100.0) - 0.5;
                 
                 input.vertex.y = input.vertex.y * heightNoise * _Height;
                 float yy = input.vertex.y * input.vertex.y * _Amount;

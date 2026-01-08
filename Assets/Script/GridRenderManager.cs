@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class GridRenderManager : MonoBehaviour
@@ -17,6 +18,7 @@ public class GridRenderManager : MonoBehaviour
         public List<Matrix4x4[]> matrixBatches = new();
         public List<Vector4[]> ListOfCOllisionBendings = new List<Vector4[]>();
         public List<Vector4[]> listOfColors = new List<Vector4[]>();
+        public List<float[]> speed = new List<float[]>();
     }
 
 
@@ -55,6 +57,7 @@ public class GridRenderManager : MonoBehaviour
             {
                 mpb.SetVectorArray("_CollisionBending", item.Value.ListOfCOllisionBendings[0]);
                 mpb.SetVectorArray("_TintColor2", item.Value.listOfColors[0]);
+                mpb.SetFloatArray("_Speed", item.Value.speed[0]);
                 Graphics.DrawMeshInstanced(item.Value.mesh, 0, item.Value.material, innerItem, innerItem.Length, mpb);
             }
         }
@@ -81,6 +84,7 @@ public class GridRenderManager : MonoBehaviour
                 Matrix4x4[] batch = new Matrix4x4[batchSize];
                 meshData.ListOfCOllisionBendings.Add(new Vector4[batchCount]);
                 meshData.listOfColors.Add(new Vector4[batchCount]);
+                meshData.speed.Add(new float[batchCount]);
                 for (int j = 0; j < batchSize; j++)
                 {
                     meshData.allGridCells[i + j].gpuMeshIndex = i + j;
@@ -99,6 +103,7 @@ public class GridRenderManager : MonoBehaviour
                     meshData.ListOfCOllisionBendings[i][j].y = 1;
 
                     meshData.listOfColors[i][j] = meshData.color;
+                    meshData.speed[i][j] = 0.2f;
                 }
                 meshData.matrixBatches.Add(batch);
             }
@@ -154,14 +159,21 @@ public class GridRenderManager : MonoBehaviour
         int instanceIndex = gpuMeshIndex % batchCount;
         meshData.listOfColors[batchIndex][instanceIndex] = color;
     }
-    // public void TouchEffect(MeshType meshType, int gpuMeshIndex, float scaleMultiplier)
-    // {
-    //     MeshData meshData = keyValuePairs[meshType];
-    //     int batchIndex = gpuMeshIndex / batchCount;
-    //     int instanceIndex = gpuMeshIndex % batchCount;
-    //     meshData.matrixBatches[batchIndex][instanceIndex] = Matrix4x4.TRS(meshData.matrixBatches[batchIndex][instanceIndex].GetPosition(), meshData.matrixBatches[batchIndex][instanceIndex].rotation, Vector3.one * scaleMultiplier);
-    //     // meshData.matrixBatches[batchIndex][instanceIndex] = Matrix4x4.Scale(Vector3.one * scaleMultiplier);
-    // }
+    public void TouchEffect(MeshType meshType, int gpuMeshIndex, float scaleMultiplier)
+    {
+        MeshData meshData = keyValuePairs[meshType];
+        int batchIndex = gpuMeshIndex / batchCount;
+        int instanceIndex = gpuMeshIndex % batchCount;
+        meshData.matrixBatches[batchIndex][instanceIndex] = Matrix4x4.TRS(meshData.matrixBatches[batchIndex][instanceIndex].GetPosition(), meshData.matrixBatches[batchIndex][instanceIndex].rotation, Vector3.one * scaleMultiplier);
+        // meshData.matrixBatches[batchIndex][instanceIndex] = Matrix4x4.Scale(Vector3.one * scaleMultiplier);
+    }
+    public void UpdateSpeed(MeshType meshType, int gpuMeshIndex, float _speed)
+    {
+        MeshData meshData = keyValuePairs[meshType];
+        int batchIndex = gpuMeshIndex / batchCount;
+        int instanceIndex = gpuMeshIndex % batchCount;
+        meshData.speed[batchIndex][instanceIndex] = _speed;
+    }
 }
 
 

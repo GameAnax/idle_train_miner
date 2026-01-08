@@ -51,7 +51,8 @@ public partial class Boggy : MonoBehaviour
         boggyTypeDatas[boggyLevel].boggyObj.SetActive(true);
         boggyType = boggyTypeDatas[boggyLevel].boggyType;
         //TODO:- Update damage
-        boggyDamage.damageValue = GameManager.instance.boggyConfigs.Find(i => i.boggyType == boggyType).boggyDamage;
+        // boggyDamage.damageValue = GameManager.instance.boggyConfigs.Find(i => i.boggyType == boggyType).boggyDamage;
+        boggyDamage.damageValue = GameManager.instance.boggyConfigs[boggyLevel].boggyDamage;
 
     }
     public void DestroyObj()

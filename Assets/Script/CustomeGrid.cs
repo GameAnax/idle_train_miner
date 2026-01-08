@@ -8,6 +8,7 @@ using UnityEngine;
 
 public class CustomeGrid : MonoBehaviour
 {
+    private static WaitForSeconds _waitForSeconds1 = new WaitForSeconds(1);
     public MeshType meshType;
     public bool isClear;
     public bool isUsable = true;
@@ -198,6 +199,7 @@ public class CustomeGrid : MonoBehaviour
         // Blink effect start karein
         StopAllCoroutines();
         StartCoroutine(BlinkRoutine());
+        StartCoroutine(SpeedRoutine());
 
         if (currentHealth <= 0)
         {
@@ -250,6 +252,12 @@ public class CustomeGrid : MonoBehaviour
             UpdateUsability();
         }
     }
+    IEnumerator SpeedRoutine()
+    {
+        GridRenderManager.instance.UpdateSpeed(meshType: meshType, gpuMeshIndex, 5f);
+        yield return _waitForSeconds1;
+        GridRenderManager.instance.UpdateSpeed(meshType: meshType, gpuMeshIndex, 0.2f);
+    }
     IEnumerator BlinkRoutine()
     {
         // Color change to Blink Color
@@ -258,12 +266,14 @@ public class CustomeGrid : MonoBehaviour
         // GridRenderManager.instance.TouchEffect(meshType: meshType, gpuMeshIndex, 0.5f);
 
 
+
         yield return new WaitForSeconds(blinkDuration);
 
         // Back to Original Color
         // SetColor(originalColor);
         GridRenderManager.instance.BlinkMesh(meshType: meshType, gpuMeshIndex, originalColor);
         // GridRenderManager.instance.TouchEffect(meshType: meshType, gpuMeshIndex, 1);
+
     }
     private void SetColor(Color color)
     {

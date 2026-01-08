@@ -77,9 +77,12 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < boggies.Count - 1; i++)
         {
             Boggy first = boggies[i];
+            if (first.boggyType == BoggyType.Storage || first.boggyType == BoggyType.TrackUpdate) continue;
             Boggy second = boggies[i + 1];
+            if (second.boggyType == BoggyType.Storage || second.boggyType == BoggyType.TrackUpdate) continue;
 
-            if (first.boggyType == second.boggyType)
+            // if (first.boggyType == second.boggyType)
+            if (first.boggyLevel == second.boggyLevel)
             {
                 first.UpdateBoggy();
                 boggies.RemoveAt(i + 1);
