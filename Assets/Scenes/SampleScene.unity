@@ -251,6 +251,9 @@ MonoBehaviour:
   gridPosition: {x: 8, y: 4}
   gpuMeshIndex: 0
   objectIndex: 9
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -2434,6 +2437,9 @@ MonoBehaviour:
   gridPosition: {x: 4, y: 3}
   gpuMeshIndex: 0
   objectIndex: 14
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -2957,6 +2963,9 @@ MonoBehaviour:
   gridPosition: {x: 4, y: 8}
   gpuMeshIndex: 0
   objectIndex: 23
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -3621,6 +3630,9 @@ MonoBehaviour:
   gridPosition: {x: 1, y: 5}
   gpuMeshIndex: 0
   objectIndex: 45
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -3886,6 +3898,9 @@ MonoBehaviour:
   gridPosition: {x: 7, y: 2}
   gpuMeshIndex: 0
   objectIndex: 36
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -4118,6 +4133,9 @@ MonoBehaviour:
   gridPosition: {x: 9, y: 3}
   gpuMeshIndex: 0
   objectIndex: 33
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -4846,6 +4864,9 @@ MonoBehaviour:
   gridPosition: {x: 3, y: 1}
   gpuMeshIndex: 0
   objectIndex: 73
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -5025,6 +5046,9 @@ MonoBehaviour:
   gridPosition: {x: 4, y: 2}
   gpuMeshIndex: 0
   objectIndex: 39
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -9518,6 +9542,9 @@ MonoBehaviour:
   gridPosition: {x: 1, y: 8}
   gpuMeshIndex: 0
   objectIndex: 20
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -9750,6 +9777,9 @@ MonoBehaviour:
   gridPosition: {x: 5, y: 7}
   gpuMeshIndex: 0
   objectIndex: 3
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -10068,6 +10098,9 @@ MonoBehaviour:
   gridPosition: {x: 0, y: 1}
   gpuMeshIndex: 0
   objectIndex: 76
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -10214,6 +10247,9 @@ MonoBehaviour:
   gridPosition: {x: 3, y: 8}
   gpuMeshIndex: 0
   objectIndex: 22
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -10446,6 +10482,9 @@ MonoBehaviour:
   gridPosition: {x: 1, y: 3}
   gpuMeshIndex: 0
   objectIndex: 43
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -10797,6 +10836,9 @@ MonoBehaviour:
   gridPosition: {x: 3, y: 3}
   gpuMeshIndex: 0
   objectIndex: 15
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -11444,6 +11486,9 @@ MonoBehaviour:
   gridPosition: {x: 8, y: 9}
   gpuMeshIndex: 0
   objectIndex: 56
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -12313,6 +12358,9 @@ MonoBehaviour:
   gridPosition: {x: 2, y: 6}
   gpuMeshIndex: 0
   objectIndex: 19
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -13364,6 +13412,9 @@ MonoBehaviour:
   gridPosition: {x: 10, y: 4}
   gpuMeshIndex: 0
   objectIndex: 63
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -13953,6 +14004,9 @@ MonoBehaviour:
   gridPosition: {x: 6, y: 7}
   gpuMeshIndex: 0
   objectIndex: 4
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -14271,6 +14325,9 @@ MonoBehaviour:
   gridPosition: {x: 1, y: 9}
   gpuMeshIndex: 0
   objectIndex: 49
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -14536,6 +14593,9 @@ MonoBehaviour:
   gridPosition: {x: 6, y: 1}
   gpuMeshIndex: 0
   objectIndex: 70
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -15179,6 +15239,9 @@ MonoBehaviour:
   gridPosition: {x: 0, y: 5}
   gpuMeshIndex: 0
   objectIndex: 80
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -21639,6 +21702,9 @@ MonoBehaviour:
   gridPosition: {x: 0, y: 8}
   gpuMeshIndex: 0
   objectIndex: 83
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -21876,6 +21942,9 @@ MonoBehaviour:
   gridPosition: {x: 2, y: 3}
   gpuMeshIndex: 0
   objectIndex: 16
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -22776,6 +22845,9 @@ MonoBehaviour:
   gridPosition: {x: 9, y: 5}
   gpuMeshIndex: 0
   objectIndex: 31
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -24022,6 +24094,9 @@ MonoBehaviour:
   gridPosition: {x: 0, y: 7}
   gpuMeshIndex: 0
   objectIndex: 82
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -24287,6 +24362,9 @@ MonoBehaviour:
   gridPosition: {x: 9, y: 2}
   gpuMeshIndex: 0
   objectIndex: 34
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -24691,6 +24769,9 @@ MonoBehaviour:
   gridPosition: {x: 9, y: 1}
   gpuMeshIndex: 0
   objectIndex: 67
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -25075,6 +25156,9 @@ MonoBehaviour:
   gridPosition: {x: 8, y: 8}
   gpuMeshIndex: 0
   objectIndex: 27
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -26008,6 +26092,9 @@ MonoBehaviour:
   gridPosition: {x: 8, y: 2}
   gpuMeshIndex: 0
   objectIndex: 35
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -26683,6 +26770,9 @@ MonoBehaviour:
   gridPosition: {x: 0, y: 6}
   gpuMeshIndex: 0
   objectIndex: 81
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -27014,6 +27104,9 @@ MonoBehaviour:
   gridPosition: {x: 9, y: 7}
   gpuMeshIndex: 0
   objectIndex: 29
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -28127,6 +28220,9 @@ MonoBehaviour:
   gridPosition: {x: 2, y: 7}
   gpuMeshIndex: 0
   objectIndex: 0
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -29085,6 +29181,9 @@ MonoBehaviour:
   gridPosition: {x: 5, y: 1}
   gpuMeshIndex: 0
   objectIndex: 71
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -30243,6 +30342,9 @@ MonoBehaviour:
   gridPosition: {x: 0, y: 9}
   gpuMeshIndex: 0
   objectIndex: 48
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -31412,6 +31514,9 @@ MonoBehaviour:
   gridPosition: {x: 6, y: 9}
   gpuMeshIndex: 0
   objectIndex: 54
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -32451,6 +32556,9 @@ MonoBehaviour:
   gridPosition: {x: 7, y: 8}
   gpuMeshIndex: 0
   objectIndex: 26
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -32802,6 +32910,9 @@ MonoBehaviour:
   gridPosition: {x: 2, y: 2}
   gpuMeshIndex: 0
   objectIndex: 41
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -32948,6 +33059,9 @@ MonoBehaviour:
   gridPosition: {x: 5, y: 2}
   gpuMeshIndex: 0
   objectIndex: 38
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -33418,6 +33532,9 @@ MonoBehaviour:
   gridPosition: {x: 7, y: 1}
   gpuMeshIndex: 0
   objectIndex: 69
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -35004,6 +35121,9 @@ MonoBehaviour:
   gridPosition: {x: 1, y: 4}
   gpuMeshIndex: 0
   objectIndex: 44
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -35216,6 +35336,9 @@ MonoBehaviour:
   gridPosition: {x: 1, y: 7}
   gpuMeshIndex: 0
   objectIndex: 47
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -35448,6 +35571,9 @@ MonoBehaviour:
   gridPosition: {x: 7, y: 7}
   gpuMeshIndex: 0
   objectIndex: 5
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -35693,6 +35819,9 @@ MonoBehaviour:
   gridPosition: {x: 4, y: 1}
   gpuMeshIndex: 0
   objectIndex: 72
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -37003,6 +37132,9 @@ MonoBehaviour:
   gridPosition: {x: 6, y: 3}
   gpuMeshIndex: 0
   objectIndex: 12
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -38154,6 +38286,9 @@ MonoBehaviour:
   gridPosition: {x: 7, y: 3}
   gpuMeshIndex: 0
   objectIndex: 11
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -47510,6 +47645,9 @@ MonoBehaviour:
   gridPosition: {x: 3, y: 7}
   gpuMeshIndex: 0
   objectIndex: 1
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -47656,6 +47794,9 @@ MonoBehaviour:
   gridPosition: {x: 10, y: 2}
   gpuMeshIndex: 0
   objectIndex: 65
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -48040,6 +48181,9 @@ MonoBehaviour:
   gridPosition: {x: 9, y: 4}
   gpuMeshIndex: 0
   objectIndex: 32
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -48272,6 +48416,9 @@ MonoBehaviour:
   gridPosition: {x: 6, y: 2}
   gpuMeshIndex: 0
   objectIndex: 37
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -48852,6 +48999,9 @@ MonoBehaviour:
   gridPosition: {x: 5, y: 8}
   gpuMeshIndex: 0
   objectIndex: 24
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -48998,6 +49148,9 @@ MonoBehaviour:
   gridPosition: {x: 10, y: 6}
   gpuMeshIndex: 0
   objectIndex: 61
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -49144,6 +49297,9 @@ MonoBehaviour:
   gridPosition: {x: 2, y: 4}
   gpuMeshIndex: 0
   objectIndex: 17
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -49548,6 +49704,9 @@ MonoBehaviour:
   gridPosition: {x: 10, y: 5}
   gpuMeshIndex: 0
   objectIndex: 62
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -49694,6 +49853,9 @@ MonoBehaviour:
   gridPosition: {x: 2, y: 8}
   gpuMeshIndex: 0
   objectIndex: 21
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -50058,6 +50220,9 @@ MonoBehaviour:
   gridPosition: {x: 1, y: 1}
   gpuMeshIndex: 0
   objectIndex: 75
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -50553,6 +50718,9 @@ MonoBehaviour:
   gridPosition: {x: 9, y: 8}
   gpuMeshIndex: 0
   objectIndex: 28
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -50699,6 +50867,9 @@ MonoBehaviour:
   gridPosition: {x: 3, y: 9}
   gpuMeshIndex: 0
   objectIndex: 51
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -51493,6 +51664,9 @@ MonoBehaviour:
   gridPosition: {x: 7, y: 9}
   gpuMeshIndex: 0
   objectIndex: 55
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -51983,6 +52157,9 @@ MonoBehaviour:
   gridPosition: {x: 10, y: 3}
   gpuMeshIndex: 0
   objectIndex: 64
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -53035,6 +53212,9 @@ MonoBehaviour:
   gridPosition: {x: 6, y: 8}
   gpuMeshIndex: 0
   objectIndex: 25
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -53353,6 +53533,9 @@ MonoBehaviour:
   gridPosition: {x: 0, y: 4}
   gpuMeshIndex: 0
   objectIndex: 79
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -53704,6 +53887,9 @@ MonoBehaviour:
   gridPosition: {x: 9, y: 6}
   gpuMeshIndex: 0
   objectIndex: 30
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -54485,6 +54671,9 @@ MonoBehaviour:
   gridPosition: {x: 10, y: 8}
   gpuMeshIndex: 0
   objectIndex: 59
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -54697,6 +54886,9 @@ MonoBehaviour:
   gridPosition: {x: 0, y: 3}
   gpuMeshIndex: 0
   objectIndex: 78
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -55049,6 +55241,9 @@ MonoBehaviour:
   gridPosition: {x: 2, y: 5}
   gpuMeshIndex: 0
   objectIndex: 18
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -55228,6 +55423,9 @@ MonoBehaviour:
   gridPosition: {x: 1, y: 6}
   gpuMeshIndex: 0
   objectIndex: 46
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -55579,6 +55777,9 @@ MonoBehaviour:
   gridPosition: {x: 8, y: 3}
   gpuMeshIndex: 0
   objectIndex: 10
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -56608,6 +56809,9 @@ MonoBehaviour:
   gridPosition: {x: 8, y: 6}
   gpuMeshIndex: 0
   objectIndex: 7
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -57595,6 +57799,9 @@ MonoBehaviour:
   gridPosition: {x: 4, y: 9}
   gpuMeshIndex: 0
   objectIndex: 52
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -57979,6 +58186,9 @@ MonoBehaviour:
   gridPosition: {x: 8, y: 5}
   gpuMeshIndex: 0
   objectIndex: 8
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -58156,6 +58366,9 @@ MonoBehaviour:
   gridPosition: {x: 8, y: 7}
   gpuMeshIndex: 0
   objectIndex: 6
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -58983,6 +59196,9 @@ MonoBehaviour:
   gridPosition: {x: 4, y: 7}
   gpuMeshIndex: 0
   objectIndex: 2
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -59228,6 +59444,9 @@ MonoBehaviour:
   gridPosition: {x: 2, y: 9}
   gpuMeshIndex: 0
   objectIndex: 50
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -60108,6 +60327,9 @@ MonoBehaviour:
   gridPosition: {x: 3, y: 2}
   gpuMeshIndex: 0
   objectIndex: 40
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -61947,6 +62169,9 @@ MonoBehaviour:
   gridPosition: {x: 8, y: 1}
   gpuMeshIndex: 0
   objectIndex: 68
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -62179,6 +62404,9 @@ MonoBehaviour:
   gridPosition: {x: 1, y: 2}
   gpuMeshIndex: 0
   objectIndex: 42
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -63413,6 +63641,9 @@ MonoBehaviour:
   gridPosition: {x: 10, y: 1}
   gpuMeshIndex: 0
   objectIndex: 66
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -63592,6 +63823,9 @@ MonoBehaviour:
   gridPosition: {x: 10, y: 9}
   gpuMeshIndex: 0
   objectIndex: 58
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -63985,6 +64219,9 @@ MonoBehaviour:
   gridPosition: {x: 2, y: 1}
   gpuMeshIndex: 0
   objectIndex: 74
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -64246,6 +64483,9 @@ MonoBehaviour:
   gridPosition: {x: 10, y: 7}
   gpuMeshIndex: 0
   objectIndex: 60
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -64614,6 +64854,9 @@ MonoBehaviour:
   gridPosition: {x: 0, y: 2}
   gpuMeshIndex: 0
   objectIndex: 77
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -65256,6 +65499,9 @@ MonoBehaviour:
   gridPosition: {x: 9, y: 9}
   gpuMeshIndex: 0
   objectIndex: 57
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -66821,6 +67067,9 @@ MonoBehaviour:
   gridPosition: {x: 5, y: 9}
   gpuMeshIndex: 0
   objectIndex: 53
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
@@ -66967,6 +67216,9 @@ MonoBehaviour:
   gridPosition: {x: 5, y: 3}
   gpuMeshIndex: 0
   objectIndex: 13
+  layerMaskForDebriePerentSet:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   currentHealth: 0
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
