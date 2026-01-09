@@ -8,7 +8,7 @@ public class BoggyConfig : ScriptableObject
     public int maxBoggy = 32;
     public int totalSpawn = 0;
     public bool isLimitReached;
-    public float boggyDamage;
+    public IdleCurrency boggyDamage;
 
     // public void SetUpOnStart()
     // {

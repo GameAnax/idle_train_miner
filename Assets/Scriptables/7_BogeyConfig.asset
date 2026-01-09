@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe9eb3d1a13604438871b79da7aacaf5, type: 3}
-  m_Name: 4_BogeyConfig
+  m_Name: 7_BogeyConfig
   m_EditorClassIdentifier: 
-  boggyType: 6
+  boggyType: 9
   baseValue:
     Value: 48
     Exp: 2
@@ -20,5 +20,5 @@ MonoBehaviour:
   totalSpawn: 0
   isLimitReached: 0
   boggyDamage:
-    Value: 27
+    Value: 729
     Exp: 0

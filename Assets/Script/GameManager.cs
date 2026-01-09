@@ -136,11 +136,11 @@ public class BoggyData
     public int currentBoggyCount;
     public BoggyType boggyType;
     public bool isLimitReached;
-    public float boggyDamage;
+    public IdleCurrency boggyDamage;
 
     public BoggyData()
     { }
-    public BoggyData(int maxBoggyCount, int currentBoggyCount, BoggyType boggyType, bool isLimitReached, float boggyDamage)
+    public BoggyData(int maxBoggyCount, int currentBoggyCount, BoggyType boggyType, bool isLimitReached, IdleCurrency boggyDamage)
     {
         this.maxBoggyCount = maxBoggyCount;
         this.currentBoggyCount = currentBoggyCount;

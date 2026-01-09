@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class BoggyDamage : MonoBehaviour
 {
-    public float damageValue = 50f;
+    public IdleCurrency damageValue = 50;
     public LayerMask gridLayer;
     public Vector3 boxSize = new Vector3(1.5f, 1.5f, 1.5f);
     public float leftOffset = 2.0f;

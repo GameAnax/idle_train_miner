@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Dreamteck.Splines;
 using Dreamteck.Splines.Examples;
+using TMPro;
 using UnityEngine;
 
 public partial class Boggy : MonoBehaviour
@@ -9,12 +10,17 @@ public partial class Boggy : MonoBehaviour
     public TrainSplineDriver trainSplineDriver;
     public BoggyDamage boggyDamage;
 
+    [Header("Boggy UI")]
+    public Canvas boggyCanvas;
+    public TextMeshProUGUI boggyLevelText;
+
     public BoggyType boggyType;
     public float space;
     public int index;
     public int boggyLevel;
 
     public List<BoggyTypeData> boggyTypeDatas;
+
 
 
     public void SetBoggyData(int boggyIndex, BoggyType boggyType = BoggyType.Boggy_1)
@@ -26,6 +32,7 @@ public partial class Boggy : MonoBehaviour
             item.ActivateNewBoggy(boggyType);
         }
         SetActive(true);
+        UpdateUI();
     }
     public void SetActive(bool isActive)
     {
@@ -53,11 +60,17 @@ public partial class Boggy : MonoBehaviour
         //TODO:- Update damage
         // boggyDamage.damageValue = GameManager.instance.boggyConfigs.Find(i => i.boggyType == boggyType).boggyDamage;
         boggyDamage.damageValue = GameManager.instance.boggyConfigs[boggyLevel].boggyDamage;
+        UpdateUI();
 
     }
     public void DestroyObj()
     {
         Destroy(gameObject);
+    }
+
+    private void UpdateUI()
+    {
+        boggyLevelText.text = $"{boggyLevel + 1}";
     }
 
     // void OnValidate()

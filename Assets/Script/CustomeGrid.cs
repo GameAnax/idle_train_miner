@@ -189,12 +189,12 @@ public class CustomeGrid : MonoBehaviour
             }
         }
     }
-    public void TakeDamage(float amount)
+    public void TakeDamage(IdleCurrency amount)
     {
         if (isClear) return;
 
-        currentHealth -= amount;
-        lastDamageValue = amount;
+        currentHealth -= (float)amount.Value;
+        lastDamageValue = (float)amount.Value;
 
         // Blink effect start karein
         StopAllCoroutines();
