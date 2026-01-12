@@ -10,6 +10,7 @@ public class UIHandler : MonoBehaviour
     public Button speedBoggy;
     public Button capcityBoggy;
     public TextMeshProUGUI levelCompleteProgressText;
+    public TextMeshProUGUI addBoggyCostText;
 
     void Start()
     {
@@ -42,6 +43,11 @@ public class UIHandler : MonoBehaviour
     private void OnClickAddBoggy()
     {
         GameManager.instance.ADDBoggy();
+        UpdateAddBoggyCost();
+    }
+    private void UpdateAddBoggyCost()
+    {
+        addBoggyCostText.text = GameManager.instance.trainManager.boggyAddCost.ToShortString();
     }
 
 }

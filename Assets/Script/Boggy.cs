@@ -70,7 +70,8 @@ public partial class Boggy : MonoBehaviour
 
     private void UpdateUI()
     {
-        boggyLevelText.text = $"{boggyLevel + 1}";
+        if (boggyLevelText != null)
+            boggyLevelText.text = $"{boggyLevel + 1}";
     }
 
     // void OnValidate()

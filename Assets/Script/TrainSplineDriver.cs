@@ -206,7 +206,7 @@ public class TrainSplineDriver : MonoBehaviour
             item.splineFollower.SetDistance(bridgeDistance);
         }
     }
-    public void UpdateSpeed(int amount)
+    public void UpdateSpeed(float amount)
     {
         moveSpeed += amount;
     }

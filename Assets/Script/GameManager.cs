@@ -57,6 +57,8 @@ public class GameManager : MonoBehaviour
             Debug.Log("Current Boggy Data is null");
             return;
         }
+        trainManager.boggyAddCount += 1;
+        trainManager.UpdateBoggyAddCost();
         currentBoggyData.UpdateData(1);
         trainManager.SpawnBoggy(currentBoggyData.boggyType);
 
@@ -94,14 +96,16 @@ public class GameManager : MonoBehaviour
         {
             boggies[i].index = i;
         }
+        trainManager.trainMeargeConfig.UpdateMearge();
     }
     public void IncreaseTrainSpeed()
     {
-        trainManager.trainSplineDriver.UpdateSpeed(1);
+        trainManager.trainSpeedConfig.UpdateSpeed();
+        trainManager.trainSplineDriver.UpdateSpeed(0.5f);
     }
     public void UpdateStorageCapacity()
     {
-        trainManager.storageBoggy.UpdateStorage(amountToUpdate: 10);
+        trainManager.storageBoggy.UpdateStorage();
     }
     public void CheckIsAllGridClear()
     {

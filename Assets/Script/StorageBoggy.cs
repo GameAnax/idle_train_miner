@@ -10,9 +10,15 @@ public class StorageBoggy : MonoBehaviour
     [Header("Stack Settings")]
     public Transform debriesContainer;
     public Vector3 spacing = new Vector3(0.0f, 0.0f, 0.0f); // Cube ki size ke hisaab se gap
+    public StorageBoggyConfig storageBoggyConfig;
     private int collectedCount = 0; // Total kitne cubes aaye
 
     public List<Debries> collectedDebries;
+
+    void Start()
+    {
+        storageBoggyConfig = Instantiate(storageBoggyConfig);
+    }
 
     public void SetUpDebrie(Debries debries)
     {
@@ -23,16 +29,15 @@ public class StorageBoggy : MonoBehaviour
         ADDDebriesInStorage(tempDebrie.debriCapacity);
         StartCoroutine(MoveCubeToStackLocal(tempDebrie.transform));
     }
-    public void UpdateStorage(int amountToUpdate)
+    public void UpdateStorage()
     {
-        capcity += amountToUpdate;
+        storageBoggyConfig.UpdateCapacity();
     }
 
 
     public bool CheckIsStorageFull(int amountToStore)
     {
-        int needSpace = filled + amountToStore;
-        return capcity < needSpace;
+        return storageBoggyConfig.CheckIsStorageFull(amountToStore);
     }
     public bool IsStorageFull()
     {

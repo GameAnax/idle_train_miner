@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 137075c20c5704697bdec12c4c5a208a, type: 3}
+  m_Name: StorageBoggyConfig
+  m_EditorClassIdentifier: 
+  level: 1
+  directCost:
+  - level: 1
+    cost:
+      Value: 2
+      Exp: 1
+  - level: 2
+    cost:
+      Value: 5
+      Exp: 1
+  - level: 3
+    cost:
+      Value: 1
+      Exp: 2
+  costRangeMultiplierDatas:
+  - startLevel: 4
+    endLevel: 24
+    multiplier: 4
+    removeNumberOfDecimal: 0
+  - startLevel: 25
+    endLevel: 29
+    multiplier: 4.1
+    removeNumberOfDecimal: -2
+  - startLevel: 29
+    endLevel: 32
+    multiplier: 4.2
+    removeNumberOfDecimal: -2
+  - startLevel: 33
+    endLevel: 36
+    multiplier: 4.3
+    removeNumberOfDecimal: -2
+  - startLevel: 37
+    endLevel: 37
+    multiplier: 4.38
+    removeNumberOfDecimal: -2
+  - startLevel: 38
+    endLevel: 38
+    multiplier: 4.4
+    removeNumberOfDecimal: -2
+  - startLevel: 39
+    endLevel: -1
+    multiplier: 4.4
+    removeNumberOfDecimal: -2
+  baseCapacity:
+    Value: 0.3
+    Exp: 3
+  incremeantValue:
+    Value: 0.5
+    Exp: 2
+  filledCapacity:
+    Value: 0
+    Exp: 0
+  currentCost:
+    Value: 0
+    Exp: 0
