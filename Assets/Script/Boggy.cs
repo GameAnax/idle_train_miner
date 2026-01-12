@@ -9,6 +9,7 @@ public partial class Boggy : MonoBehaviour
     public SplineFollower splineFollower;
     public TrainSplineDriver trainSplineDriver;
     public BoggyDamage boggyDamage;
+    public ParticleSystem cuttingParticleSystem;
 
     [Header("Boggy UI")]
     public Canvas boggyCanvas;
@@ -67,7 +68,13 @@ public partial class Boggy : MonoBehaviour
     {
         Destroy(gameObject);
     }
-
+    public void PlayCuttingParticle()
+    {
+        if (cuttingParticleSystem != null)
+        {
+            cuttingParticleSystem.Play();
+        }
+    }
     private void UpdateUI()
     {
         if (boggyLevelText != null)

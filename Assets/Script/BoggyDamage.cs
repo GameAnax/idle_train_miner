@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
+[RequireComponent(typeof(Boggy))]
 public class BoggyDamage : MonoBehaviour
 {
     public IdleCurrency damageValue = 50;
@@ -8,10 +9,19 @@ public class BoggyDamage : MonoBehaviour
     public Vector3 boxSize = new Vector3(1.5f, 1.5f, 1.5f);
     public float leftOffset = 2.0f;
     public float forwardOffset = 0f;
+    public Boggy boggy;
 
     // Isme hum track rakhenge ki abhi kaunse grids box ke andar hain
     private List<CustomeGrid> currentGridsInBox = new List<CustomeGrid>();
     // private List<CustomeGrid> gridsToRemove = new List<CustomeGrid>();
+
+    void Start()
+    {
+        if (boggy == null)
+        {
+            boggy = GetComponent<Boggy>();
+        }
+    }
 
     void FixedUpdate()
     {
@@ -32,6 +42,7 @@ public class BoggyDamage : MonoBehaviour
                 // 2. Agar ye grid naya hai (pehle list mein nahi tha), toh damage do
                 if (!currentGridsInBox.Contains(grid))
                 {
+                    boggy.PlayCuttingParticle();
                     grid.TakeDamage(damageValue);
                     currentGridsInBox.Add(grid);
                     if (!grid.isClear)
