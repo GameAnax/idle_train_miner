@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class StorageBoggy : MonoBehaviour
 {
-    public int capcity;
-    public int filled;
-
     [Header("Stack Settings")]
     public Transform debriesContainer;
     public Vector3 spacing = new Vector3(0.0f, 0.0f, 0.0f); // Cube ki size ke hisaab se gap
@@ -18,6 +15,7 @@ public class StorageBoggy : MonoBehaviour
     void Start()
     {
         storageBoggyConfig = Instantiate(storageBoggyConfig);
+        storageBoggyConfig.SetUp();
     }
 
     public void SetUpDebrie(Debries debries)
@@ -39,13 +37,13 @@ public class StorageBoggy : MonoBehaviour
     {
         return storageBoggyConfig.CheckIsStorageFull(amountToStore);
     }
-    public bool IsStorageFull()
-    {
-        return capcity <= filled;
-    }
+    // public bool IsStorageFull()
+    // {
+    //     return capcity <= filled;
+    // }
     public void ADDDebriesInStorage(int amountToStore)
     {
-        filled += amountToStore;
+        storageBoggyConfig.filledCapacity += amountToStore;
     }
     public Vector3 CalculateStackPosition()
     {
@@ -62,7 +60,7 @@ public class StorageBoggy : MonoBehaviour
     {
         List<Debries> temp = new(collectedDebries);
         collectedDebries.Clear();
-        filled = 0;
+        storageBoggyConfig.filledCapacity = 0;
         collectedCount = 0;
         return temp;
     }

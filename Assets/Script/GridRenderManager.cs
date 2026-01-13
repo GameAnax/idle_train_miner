@@ -26,7 +26,7 @@ public class GridRenderManager : MonoBehaviour
     Dictionary<MeshType, MeshData> keyValuePairs = new();
 
 
-    private int batchCount = 500;
+    public int batchCount = 500;
     // public Mesh gridMesh;
     // public Material gridMaterial;
     // public Color grassColor;

@@ -50,7 +50,7 @@ public class CustomeGrid : MonoBehaviour
     private Color originalColor;
     private MaterialPropertyBlock propBlock;
     private bool _isPendingSplineUpdate = false;
-    private float lastDamageValue;
+    private int lastDamageValue;
 
     private static readonly int BaseColorId = Shader.PropertyToID("_BaseColor");
 
@@ -193,8 +193,9 @@ public class CustomeGrid : MonoBehaviour
     {
         if (isClear) return;
 
-        currentHealth -= (float)amount.Value;
-        lastDamageValue = (float)amount.Value;
+        int tempDamageValue = (int)amount;
+        currentHealth -= tempDamageValue;
+        lastDamageValue = tempDamageValue;
 
         // Blink effect start karein
         StopAllCoroutines();
@@ -401,7 +402,7 @@ public class CustomeGrid : MonoBehaviour
         {
             if (IsInTrackList(rightGrid))
             {
-                rightGrid.GenerateDebrie(transform.position);
+                rightGrid.GenerateDebrie(transform.position, lastDamageValue);
                 return;
             }
         }
@@ -409,7 +410,7 @@ public class CustomeGrid : MonoBehaviour
         {
             if (IsInTrackList(leftGrid))
             {
-                leftGrid.GenerateDebrie(transform.position);
+                leftGrid.GenerateDebrie(transform.position, lastDamageValue);
                 return;
             }
         }
@@ -417,7 +418,7 @@ public class CustomeGrid : MonoBehaviour
         {
             if (IsInTrackList(topGrid))
             {
-                topGrid.GenerateDebrie(transform.position);
+                topGrid.GenerateDebrie(transform.position, lastDamageValue);
                 return;
             }
         }
@@ -425,13 +426,13 @@ public class CustomeGrid : MonoBehaviour
         {
             if (IsInTrackList(bottomGrid))
             {
-                bottomGrid.GenerateDebrie(transform.position);
+                bottomGrid.GenerateDebrie(transform.position, lastDamageValue);
                 return;
             }
         }
     }
 
-    private void GenerateDebrie(Vector3 startPosition)
+    private void GenerateDebrie(Vector3 startPosition, int damageValue)
     {
         if (cubeContainer == null)
         {
@@ -441,7 +442,7 @@ public class CustomeGrid : MonoBehaviour
             cubeContainer.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
         }
         Debries debri = Instantiate(debriPrefab, cubeContainer.position, Quaternion.identity, cubeContainer);
-        debri.debriCapacity = (int)lastDamageValue;
+        debri.debriCapacity = damageValue;
         debri.jumpEffect.StartJump(startPosition, GetRandom(transform.position), 1, 0.2f);
     }
 
