@@ -18,7 +18,6 @@ public class CustomeGrid : MonoBehaviour
     public Vector2 gridPosition;
     public int gpuMeshIndex;
     public int objectIndex;
-    public LayerMask layerMaskForDebriePerentSet;
 
     [Header("Health System")]
     public float maxHealth = 100f;
@@ -45,6 +44,9 @@ public class CustomeGrid : MonoBehaviour
     public SplineGenerator splineGenerator;
     public TrainSplineDriver trainSplineDriver;
     public Debries debriPrefab;
+
+    [HideInInspector]
+    public GridCellData gridCellDataForSave;
 
     private MeshRenderer meshRenderer;
     private Color originalColor;
@@ -84,6 +86,7 @@ public class CustomeGrid : MonoBehaviour
         if (!isClear || isPermanentlyDisabled)
         {
             isUsable = false;
+            gridCellDataForSave.isUsable = isUsable;
             return;
         }
 
@@ -167,7 +170,9 @@ public class CustomeGrid : MonoBehaviour
         if (T && B && L && R && TL && TR && BL && BR)
         {
             isPermanentlyDisabled = true;
+            gridCellDataForSave.isPermanentlyDisabled = isPermanentlyDisabled;
             isUsable = false;
+
             // gameObject.SetActive(false);
         }
         else
@@ -186,8 +191,10 @@ public class CustomeGrid : MonoBehaviour
             else
             {
                 isUsable = false; // Isolated grid
+
             }
         }
+        gridCellDataForSave.isUsable = isUsable;
     }
     public void TakeDamage(IdleCurrency amount)
     {
@@ -196,6 +203,8 @@ public class CustomeGrid : MonoBehaviour
         int tempDamageValue = (int)amount;
         currentHealth -= tempDamageValue;
         lastDamageValue = tempDamageValue;
+
+        gridCellDataForSave.currentHealth = currentHealth;
 
         // Blink effect start karein
         StopAllCoroutines();
@@ -207,6 +216,7 @@ public class CustomeGrid : MonoBehaviour
             currentHealth = 0;
             if (meshRenderer != null) meshRenderer.enabled = false;
             GridRenderManager.instance.HideMesh(meshType: meshType, gpuMeshIndex: gpuMeshIndex);
+            gridCellDataForSave.currentHealth = 0;
             // OnGridDestroyed();
         }
     }
@@ -224,6 +234,7 @@ public class CustomeGrid : MonoBehaviour
     public void OnGridDestroyed()
     {
         isClear = true;
+        gridCellDataForSave.isClear = isClear;
         if (meshRenderer != null) meshRenderer.enabled = false;
 
         // Neighbor updates for usability chain reaction
@@ -257,7 +268,7 @@ public class CustomeGrid : MonoBehaviour
     {
         GridRenderManager.instance.UpdateSpeed(meshType: meshType, gpuMeshIndex, 5f);
         yield return _waitForSeconds1;
-        GridRenderManager.instance.UpdateSpeed(meshType: meshType, gpuMeshIndex, 0.2f);
+        GridRenderManager.instance.UpdateSpeed(meshType: meshType, gpuMeshIndex, 1f);
     }
     IEnumerator BlinkRoutine()
     {

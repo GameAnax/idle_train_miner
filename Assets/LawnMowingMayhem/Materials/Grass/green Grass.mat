@@ -165,7 +165,7 @@ Material:
     - _EnableSpecularOcclusion: 0
     - _EnergyConservingSpecularColor: 1
     - _HdrpVersion: 2
-    - _Height: 0.931
+    - _Height: 1
     - _HeightAmplitude: 0.02
     - _HeightCenter: 0.5
     - _HeightMapParametrization: 0
@@ -198,7 +198,7 @@ Material:
     - _SmoothnessRemapMin: 0
     - _SpecularAAScreenSpaceVariance: 0.1
     - _SpecularAAThreshold: 0.2
-    - _Speed: 1.84
+    - _Speed: 0.98
     - _SrcBlend: 1
     - _StencilRef: 2
     - _StencilRefDepth: 0

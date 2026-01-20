@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using EasyButtons;
+using Newtonsoft.Json;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -14,8 +16,12 @@ public class GameManager : MonoBehaviour
     public CrusherArea crusherArea;
 
     public List<BoggyConfig> boggyConfigs;
-    public List<BoggyData> boggyDatas = new();
+    // public List<BoggyData> boggyDatas = new();
     public BoggyData currentBoggyData = null;
+
+
+    private string GetPath(string fileName) => Path.Combine(Application.persistentDataPath, fileName + ".json");
+    public GridSaveData gridSaveData;
 
     void Awake()
     {
@@ -24,29 +30,55 @@ public class GameManager : MonoBehaviour
             instance = this;
         }
     }
+    void OnDisable()
+    {
+        SaveGrid("level_01");
+    }
     void Start()
     {
-        if (boggyDatas.Count == 0)
-        {
-            int index = boggyDatas.Count;
-            int boggyConfigsCount = boggyConfigs.Count;
-            if (index > boggyConfigsCount)
-            {
-                Debug.Log("Max Level reached");
-                return;
-            }
-        }
+        // if (boggyDatas.Count == 0)
+        // {
+        //     int index = boggyDatas.Count;
+        //     int boggyConfigsCount = boggyConfigs.Count;
+        //     if (index > boggyConfigsCount)
+        //     {
+        //         Debug.Log("Max Level reached");
+        //         return;
+        //     }
+        // }
 
-        foreach (var item in boggyDatas)
-        {
-            if (!item.isLimitReached) currentBoggyData = item;
-        }
+        // foreach (var item in boggyDatas)
+        // {
+        //     if (!item.isLimitReached) currentBoggyData = item;
+        // }
         if (currentBoggyData == null)
         {
             BoggyConfig bogeyConfig = boggyConfigs[0];
             currentBoggyData = new(maxBoggyCount: bogeyConfig.maxBoggy, currentBoggyCount: bogeyConfig.totalSpawn, boggyType: bogeyConfig.boggyType, isLimitReached: false, boggyDamage: bogeyConfig.boggyDamage);
-            boggyDatas.Add(currentBoggyData);
+            // boggyDatas.Add(currentBoggyData);
         }
+
+        bool isAvailable = IsPathAvailable("level_01");
+        if (!isAvailable)
+        {
+            gridSaveData ??= new();
+            foreach (var item in clockwiseRingGenerator.spawnedCubes)
+            {
+
+                gridSaveData.AddData(GetSerializableData(item));
+            }
+            SaveGrid("level_01");
+        }
+        else
+        {
+            LoadGrid(clockwiseRingGenerator.spawnedCubes, "level_01");
+        }
+
+    }
+    public void SetCurrentBoggyConfigOnStart()
+    {
+        BoggyConfig bogeyConfig = boggyConfigs[trainManager.trainSaveData.boggyConfigIndex];
+        currentBoggyData = new(maxBoggyCount: bogeyConfig.maxBoggy, currentBoggyCount: bogeyConfig.totalSpawn, boggyType: bogeyConfig.boggyType, isLimitReached: false, boggyDamage: bogeyConfig.boggyDamage);
     }
 
     [Button]
@@ -57,20 +89,22 @@ public class GameManager : MonoBehaviour
             Debug.Log("Current Boggy Data is null");
             return;
         }
-        trainManager.boggyAddCount += 1;
-        trainManager.UpdateBoggyAddCost();
-        currentBoggyData.UpdateData(1);
-        trainManager.SpawnBoggy(currentBoggyData.boggyType);
+        trainManager.AddBoggy();
+        // trainManager.boggyAddCount += 1;
+        // trainManager.UpdateBoggyAddCost();
+        // currentBoggyData.UpdateData(1);
+        // trainManager.SpawnBoggy();
 
-        if (currentBoggyData.isLimitReached)
-        {
-            int index = boggyDatas.Count; //for get next index
-            index = Mathf.Min(boggyConfigs.Count - 1, index);
-            //TODO:- Assign next level boggy
-            BoggyConfig bogeyConfig = boggyConfigs[index];
-            currentBoggyData = new(maxBoggyCount: bogeyConfig.maxBoggy, currentBoggyCount: bogeyConfig.totalSpawn, boggyType: bogeyConfig.boggyType, isLimitReached: false, boggyDamage: bogeyConfig.boggyDamage);
-            boggyDatas.Add(currentBoggyData);
-        }
+        // if (currentBoggyData.isLimitReached)
+        // {
+        //     int index = trainManager.trainSaveData.boggyConfigIndex + 1; //for get next index
+        //     index = Mathf.Min(boggyConfigs.Count - 1, index);
+        //     trainManager.trainSaveData.boggyConfigIndex = index;
+        //     //TODO:- Assign next level boggy
+        //     BoggyConfig bogeyConfig = boggyConfigs[index];
+        //     currentBoggyData = new(maxBoggyCount: bogeyConfig.maxBoggy, currentBoggyCount: bogeyConfig.totalSpawn, boggyType: bogeyConfig.boggyType, isLimitReached: false, boggyDamage: bogeyConfig.boggyDamage);
+        //     // boggyDatas.Add(currentBoggyData);
+        // }
     }
     [Button]
     public void MeargeBoggy()
@@ -97,15 +131,22 @@ public class GameManager : MonoBehaviour
             boggies[i].index = i;
         }
         trainManager.trainMeargeConfig.UpdateMearge();
+        trainManager.SetMeargeLevelForSave();
+
+        uIHandler.SetUpMeargeText();
     }
     public void IncreaseTrainSpeed()
     {
         trainManager.trainSpeedConfig.UpdateSpeed();
         trainManager.trainSplineDriver.UpdateSpeed(0.5f);
+        trainManager.SetSpeedLevelForSave();
+
+        uIHandler.SetUpSpeedText();
     }
     public void UpdateStorageCapacity()
     {
         trainManager.storageBoggy.UpdateStorage();
+        trainManager.trainSaveData.capacityLevel = trainManager.storageBoggy.storageBoggyConfig.level;
     }
     public void CheckIsAllGridClear()
     {
@@ -116,6 +157,102 @@ public class GameManager : MonoBehaviour
         }
         UpdateProgress();
     }
+
+    public void SaveGrid(string fileName)
+    {
+        // Settings to ensure Vector2 and Enums save cleanly
+        JsonSerializerSettings settings = new JsonSerializerSettings
+        {
+            Formatting = Formatting.Indented,
+            ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+        };
+
+        string json = JsonConvert.SerializeObject(gridSaveData, settings);
+        File.WriteAllText(GetPath(fileName), json);
+        Debug.Log("save success");
+    }
+
+    public bool IsPathAvailable(string fileName)
+    {
+        string path = GetPath(fileName);
+        if (!File.Exists(path))
+        {
+            Debug.LogError("Level Not Found");
+            return false;
+        }
+        return true;
+    }
+    public void LoadGrid(List<CustomeGrid> sceneScripts, string levelName)
+    {
+        string path = GetPath(levelName);
+        if (!File.Exists(path))
+        {
+            Debug.LogError("Level Not Found");
+            return;
+        }
+
+        var scriptLookup = sceneScripts.ToDictionary(s => s.gridPosition);
+
+        string json = File.ReadAllText(path);
+        gridSaveData = JsonConvert.DeserializeObject<GridSaveData>(json);
+
+        foreach (GridCellData data in gridSaveData.allCells)
+        {
+            if (scriptLookup.TryGetValue(data.gridPosition, out CustomeGrid targetScript))
+            {
+                targetScript.meshType = data.meshType;
+                targetScript.isClear = data.isClear;
+                targetScript.isUsable = data.isUsable;
+                targetScript.isOuterBoundary = data.isOuterBoundary;
+                targetScript.isPermanentlyDisabled = data.isPermanentlyDisabled;
+                targetScript.gridLayerInt = data.gridLayerInt;
+                targetScript.gridPosition = data.gridPosition;
+                targetScript.objectIndex = data.objectIndex;
+                targetScript.maxHealth = data.maxHealth;
+                targetScript.currentHealth = data.currentHealth;
+                targetScript.gridCellDataForSave = data;
+
+                if (data.currentHealth <= 0)
+                {
+                    GridRenderManager.instance.HideMesh(meshType: data.meshType, gpuMeshIndex: data.gpuMeshIndex);
+                }
+            }
+        }
+        clockwiseRingGenerator.splineGen.GenerateSpline();
+        trainManager.trainSplineDriver.modularGridAligner.StartGeneration();
+        trainManager.trainLoopHandler.UpdateSplineOnStart();
+    }
+    public GridCellData GetSerializableData(CustomeGrid cell)
+    {
+        GridCellData data = new GridCellData
+        {
+            // 1. Assign Basic Variables
+            meshType = cell.meshType,
+            isClear = cell.isClear,
+            isUsable = cell.isUsable,
+            isOuterBoundary = cell.isOuterBoundary,
+            isPermanentlyDisabled = cell.isPermanentlyDisabled,
+            gridLayerInt = cell.gridLayerInt,
+            gridPosition = cell.gridPosition, // Vector2
+            objectIndex = cell.objectIndex,
+            maxHealth = cell.maxHealth,
+            currentHealth = cell.currentHealth,
+            gpuMeshIndex = cell.gpuMeshIndex,
+
+            // 2. Assign Neighbors
+            // Assuming neighbors are simply +1 or -1 from current position
+            // neighbors = new NeighborData()
+            // {
+            //     left = cell.leftGrid != null ? cell.leftGrid.gridPosition : Vector2.zero,
+            //     right = cell.rightGrid.gridPosition,
+            //     top = cell.topGrid.gridPosition,
+            //     bottom = cell.bottomGrid.gridPosition
+            // }
+        };
+        cell.gridCellDataForSave = data;
+        return data;
+    }
+
     private void UpdateProgress()
     {
         if (clockwiseRingGenerator.spawnedCubes.Count == 0) return;
@@ -160,5 +297,10 @@ public class BoggyData
         {
             isLimitReached = true;
         }
+    }
+
+    public float GetProgress()
+    {
+        return (float)currentBoggyCount / maxBoggyCount;
     }
 }

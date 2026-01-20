@@ -10,9 +10,17 @@ public class TrainSpeedConfig : ScriptableObject
     public List<SpeedMultiplierData> speedMultiplierDatas;
     public IdleCurrency currentCost;
 
+    public IdleCurrency GetCurrentCost => currentCost;
+    public int GetCurrentLevel => level;
+
     public void UpdateSpeed()
     {
         level++;
+        UpdateCost();
+    }
+
+    public void SetUp()
+    {
         UpdateCost();
     }
 

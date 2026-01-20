@@ -2,7 +2,10 @@ public enum MeshType
 {
     None,
     Grass,
-    Wheat
+    Wheat,
+    Sunflower,
+    WheatYellow,
+    Corn
 }
 
 

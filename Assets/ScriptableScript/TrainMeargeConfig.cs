@@ -5,14 +5,24 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "TrainMeargeConfig", menuName = "Scriptable Objects/TrainMeargeConfig")]
 public class TrainMeargeConfig : ScriptableObject
 {
-    public IdleCurrency baseCoast;
+    // public IdleCurrency baseCoast;
     public int level = 1;
-    public List<MeargeMultiplierData> meargeMultiplierDatas;
+    // public List<MeargeMultiplierData> meargeMultiplierDatas;
     public IdleCurrency currentCost;
+
+
+    public int GetCurrentLevel => level;
+    public IdleCurrency GetCurrentCost => currentCost;
+
 
     public void UpdateMearge()
     {
         level++;
+        UpdateCost();
+    }
+
+    public void SetUp()
+    {
         UpdateCost();
     }
 
@@ -44,17 +54,6 @@ public class TrainMeargeConfig : ScriptableObject
             currentCost = (IdleCurrency)(1235.71f * level) - 37814.29f;
         }
         Debug.Log($"Current Cost - {currentCost}");
-
-        // foreach (var item in meargeMultiplierDatas)
-        // {
-        //     if (level >= 0 && level <= 10)
-        //     {
-        //         if (level >= item.startLevel && level <= item.endLevel)
-        //         {
-        //             item
-        //         }
-        //     }
-        // }
     }
 
 

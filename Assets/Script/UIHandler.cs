@@ -5,12 +5,34 @@ using UnityEngine.UI;
 
 public class UIHandler : MonoBehaviour
 {
+    [Header("Add Boggy")]
     public Button addBoggy;
+    public TextMeshProUGUI boggyAddCostText;
+    public TextMeshProUGUI boggyAddLevelText;
+    public TextMeshProUGUI boggyCountText;
+    public Image addBoggyFillImage;
+
+    [Header("Mearge")]
     public Button meargeBoggy;
+    public TextMeshProUGUI meargeCostText;
+
+    [Header("Speed")]
     public Button speedBoggy;
+    public TextMeshProUGUI speedCostText;
+    public TextMeshProUGUI speedLevelText;
+
+    [Header("Capcaity")]
     public Button capcityBoggy;
+    public TextMeshProUGUI capacityAmountText;
+    public TextMeshProUGUI capacityLevelText;
+    public TextMeshProUGUI totalCapacityText;
+    private StorageBoggyConfig storageBoggyConfig;
+    private TrainSpeedConfig trainSpeedConfig;
+    private TrainMeargeConfig trainMeargeConfig;
+
+
+
     public TextMeshProUGUI levelCompleteProgressText;
-    public TextMeshProUGUI addBoggyCostText;
 
     void Start()
     {
@@ -28,11 +50,13 @@ public class UIHandler : MonoBehaviour
     private void OnClickIncreaseStorageCapacity()
     {
         GameManager.instance.UpdateStorageCapacity();
+        SetUpCapcityText();
     }
 
     private void OnClickIncreaseBoggySpeed()
     {
         GameManager.instance.IncreaseTrainSpeed();
+        SetUpSpeedText();
     }
 
     private void OnClickMeargeBoggy()
@@ -43,11 +67,43 @@ public class UIHandler : MonoBehaviour
     private void OnClickAddBoggy()
     {
         GameManager.instance.ADDBoggy();
-        UpdateAddBoggyCost();
+        SetUpAddBoggyText();
     }
-    private void UpdateAddBoggyCost()
+
+    public void SetUpCapcityText()
     {
-        addBoggyCostText.text = GameManager.instance.trainManager.boggyAddCost.ToShortString();
+        storageBoggyConfig = GameManager.instance.trainManager.storageBoggy.storageBoggyConfig;
+
+        capacityLevelText.text = $"lvl {storageBoggyConfig.GetCurrentLevel}";
+        capacityAmountText.text = $"upgrade cost - {storageBoggyConfig.GetCurrentUpgradeCost}";
+        totalCapacityText.text = $"Capacity - {storageBoggyConfig.GetCapacity}";
+    }
+    public void SetUpSpeedText()
+    {
+        if (trainSpeedConfig == null)
+        {
+            trainSpeedConfig = GameManager.instance.trainManager.trainSpeedConfig;
+        }
+
+        speedLevelText.text = $"lvl {trainSpeedConfig.GetCurrentLevel}";
+        speedCostText.text = $"cost {trainSpeedConfig.GetCurrentCost}";
+    }
+    public void SetUpMeargeText()
+    {
+        if (trainMeargeConfig == null)
+        {
+            trainMeargeConfig = GameManager.instance.trainManager.trainMeargeConfig;
+        }
+
+        meargeCostText.text = $"{trainMeargeConfig.GetCurrentCost}";
+    }
+
+    public void SetUpAddBoggyText()
+    {
+        boggyAddCostText.text = GameManager.instance.trainManager.boggyAddCost.ToShortString();
+        boggyAddLevelText.text = $"lvl {GameManager.instance.trainManager.trainSaveData.boggyConfigIndex + 1}";
+        boggyCountText.text = $"{GameManager.instance.currentBoggyData.currentBoggyCount}/{GameManager.instance.currentBoggyData.maxBoggyCount}";
+        addBoggyFillImage.fillAmount = GameManager.instance.currentBoggyData.GetProgress();
     }
 
 }

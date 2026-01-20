@@ -24,6 +24,10 @@ public class ClockwiseRingGenerator : MonoBehaviour
 
     public SplineGenerator splineGen;
     public TrainSplineDriver trainSplineDriver;
+    public GameManager gameManager;
+
+
+
 
     [Button]
     public void Generate()
@@ -62,6 +66,7 @@ public class ClockwiseRingGenerator : MonoBehaviour
         }
 
         isGenerating = false;
+        // gameManager.SaveGrid("level_01");
         Debug.Log("Generation Complete. Ab aap Grids ko 'isClear' mark karke Spline generate kar sakte hain.");
     }
 
@@ -91,12 +96,21 @@ public class ClockwiseRingGenerator : MonoBehaviour
         newGrid.name = $"Grid_{posX}_{posZ}";
         newGrid.splineGenerator = splineGen;
         newGrid.trainSplineDriver = trainSplineDriver;
+        newGrid.currentHealth = newGrid.maxHealth;
         // newGrid.gameObject.layer = 7; //grid layer on 7 index //asign direct on prefab
 
         spawnedCubes.Add(newGrid);
         gridLookup[newGrid.gridPosition] = newGrid;
 
         AssignNeighbors(newGrid, posX, posZ);
+
+        // if (gameManager != null)
+        // {
+        //     gameManager.gridSaveData ??= new();
+        //     gameManager.gridSaveData.AddData(GetSerializableData(newGrid));
+        // }
+
+
         yield return new WaitForSeconds(delayBetweenCubes);
     }
 
@@ -115,10 +129,33 @@ public class ClockwiseRingGenerator : MonoBehaviour
         }
     }
 
-    public ModularGridAligner modularGridAligner;
-    [Button]
-    private void CreateTrack()
-    {
-        // modularGridAligner.AlignModularPieces(spawnedCubes);
-    }
+    // public GridCellData GetSerializableData(CustomeGrid cell)
+    // {
+    //     GridCellData data = new GridCellData
+    //     {
+    //         // 1. Assign Basic Variables
+    //         meshType = cell.meshType,
+    //         isClear = cell.isClear,
+    //         isUsable = cell.isUsable,
+    //         isOuterBoundary = cell.isOuterBoundary,
+    //         isPermanentlyDisabled = cell.isPermanentlyDisabled,
+    //         gridLayerInt = cell.gridLayerInt,
+    //         gridPosition = cell.gridPosition, // Vector2
+    //         objectIndex = cell.objectIndex,
+    //         maxHealth = cell.maxHealth,
+    //         currentHealth = cell.currentHealth,
+
+    //         // 2. Assign Neighbors
+    //         // Assuming neighbors are simply +1 or -1 from current position
+    //         neighbors = new NeighborData
+    //         {
+    //             left = cell.leftGrid.gridPosition,
+    //             right = cell.rightGrid.gridPosition,
+    //             top = cell.topGrid.gridPosition,
+    //             bottom = cell.bottomGrid.gridPosition
+    //         }
+    //     };
+
+    //     return data;
+    // }
 }

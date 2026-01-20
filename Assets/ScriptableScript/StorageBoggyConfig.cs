@@ -21,9 +21,12 @@ public class StorageBoggyConfig : ScriptableObject
     [Header("Cost")]
     public IdleCurrency currentCost;
 
+    public int GetCurrentLevel => level;
+    public IdleCurrency GetCurrentUpgradeCost => currentCost;
+
     public void SetUp()
     {
-        currentCapacity = baseCapacity + (incremeantValue * level);
+        currentCapacity = baseCapacity + (incremeantValue * (level - 1));
         currentCost = 20;
     }
 
@@ -35,6 +38,10 @@ public class StorageBoggyConfig : ScriptableObject
         UpdateCost();
     }
 
+    public void SetUpCoast()
+    {
+        UpdateCost();
+    }
     private void UpdateCost()
     {
         var (isFound, data) = CheckDirectLevel();
@@ -49,8 +56,9 @@ public class StorageBoggyConfig : ScriptableObject
         double scale = Math.Pow(10, Math.Abs(multiplierData.removeNumberOfDecimal));
         double newValue = Math.Round(powerValue / scale) * scale;
         // IdleCurrency newUpgradePrice = (IdleCurrency)Mathf.Pow(Mathf.Round(level), multiplierData.multiplier);
-        IdleCurrency newUpgradePrice = (IdleCurrency)newValue;
-        Debug.Log($"New upgrade Price - {newUpgradePrice}");
+        // IdleCurrency newUpgradePrice = (IdleCurrency)newValue;
+        currentCost = (IdleCurrency)newValue;
+        Debug.Log($"New upgrade Price - {currentCost}");
 
     }
 

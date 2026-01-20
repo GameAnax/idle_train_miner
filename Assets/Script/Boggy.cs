@@ -24,10 +24,10 @@ public partial class Boggy : MonoBehaviour
 
 
 
-    public void SetBoggyData(int boggyIndex, BoggyType boggyType = BoggyType.Boggy_1)
+    public void SetBoggyData(int boggyIndex)
     {
         index = boggyIndex;
-        boggyLevel = boggyTypeDatas.FindIndex(i => i.boggyType == boggyType);
+        // boggyLevel = boggyTypeDatas.FindIndex(i => i.boggyType == boggyType);
         foreach (var item in boggyTypeDatas)
         {
             item.ActivateNewBoggy(boggyType);
@@ -63,6 +63,22 @@ public partial class Boggy : MonoBehaviour
         boggyDamage.damageValue = GameManager.instance.boggyConfigs[boggyLevel].boggyDamage;
         UpdateUI();
 
+    }
+    public void SetBoggy(int saveBoggyLevel)
+    {
+        saveBoggyLevel = Mathf.Min(saveBoggyLevel, boggyTypeDatas.Count - 1);
+
+        for (int i = 0; i < boggyTypeDatas.Count; i++)
+        {
+            boggyTypeDatas[i].boggyObj.SetActive(false);
+        }
+
+        boggyTypeDatas[saveBoggyLevel].boggyObj.SetActive(true);
+        boggyType = boggyTypeDatas[saveBoggyLevel].boggyType;
+        //TODO:- Update damage
+        // boggyDamage.damageValue = GameManager.instance.boggyConfigs.Find(i => i.boggyType == boggyType).boggyDamage;
+        boggyDamage.damageValue = GameManager.instance.boggyConfigs[saveBoggyLevel].boggyDamage;
+        UpdateUI();
     }
     public void DestroyObj()
     {

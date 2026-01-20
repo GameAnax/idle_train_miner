@@ -12,10 +12,14 @@ public class StorageBoggy : MonoBehaviour
 
     public List<Debries> collectedDebries;
 
-    void Start()
+    void Awake()
     {
         storageBoggyConfig = Instantiate(storageBoggyConfig);
         storageBoggyConfig.SetUp();
+    }
+
+    void Start()
+    {
     }
 
     public void SetUpDebrie(Debries debries)

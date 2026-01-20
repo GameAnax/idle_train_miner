@@ -65,5 +65,5 @@ MonoBehaviour:
     Value: 0
     Exp: 0
   currentCost:
-    Value: 0
-    Exp: 0
+    Value: 1
+    Exp: 2

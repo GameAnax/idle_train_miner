@@ -103,7 +103,7 @@ public class GridRenderManager : MonoBehaviour
                     meshData.ListOfCOllisionBendings[i][j].y = 1;
 
                     meshData.listOfColors[i][j] = meshData.color;
-                    meshData.speed[i][j] = 0.2f;
+                    meshData.speed[i][j] = 1f;
                 }
                 meshData.matrixBatches.Add(batch);
             }

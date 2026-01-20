@@ -1,6 +1,8 @@
 using UnityEngine;
 using Dreamteck.Splines;
 using System.Collections.Generic;
+using System.Linq;
+
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -11,6 +13,7 @@ public class TrainLoopHandler : MonoBehaviour
     public SplineFollower follower;
     public SplineGenerator splineGen;
     public TrainSplineDriver trainSplineDriver;
+    public TrainManager trainManager;
 
     public SplineComputer[] splines = new SplineComputer[3];
     private int currentIndex = 0;
@@ -29,10 +32,17 @@ public class TrainLoopHandler : MonoBehaviour
         pointsPerSpline = customeGrids.Count / 3;
         // Debug.Log($"Point on Each spline - {pointsPerSpline}");
 
-        UpdateSpline(spline: splines[0]);
-        UpdateSpline(spline: splines[1]);
+        if (trainManager.IsPathAvailable())
+        {
+            trainManager.Load();
+        }
+        else
+        {
+            UpdateSpline(spline: splines[0]);
+            UpdateSpline(spline: splines[1]);
 
-        MergeTwoSplines();
+            MergeTwoSplines();
+        }
 
         follower = GetComponent<SplineFollower>();
         // follower.spline = splines[splineCurrentIndex];
@@ -54,31 +64,37 @@ public class TrainLoopHandler : MonoBehaviour
 
 
             MergeTwoSplines();
-
-
-
-            // int indexForUpdatespline = splineCurrentIndex + 2;
-            // int index = indexForUpdatespline % splines.Length;
-            // UpdateSpline(spline: splines[index]);
-
-            // int index_nextSplineForAsssignToTrain = splineCurrentIndex + 1;
-            // index = index_nextSplineForAsssignToTrain % splines.Length;
-            // follower.spline = splines[index];
-
-            // follower.SetPercent(0);
-            // follower.RebuildImmediate();
-
-            // currentSplineComputer = splines[index];
-
-            // splineCurrentIndex++;
-            //TODO:- will reset splinecurrentindex for now not needed
-
-
-            // foreach (var item in trainSplineDriver.boggies)
-            // {
-            //     item.wagon.GetSegment.spline = follower.spline;
-            // }
         };
+    }
+
+    public void UpdateSplineOnStart()
+    {
+        lastCustomeGridAddedInSpline = customeGrids.Find(i => i.gridPosition == trainManager.trainSaveData.lastGridPosition);
+
+        SplinePoint[] newMainPoints = new SplinePoint[trainManager.trainSaveData.mainSplinePoints.Count];
+        for (int i = 0; i < newMainPoints.Length; i++)
+        {
+            newMainPoints[i] = new SplinePoint();
+            newMainPoints[i].position = trainManager.trainSaveData.mainSplinePoints[i];
+            newMainPoints[i].normal = Vector3.up;
+            newMainPoints[i].size = 1f;
+        }
+        combinedSplineComputer.SetPoints(newMainPoints);
+        combinedSplineComputer.RebuildImmediate();
+
+
+        SplinePoint[] newPoints = new SplinePoint[trainManager.trainSaveData.previewsSplinePoints.Count];
+        for (int i = 0; i < newPoints.Length; i++)
+        {
+            newPoints[i] = new SplinePoint();
+            newPoints[i].position = trainManager.trainSaveData.previewsSplinePoints[i];
+            newPoints[i].normal = Vector3.up;
+            newPoints[i].size = 1f;
+        }
+        previewsCombinedSplineComputer.SetPoints(newPoints);
+        previewsCombinedSplineComputer.RebuildImmediate();
+        trainSplineDriver.UpdateSpline();
+
     }
 
     public void MergeTwoSplines()
@@ -92,10 +108,13 @@ public class TrainLoopHandler : MonoBehaviour
         // 2. Naya array banana jo dono ka total size ho
         SplinePoint[] combinedPoints = new SplinePoint[pointsA.Length + pointsB.Length];
 
+        trainManager.trainSaveData.mainSplinePoints?.Clear();
+
         // 3. Pehle Spline A ke points copy karna
         for (int i = 0; i < pointsA.Length; i++)
         {
             combinedPoints[i] = pointsA[i];
+            trainManager.trainSaveData.mainSplinePoints.Add(pointsA[i].position);
         }
 
         // 4. Phir Spline B ke points copy karna
@@ -103,6 +122,7 @@ public class TrainLoopHandler : MonoBehaviour
         {
             // Index offset: pointsA.Length se shuru karenge
             combinedPoints[pointsA.Length + i] = pointsB[i];
+            trainManager.trainSaveData.mainSplinePoints.Add(pointsB[i].position);
         }
 
         // 5. Main Spline ko naye points dena
@@ -128,6 +148,13 @@ public class TrainLoopHandler : MonoBehaviour
         previewsCombinedSplineComputer.RebuildImmediate();
         trainSplineDriver.UpdateSpline();
 
+        var pointList = previewsCombinedSplineComputer.GetPoints();
+        trainManager.trainSaveData.previewsSplinePoints.Clear();
+        for (int i = 0; i < pointList.Length; i++)
+        {
+            trainManager.trainSaveData.previewsSplinePoints.Add(pointList[i].position);
+        }
+
         // Debug.Log("Spline copied successfully!");
     }
 
@@ -148,6 +175,10 @@ public class TrainLoopHandler : MonoBehaviour
         for (int i = 0; i < pointsPerSpline; i++)
         {
             lastCustomeGridAddedInSpline = customeGrids[currentIndex];
+            if (lastCustomeGridAddedInSpline != null)
+            {
+                trainManager.trainSaveData.lastGridPosition = lastCustomeGridAddedInSpline.gridPosition;
+            }
             Vector3 currentPos = customeGrids[currentIndex].transform.position;
             pointPositions.Add(currentPos);
             if (i < pointsPerSpline)
