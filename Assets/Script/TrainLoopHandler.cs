@@ -69,6 +69,8 @@ public class TrainLoopHandler : MonoBehaviour
 
     public void UpdateSplineOnStart()
     {
+        customeGrids = new(splineGen.splineGridPath);
+
         lastCustomeGridAddedInSpline = customeGrids.Find(i => i.gridPosition == trainManager.trainSaveData.lastGridPosition);
 
         SplinePoint[] newMainPoints = new SplinePoint[trainManager.trainSaveData.mainSplinePoints.Count];
