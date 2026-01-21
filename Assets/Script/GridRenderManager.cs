@@ -14,11 +14,12 @@ public class GridRenderManager : MonoBehaviour
         public Mesh mesh;
         public Material material;
         public Color color;
-        public List<CustomeGrid> allGridCells = new List<CustomeGrid>();
+        public List<CustomeGrid> allGridCells = new();
         public List<Matrix4x4[]> matrixBatches = new();
-        public List<Vector4[]> ListOfCOllisionBendings = new List<Vector4[]>();
-        public List<Vector4[]> listOfColors = new List<Vector4[]>();
-        public List<float[]> speed = new List<float[]>();
+        public List<Vector4[]> ListOfCOllisionBendings = new();
+        public List<Vector4[]> listOfColors = new();
+        public List<float[]> speed = new();
+        public List<float[]> grassHeight = new();
     }
 
 
@@ -58,6 +59,7 @@ public class GridRenderManager : MonoBehaviour
                 mpb.SetVectorArray("_CollisionBending", item.Value.ListOfCOllisionBendings[0]);
                 mpb.SetVectorArray("_TintColor2", item.Value.listOfColors[0]);
                 mpb.SetFloatArray("_Speed", item.Value.speed[0]);
+                mpb.SetFloatArray("_Height", item.Value.grassHeight[0]);
                 Graphics.DrawMeshInstanced(item.Value.mesh, 0, item.Value.material, innerItem, innerItem.Length, mpb);
             }
         }
@@ -85,13 +87,16 @@ public class GridRenderManager : MonoBehaviour
                 meshData.ListOfCOllisionBendings.Add(new Vector4[batchCount]);
                 meshData.listOfColors.Add(new Vector4[batchCount]);
                 meshData.speed.Add(new float[batchCount]);
+                meshData.grassHeight.Add(new float[batchCount]);
+
                 for (int j = 0; j < batchSize; j++)
                 {
-                    meshData.allGridCells[i + j].gpuMeshIndex = i + j;
-                    if (meshData.allGridCells[i + j].isClear) continue;
-                    Vector3 pos = meshData.allGridCells[i + j].transform.position;
-                    Quaternion rot = meshData.allGridCells[i + j].transform.rotation;
-                    Vector3 scale = meshData.allGridCells[i + j].transform.localScale;
+                    var tempCustomeGrid = meshData.allGridCells[i + j];
+                    tempCustomeGrid.gpuMeshIndex = i + j;
+                    if (tempCustomeGrid.isClear) continue;
+                    Vector3 pos = tempCustomeGrid.transform.position;
+                    Quaternion rot = tempCustomeGrid.transform.rotation;
+                    Vector3 scale = tempCustomeGrid.transform.localScale;
 
                     pos.x += UnityEngine.Random.Range(-0.3f, 0.3f);
                     pos.z += UnityEngine.Random.Range(-0.3f, 0.3f);
@@ -104,6 +109,7 @@ public class GridRenderManager : MonoBehaviour
 
                     meshData.listOfColors[i][j] = meshData.color;
                     meshData.speed[i][j] = 1f;
+                    meshData.grassHeight[i][j] = tempCustomeGrid.currentHealth / tempCustomeGrid.maxHealth;
                 }
                 meshData.matrixBatches.Add(batch);
             }
@@ -173,6 +179,13 @@ public class GridRenderManager : MonoBehaviour
         int batchIndex = gpuMeshIndex / batchCount;
         int instanceIndex = gpuMeshIndex % batchCount;
         meshData.speed[batchIndex][instanceIndex] = _speed;
+    }
+    public void UpdateGrassHeight(MeshType meshType, int gpuMeshIndex, float value)
+    {
+        MeshData meshData = keyValuePairs[meshType];
+        int batchIndex = gpuMeshIndex / batchCount;
+        int instanceIndex = gpuMeshIndex % batchCount;
+        meshData.grassHeight[batchIndex][instanceIndex] = value;
     }
 }
 

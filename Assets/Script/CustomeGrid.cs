@@ -210,6 +210,8 @@ public class CustomeGrid : MonoBehaviour
         StopAllCoroutines();
         StartCoroutine(BlinkRoutine());
         StartCoroutine(SpeedRoutine());
+        GridRenderManager.instance.UpdateGrassHeight(meshType: meshType, gpuMeshIndex, currentHealth / maxHealth);
+
 
         if (currentHealth <= 0)
         {
