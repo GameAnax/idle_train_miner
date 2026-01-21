@@ -18,6 +18,10 @@ public class GameManager : MonoBehaviour
     public List<BoggyConfig> boggyConfigs;
     // public List<BoggyData> boggyDatas = new();
     public BoggyData currentBoggyData = null;
+    public List<Debries> debriesList = new();
+    public DebriesDataForSave debriesDataForSave = new();
+
+    private Dictionary<Vector2, List<DebriesData>> _debrisLookup = new();
 
 
     private string GetPath(string fileName) => Path.Combine(Application.persistentDataPath, fileName + ".json");
@@ -33,6 +37,18 @@ public class GameManager : MonoBehaviour
     void OnDisable()
     {
         SaveGrid("level_01");
+
+        debriesDataForSave.debriesDatas.Clear();
+        foreach (Debries debries in debriesList)
+        {
+            debriesDataForSave.debriesDatas.Add(new()
+            {
+                gridPosition = debries.gridPostion,
+                debriesPosition = debries.currentPosition,
+                damageValue = debries.debriCapacity
+            });
+        }
+        SaveDebriData();
     }
     void Start()
     {
@@ -73,7 +89,6 @@ public class GameManager : MonoBehaviour
         {
             LoadGrid(clockwiseRingGenerator.spawnedCubes, "level_01");
         }
-
     }
     public void SetCurrentBoggyConfigOnStart()
     {
@@ -171,6 +186,57 @@ public class GameManager : MonoBehaviour
         File.WriteAllText(GetPath(fileName), json);
         Debug.Log("save success");
     }
+    public void SaveDebriData()
+    {
+        JsonSerializerSettings settings = new JsonSerializerSettings
+        {
+            Formatting = Formatting.Indented,
+            ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+        };
+
+        string json = JsonConvert.SerializeObject(debriesDataForSave, settings);
+        File.WriteAllText(GetPath("debries"), json);
+        Debug.Log("save success debries data");
+    }
+    public void LoadDebriData()
+    {
+        string path = GetPath("debries");
+        if (!File.Exists(path))
+        {
+            Debug.LogError("Debries Not Found");
+            return;
+        }
+        string json = File.ReadAllText(path);
+        debriesDataForSave = JsonConvert.DeserializeObject<DebriesDataForSave>(json);
+    }
+    public void LoadAndPopulateDictionary()
+    {
+        LoadDebriData(); // Your existing load method
+
+        // 1. Clear existing data without destroying the dictionary object
+        _debrisLookup.Clear();
+
+        // 2. Cache the list reference to avoid repeated property access
+        var dataList = debriesDataForSave.debriesDatas;
+        int count = dataList.Count;
+
+        // 3. Use a for loop (slightly faster than foreach in some Unity versions)
+        for (int i = 0; i < count; i++)
+        {
+            Vector2 gridPos = dataList[i].gridPosition;
+            DebriesData debriesData = dataList[i];
+
+            if (_debrisLookup.TryGetValue(gridPos, out List<DebriesData> list))
+            {
+                list.Add(debriesData);
+            }
+            else
+            {
+                // Only allocate a new list if the key is unique
+                _debrisLookup[gridPos] = new List<DebriesData> { debriesData };
+            }
+        }
+    }
 
     public bool IsPathAvailable(string fileName)
     {
@@ -196,6 +262,8 @@ public class GameManager : MonoBehaviour
         string json = File.ReadAllText(path);
         gridSaveData = JsonConvert.DeserializeObject<GridSaveData>(json);
 
+        LoadAndPopulateDictionary();
+
         foreach (GridCellData data in gridSaveData.allCells)
         {
             if (scriptLookup.TryGetValue(data.gridPosition, out CustomeGrid targetScript))
@@ -215,6 +283,11 @@ public class GameManager : MonoBehaviour
                 if (data.currentHealth <= 0)
                 {
                     GridRenderManager.instance.HideMesh(meshType: data.meshType, gpuMeshIndex: data.gpuMeshIndex);
+                }
+
+                if (_debrisLookup.TryGetValue(data.gridPosition, out List<DebriesData> debrisPositions))
+                {
+                    targetScript.GenerateDebriesOnLevelStart(debrisPositions);
                 }
             }
         }

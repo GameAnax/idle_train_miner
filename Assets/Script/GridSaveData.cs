@@ -59,4 +59,22 @@ public class TrainSaveData
     public int boggyCountCurrentConfig;
     public List<int> boggyLevel;
     public Vector2 lastGridPosition;
+
+    public double trainSplinePercentage;
+}
+
+
+
+
+[System.Serializable]
+public class DebriesDataForSave
+{
+    public List<DebriesData> debriesDatas = new();
+}
+
+public class DebriesData
+{
+    public Vector2 gridPosition;
+    public Vector3 debriesPosition;
+    public int damageValue;
 }

@@ -161,6 +161,8 @@ public class TrainManager : MonoBehaviour
             ReferenceLoopHandling = ReferenceLoopHandling.Ignore
         };
 
+        trainSaveData.trainSplinePercentage = trainSplineDriver.GetSplineFollower.result.percent;
+
         string json = JsonConvert.SerializeObject(trainSaveData, settings);
         File.WriteAllText(GetPath("trainData"), json);
         Debug.Log("save success");
@@ -224,6 +226,9 @@ public class TrainManager : MonoBehaviour
         GameManager.instance.uIHandler.SetUpCapcityText();
         GameManager.instance.uIHandler.SetUpSpeedText();
         GameManager.instance.uIHandler.SetUpMeargeText();
+
+        trainSplineDriver.GetSplineFollower.SetPercent(trainSaveData.trainSplinePercentage);
+        trainSplineDriver.MoveBogeys();
     }
 
     public bool IsPathAvailable()

@@ -390,8 +390,6 @@ public class CustomeGrid : MonoBehaviour
         if (myStraightPiece != null) myStraightPiece.SetActive(false);
         if (myCornerPiece != null) myCornerPiece.SetActive(false);
         currentActivePiece = null;
-
-        // UpdateDerbiesPosition();
     }
 
     public bool IsInTrackList(CustomeGrid gridToCheck)
@@ -454,14 +452,40 @@ public class CustomeGrid : MonoBehaviour
         }
         Debries debri = Instantiate(debriPrefab, cubeContainer.position, Quaternion.identity, cubeContainer);
         debri.debriCapacity = damageValue;
+        debri.UpdateData(gridPosition);
         debri.jumpEffect.StartJump(startPosition, GetRandom(transform.position), 1, 0.2f);
+        GameManager.instance.debriesList.Add(debri);
     }
+    public void GenerateDebriesOnLevelStart(List<DebriesData> debriesDatas)
+    {
+        int count = debriesDatas.Count;
 
+        if (cubeContainer == null)
+        {
+            GameObject containerObj = new("CubeContainer");
+            cubeContainer = containerObj.transform;
+            cubeContainer.SetParent(this.transform);
+            cubeContainer.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+        }
+
+        for (int i = 0; i < count; i++)
+        {
+            var item = debriesDatas[i];
+            Debries debri = Instantiate(debriPrefab, cubeContainer.position, Quaternion.identity, cubeContainer);
+            debri.debriCapacity = item.damageValue;
+            debri.transform.position = GetRandom(transform.position);
+            GameManager.instance.debriesList.Add(debri);
+        }
+    }
     public void SetUpNeighbourDebries()
     {
         foreach (Transform item in cubeContainer)
         {
             item.position = GetRandom(cubeContainer.transform.position);
+            if (item.TryGetComponent(out Debries debries))
+            {
+                debries.UpdateData(gridPosition);
+            }
         }
     }
 }
