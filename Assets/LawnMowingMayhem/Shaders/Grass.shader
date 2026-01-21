@@ -39,7 +39,7 @@
             // float _Speed;
             float _Amount;
             float _NoiseScale;
-            float _Height;
+            // float _Height;
             float _ColorHeight;
 
             struct Input
@@ -63,6 +63,7 @@
                 UNITY_DEFINE_INSTANCED_PROP(fixed4, _TintColor1)
                 UNITY_DEFINE_INSTANCED_PROP(fixed4, _TintColor2)
                 UNITY_DEFINE_INSTANCED_PROP(float,  _Speed)
+                UNITY_DEFINE_INSTANCED_PROP(float,  _Height)
             UNITY_INSTANCING_BUFFER_END(Props)
 
             float hash(float n) { return frac(sin(n)*43758.5453); }
@@ -89,6 +90,7 @@
                 
                 fixed4 collisionBend = UNITY_ACCESS_INSTANCED_PROP(Props, _CollisionBending);
                 float tempSpeed = UNITY_ACCESS_INSTANCED_PROP(Props, _Speed);
+                float tempHeight = UNITY_ACCESS_INSTANCED_PROP(Props, _Height);
                 
                 // Apply height scale
                 input.vertex.y *= (collisionBend.y > 0 ? collisionBend.y : 1.0); 
@@ -102,7 +104,7 @@
                 float worldNoise = noise(worldPosxz * _NoiseScale + float3(1, 0, 0) * _Time.y * tempSpeed) - 0.5;
                 float worldNoise2 = noise(worldPosxz * _NoiseScale + float3(1, 0, 0) * _Time.y * tempSpeed + 100.0) - 0.5;
                 
-                input.vertex.y = input.vertex.y * heightNoise * _Height;
+                input.vertex.y = input.vertex.y * heightNoise * tempHeight;
                 float yy = input.vertex.y * input.vertex.y * _Amount;
                 
                 input.vertex.x += (worldNoise + collisionBend.x * 2.0) * yy;
