@@ -77,5 +77,5 @@ public class DebriesData
     public Vector2 gridPosition;
     public Vector3 debriesPosition;
     public int damageValue;
-    public Color color;
+    public string colorHex;
 }

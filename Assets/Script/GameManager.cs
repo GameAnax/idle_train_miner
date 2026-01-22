@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
                 gridPosition = debries.gridPostion,
                 debriesPosition = debries.currentPosition,
                 damageValue = debries.debriCapacity,
-                // color = debries.GetColor
+                colorHex = "#" + ColorUtility.ToHtmlStringRGBA(debries.GetColor)
             });
         }
         SaveDebriData();

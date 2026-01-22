@@ -493,7 +493,14 @@ public class CustomeGrid : MonoBehaviour
             Debries debri = Instantiate(debriPrefab, cubeContainer.position, Quaternion.identity, cubeContainer);
             debri.debriCapacity = item.damageValue;
             debri.transform.position = GetRandom(transform.position);
-            debri.UpdateColor(item.color);
+            if (UnityEngine.ColorUtility.TryParseHtmlString(item.colorHex, out Color loadedColor))
+            {
+                debri.UpdateColor(loadedColor);
+            }
+            else
+            {
+                debri.UpdateColor(color: Color.white);
+            }
             GameManager.instance.debriesList.Add(debri);
         }
     }
