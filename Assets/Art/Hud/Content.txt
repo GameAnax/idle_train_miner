@@ -1,0 +1,9 @@
+Train Miner
+---------------------------
+Balance Bar text Colour               - ffffff
+Balance bar box colour                - 051e3a / alpha 15%
+level progress text Colour            - ffffff / border color : 000000
+bottom box text colour                - ffffff / border color : 000000
+Lv.6 Text Colour                      - 004077
+Lv.4 text colour                      - 3c4358
+Disable info text colour              - f25229 
