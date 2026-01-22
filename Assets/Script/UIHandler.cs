@@ -78,7 +78,8 @@ public class UIHandler : MonoBehaviour
 
         capacityLevelText.text = $"lvl {storageBoggyConfig.GetCurrentLevel}";
         capacityAmountText.text = $"upgrade cost - {storageBoggyConfig.GetCurrentUpgradeCost}";
-        totalCapacityText.text = $"Capacity - {storageBoggyConfig.GetCapacity}";
+        UpdateCapacityStorageProgress((float)storageBoggyConfig.GetFilled(), (int)storageBoggyConfig.filledCapacity, (int)storageBoggyConfig.GetCapacity);
+        // totalCapacityText.text = $"Capacity - {storageBoggyConfig.GetCapacity}";
     }
     public void UpdateCapacityStorageProgress(float value, int fillAmount, int capcity)
     {
