@@ -169,3 +169,6 @@ MonoBehaviour:
   jumpEffect: {fileID: 5751293474449507817}
   debriCapacity: 0
   isCollected: 0
+  gridPostion: {x: 0, y: 0}
+  currentPosition: {x: 0, y: 0, z: 0}
+  rendererBlock: {fileID: 2420653085423636503}

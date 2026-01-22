@@ -23,6 +23,13 @@ public class CustomeGrid : MonoBehaviour
     public float maxHealth = 100f;
     public float currentHealth;
 
+    [Header("Chunk Capacity")]
+    public int chunkCapacity;
+
+    [Header("Color For Chunk")]
+    public Color topColor;
+    public Color bottomColor;
+
     [Header("Blink Settings")]
     public Color blinkColor = Color.white;
     public float blinkDuration = 0.15f;
@@ -53,6 +60,7 @@ public class CustomeGrid : MonoBehaviour
     private MaterialPropertyBlock propBlock;
     private bool _isPendingSplineUpdate = false;
     private int lastDamageValue;
+    public bool isSpawnChunk;
 
     private static readonly int BaseColorId = Shader.PropertyToID("_BaseColor");
 
@@ -202,7 +210,13 @@ public class CustomeGrid : MonoBehaviour
 
         int tempDamageValue = (int)amount;
         currentHealth -= tempDamageValue;
-        lastDamageValue = tempDamageValue;
+
+        //Calculation
+        int chunkDrop = (int)(maxHealth - (currentHealth - tempDamageValue)) / chunkCapacity;
+        isSpawnChunk = chunkDrop > 0;
+        lastDamageValue = chunkDrop;
+        //
+
 
         gridCellDataForSave.currentHealth = currentHealth;
 
@@ -285,7 +299,7 @@ public class CustomeGrid : MonoBehaviour
 
         // Back to Original Color
         // SetColor(originalColor);
-        GridRenderManager.instance.BlinkMesh(meshType: meshType, gpuMeshIndex, originalColor);
+        GridRenderManager.instance.BlinkMesh(meshType: meshType, gpuMeshIndex, blinkColor);
         // GridRenderManager.instance.TouchEffect(meshType: meshType, gpuMeshIndex, 1);
 
     }
@@ -413,7 +427,7 @@ public class CustomeGrid : MonoBehaviour
         {
             if (IsInTrackList(rightGrid))
             {
-                rightGrid.GenerateDebrie(transform.position, lastDamageValue);
+                rightGrid.GenerateDebrie(transform.position, lastDamageValue, this);
                 return;
             }
         }
@@ -421,7 +435,7 @@ public class CustomeGrid : MonoBehaviour
         {
             if (IsInTrackList(leftGrid))
             {
-                leftGrid.GenerateDebrie(transform.position, lastDamageValue);
+                leftGrid.GenerateDebrie(transform.position, lastDamageValue, this);
                 return;
             }
         }
@@ -429,7 +443,7 @@ public class CustomeGrid : MonoBehaviour
         {
             if (IsInTrackList(topGrid))
             {
-                topGrid.GenerateDebrie(transform.position, lastDamageValue);
+                topGrid.GenerateDebrie(transform.position, lastDamageValue, this);
                 return;
             }
         }
@@ -437,13 +451,13 @@ public class CustomeGrid : MonoBehaviour
         {
             if (IsInTrackList(bottomGrid))
             {
-                bottomGrid.GenerateDebrie(transform.position, lastDamageValue);
+                bottomGrid.GenerateDebrie(transform.position, lastDamageValue, this);
                 return;
             }
         }
     }
 
-    private void GenerateDebrie(Vector3 startPosition, int damageValue)
+    private void GenerateDebrie(Vector3 startPosition, int damageValue, CustomeGrid hitedGrid = null)
     {
         if (cubeContainer == null)
         {
@@ -454,7 +468,10 @@ public class CustomeGrid : MonoBehaviour
         }
         Debries debri = Instantiate(debriPrefab, cubeContainer.position, Quaternion.identity, cubeContainer);
         debri.debriCapacity = damageValue;
+        debri.Multiplier = hitedGrid.chunkCapacity;
         debri.UpdateData(gridPosition);
+        float t = hitedGrid.currentHealth / hitedGrid.maxHealth;
+        debri.UpdateColor(Color.Lerp(hitedGrid.bottomColor, hitedGrid.topColor, t));
         debri.jumpEffect.StartJump(startPosition, GetRandom(transform.position), 1, 0.2f);
         GameManager.instance.debriesList.Add(debri);
     }
@@ -476,6 +493,7 @@ public class CustomeGrid : MonoBehaviour
             Debries debri = Instantiate(debriPrefab, cubeContainer.position, Quaternion.identity, cubeContainer);
             debri.debriCapacity = item.damageValue;
             debri.transform.position = GetRandom(transform.position);
+            debri.UpdateColor(item.color);
             GameManager.instance.debriesList.Add(debri);
         }
     }

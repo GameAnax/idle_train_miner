@@ -43,6 +43,8 @@ public class CrusherArea : MonoBehaviour
 
     public void TransferDebries() //From Train Storage to crusher
     {
+        bool isStorageAvaialble = GameManager.instance.trainManager.storageBoggy.storageBoggyConfig.filledCapacity > 0;
+        if (!isStorageAvaialble) return;
         foreach (var item in GameManager.instance.trainManager.trainSplineDriver.boggies)
         {
             if (CheckBoggyInsideStorageArea(item.transform.position))

@@ -64,6 +64,7 @@ public class TrainManager : MonoBehaviour
 
         Boggy newBoggy = Instantiate(boggyPrefab, boggyParent);
         newBoggy.SetBoggyData(boggyIndex: boggyIndex);
+        newBoggy.boggyDamage.damageValue = GameManager.instance.currentBoggyData.boggyDamage;
         //TODO:- Set boggy Data
         trainSplineDriver.boggies.Insert(boggyIndex, newBoggy);
 

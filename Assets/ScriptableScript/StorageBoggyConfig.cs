@@ -24,6 +24,10 @@ public class StorageBoggyConfig : ScriptableObject
     public int GetCurrentLevel => level;
     public IdleCurrency GetCurrentUpgradeCost => currentCost;
 
+    public double GetFilled()
+    {
+        return filledCapacity.RealValue / GetCapacity.RealValue;
+    }
     public void SetUp()
     {
         currentCapacity = baseCapacity + (incremeantValue * (level - 1));

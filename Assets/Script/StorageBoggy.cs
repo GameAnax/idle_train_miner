@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class StorageBoggy : MonoBehaviour
@@ -8,7 +9,9 @@ public class StorageBoggy : MonoBehaviour
     public Transform debriesContainer;
     public Vector3 spacing = new Vector3(0.0f, 0.0f, 0.0f); // Cube ki size ke hisaab se gap
     public StorageBoggyConfig storageBoggyConfig;
+    public TextMeshProUGUI coinAmountText;
     private int collectedCount = 0; // Total kitne cubes aaye
+    private int totalCoinCollected = 0;
 
     public List<Debries> collectedDebries;
 
@@ -30,10 +33,18 @@ public class StorageBoggy : MonoBehaviour
         collectedCount += 1;
         ADDDebriesInStorage(tempDebrie.debriCapacity);
         StartCoroutine(MoveCubeToStackLocal(tempDebrie.transform));
+        totalCoinCollected += debries.GetCoinAmount();
+        UpdateText();
     }
     public void UpdateStorage()
     {
         storageBoggyConfig.UpdateCapacity();
+    }
+    public void UpdateText()
+    {
+        coinAmountText.text = $"{totalCoinCollected}";
+        float progress = (float)storageBoggyConfig.GetFilled();
+        GameManager.instance.uIHandler.UpdateCapacityStorageProgress(progress, (int)storageBoggyConfig.filledCapacity, (int)storageBoggyConfig.GetCapacity);
     }
 
 
@@ -66,6 +77,8 @@ public class StorageBoggy : MonoBehaviour
         collectedDebries.Clear();
         storageBoggyConfig.filledCapacity = 0;
         collectedCount = 0;
+        totalCoinCollected = 0;
+        UpdateText();
         return temp;
     }
 

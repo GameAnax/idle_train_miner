@@ -45,7 +45,8 @@ public class GameManager : MonoBehaviour
             {
                 gridPosition = debries.gridPostion,
                 debriesPosition = debries.currentPosition,
-                damageValue = debries.debriCapacity
+                damageValue = debries.debriCapacity,
+                // color = debries.GetColor
             });
         }
         SaveDebriData();
@@ -67,12 +68,12 @@ public class GameManager : MonoBehaviour
         // {
         //     if (!item.isLimitReached) currentBoggyData = item;
         // }
-        if (currentBoggyData == null)
-        {
-            BoggyConfig bogeyConfig = boggyConfigs[0];
-            currentBoggyData = new(maxBoggyCount: bogeyConfig.maxBoggy, currentBoggyCount: bogeyConfig.totalSpawn, boggyType: bogeyConfig.boggyType, isLimitReached: false, boggyDamage: bogeyConfig.boggyDamage);
-            // boggyDatas.Add(currentBoggyData);
-        }
+        // if (currentBoggyData == null)
+        // {
+        //     BoggyConfig bogeyConfig = boggyConfigs[0];
+        //     currentBoggyData = new(maxBoggyCount: bogeyConfig.maxBoggy, currentBoggyCount: bogeyConfig.totalSpawn, boggyType: bogeyConfig.boggyType, isLimitReached: false, boggyDamage: bogeyConfig.boggyDamage);
+        //     // boggyDatas.Add(currentBoggyData);
+        // }
 
         bool isAvailable = IsPathAvailable("level_01");
         if (!isAvailable)

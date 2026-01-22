@@ -75,7 +75,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageValue:
-    Value: 10
+    Value: 1
     Exp: 0
   gridLayer:
     serializedVersion: 2

@@ -38,6 +38,8 @@ public class TrainLoopHandler : MonoBehaviour
         }
         else
         {
+            GameManager.instance.SetCurrentBoggyConfigOnStart();
+
             UpdateSpline(spline: splines[0]);
             UpdateSpline(spline: splines[1]);
 

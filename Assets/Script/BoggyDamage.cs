@@ -47,7 +47,7 @@ public class BoggyDamage : MonoBehaviour
                     boggy.PlayCuttingParticle();
                     grid.TakeDamage(damageValue);
                     currentGridsInBox.Add(grid);
-                    if (!grid.isClear)
+                    if (!grid.isClear && grid.isSpawnChunk)
                         grid.SetCube(transform.position);
                 }
             }

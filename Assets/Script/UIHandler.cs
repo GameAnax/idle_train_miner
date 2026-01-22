@@ -1,4 +1,5 @@
 using System;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -26,6 +27,7 @@ public class UIHandler : MonoBehaviour
     public TextMeshProUGUI capacityAmountText;
     public TextMeshProUGUI capacityLevelText;
     public TextMeshProUGUI totalCapacityText;
+    public Image capacityFillImage;
     private StorageBoggyConfig storageBoggyConfig;
     private TrainSpeedConfig trainSpeedConfig;
     private TrainMeargeConfig trainMeargeConfig;
@@ -77,6 +79,13 @@ public class UIHandler : MonoBehaviour
         capacityLevelText.text = $"lvl {storageBoggyConfig.GetCurrentLevel}";
         capacityAmountText.text = $"upgrade cost - {storageBoggyConfig.GetCurrentUpgradeCost}";
         totalCapacityText.text = $"Capacity - {storageBoggyConfig.GetCapacity}";
+    }
+    public void UpdateCapacityStorageProgress(float value, int fillAmount, int capcity)
+    {
+        // capacityFillImage.fillAmount = value;
+        totalCapacityText.text = $"{fillAmount} / {capcity}";
+        capacityFillImage.DOKill();
+        capacityFillImage.DOFillAmount(value, 0.15f).SetEase(Ease.Linear);
     }
     public void SetUpSpeedText()
     {
