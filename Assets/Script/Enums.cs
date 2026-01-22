@@ -5,7 +5,8 @@ public enum MeshType
     Wheat,
     Sunflower,
     WheatYellow,
-    Corn
+    Corn,
+    Tomato
 }
 
 
