@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using UnityEngine;
 
 public class CrusherArea : MonoBehaviour
@@ -9,6 +10,12 @@ public class CrusherArea : MonoBehaviour
     public List<CustomeGrid> nextGridNeedClear;
     public Collider crusherCollider;
     public Transform debriesStorePoint;
+
+    public Transform windMillFan;
+
+    private bool isRotating = false;
+    private float rotationDuration = 3f;
+    private Vector3 rotationAmount = new Vector3(0, 90, 360);
 
     void Start()
     {
@@ -59,7 +66,7 @@ public class CrusherArea : MonoBehaviour
                 break;
             }
         }
-
+        StartRotation();
     }
 
     private void ClearStorage()
@@ -87,5 +94,20 @@ public class CrusherArea : MonoBehaviour
         {
             nextGridNeedClear = null;
         }
+    }
+
+    private void StartRotation()
+    {
+        if (isRotating) return;
+
+        isRotating = true;
+
+        windMillFan.DORotate(rotationAmount, rotationDuration, RotateMode.FastBeyond360)
+            .SetEase(Ease.InOutQuad) // Slow start -> Fast -> Slow end
+            .OnComplete(() =>
+            {
+                isRotating = false; // Khatam hone par bool reset
+                Debug.Log("Rotation Finished!");
+            });
     }
 }
