@@ -15,24 +15,25 @@ public class CrusherArea : MonoBehaviour
 
     private bool isRotating = false;
     private float rotationDuration = 3f;
-    private Vector3 rotationAmount = new Vector3(0, 90, 360);
+    private int totalRounds = 2;
+    // private Vector3 rotationAmount = new Vector3(0, 0, 360);
 
     void Start()
     {
-        currentGridList = new(startGrid);
-        nextGridNeedClear = new();
-        if (currentGridList[0].leftGrid != null)
-        {
-            nextGridNeedClear.Add(currentGridList[0].leftGrid);
-        }
-        if (currentGridList[1].leftGrid != null)
-        {
-            nextGridNeedClear.Add(currentGridList[1].leftGrid);
-        }
-        if (currentGridList[2].leftGrid != null)
-        {
-            nextGridNeedClear.Add(currentGridList[2].leftGrid);
-        }
+        // currentGridList = new(startGrid);
+        // nextGridNeedClear = new();
+        // if (currentGridList[0].leftGrid != null)
+        // {
+        //     nextGridNeedClear.Add(currentGridList[0].leftGrid);
+        // }
+        // if (currentGridList[1].leftGrid != null)
+        // {
+        //     nextGridNeedClear.Add(currentGridList[1].leftGrid);
+        // }
+        // if (currentGridList[2].leftGrid != null)
+        // {
+        //     nextGridNeedClear.Add(currentGridList[2].leftGrid);
+        // }
     }
 
     public void UpdateArePosition()
@@ -50,12 +51,13 @@ public class CrusherArea : MonoBehaviour
 
     public void TransferDebries() //From Train Storage to crusher
     {
-        bool isStorageAvaialble = GameManager.instance.trainManager.storageBoggy.storageBoggyConfig.filledCapacity > 0;
-        if (!isStorageAvaialble) return;
         foreach (var item in GameManager.instance.trainManager.trainSplineDriver.boggies)
         {
             if (CheckBoggyInsideStorageArea(item.transform.position))
             {
+                bool isStorageAvaialble = GameManager.instance.trainManager.storageBoggy.storageBoggyConfig.filledCapacity > 0;
+                if (!isStorageAvaialble) return;
+
                 //TODO:- Transfer 
                 List<Debries> debries = GameManager.instance.trainManager.storageBoggy.TransferAndClearStorage();
                 foreach (Debries debrie in debries)
@@ -63,10 +65,10 @@ public class CrusherArea : MonoBehaviour
                     debrie.transform.SetParent(debriesStorePoint, false);
                 }
                 Invoke(nameof(ClearStorage), 1f);
+                StartRotation();
                 break;
             }
         }
-        StartRotation();
     }
 
     private void ClearStorage()
@@ -89,6 +91,7 @@ public class CrusherArea : MonoBehaviour
             nextGridNeedClear[0] = currentGridList[0].leftGrid;
             nextGridNeedClear[1] = currentGridList[1].leftGrid;
             nextGridNeedClear[2] = currentGridList[2].leftGrid;
+            UpdateArePosition(); //Check Again is possible to move 
         }
         else
         {
@@ -102,7 +105,9 @@ public class CrusherArea : MonoBehaviour
 
         isRotating = true;
 
-        windMillFan.DORotate(rotationAmount, rotationDuration, RotateMode.FastBeyond360)
+        Vector3 rotationAmount = new Vector3(0, 0, 360 * totalRounds);
+
+        windMillFan.DOLocalRotate(rotationAmount, rotationDuration, RotateMode.FastBeyond360)
             .SetEase(Ease.InOutQuad) // Slow start -> Fast -> Slow end
             .OnComplete(() =>
             {

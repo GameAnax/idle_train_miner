@@ -90,6 +90,7 @@ public class GameManager : MonoBehaviour
         {
             LoadGrid(clockwiseRingGenerator.spawnedCubes, "level_01");
         }
+        crusherArea.UpdateArePosition();
     }
     public void SetCurrentBoggyConfigOnStart()
     {
