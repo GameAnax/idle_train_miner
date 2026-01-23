@@ -21,6 +21,20 @@ public class TrainManager : MonoBehaviour
 
     public TrainSaveData trainSaveData;
 
+
+
+    private bool isEnoughMoneyForAddBoggy = false;
+    public bool IsEnoughMoneyForADDBoggy => isEnoughMoneyForAddBoggy;
+
+    private bool isEnoughMoneyForMeargeBoggy = false;
+    public bool IsEnoughMoneyForMeargeBoggy => isEnoughMoneyForMeargeBoggy;
+
+
+
+
+
+
+
     void Awake()
     {
         trainSpeedConfig = Instantiate(trainSpeedConfig);
@@ -32,6 +46,13 @@ public class TrainManager : MonoBehaviour
 
     public void AddBoggy()
     {
+        if (!IsEnoughMoneyForADDBoggy) //check last time status
+        {
+            CheckNextBoggyADD(); //check current status
+            if (!IsEnoughMoneyForADDBoggy) return;
+        }
+
+        GameManager.instance.DeductCoinAndCheck(boggyAddCost);
         boggyAddCount += 1;
         trainSaveData.totalBoggyAddCount = boggyAddCount;
         UpdateBoggyAddCost();
@@ -104,15 +125,22 @@ public class TrainManager : MonoBehaviour
     }
 
 
-
     public void UpdateBoggyAddCost()
     {
         int m = GetRoundForAddTrain();
         float inner = Mathf.Round(4.5f * Mathf.Pow(boggyAddCount, 1.45f) * Mathf.Pow(1.085f, boggyAddCount));
         float finalCost = Mathf.Round(inner / m) * m;
 
+        if (boggyAddCount == 1) finalCost = 5; //fixed on start, boggyAddCount not resetting
+
+
         boggyAddCost = (IdleCurrency)finalCost;
+        CheckNextBoggyADD();
         Debug.Log($"boggyAddCount - {boggyAddCount}, Update value - {boggyAddCost.ToShortString()}");
+    }
+    public void CheckNextBoggyADD()
+    {
+        isEnoughMoneyForAddBoggy = boggyAddCost < GameManager.instance.playerDataForSave.playerData.collectedCoin;
     }
 
     private int GetRoundForAddTrain()

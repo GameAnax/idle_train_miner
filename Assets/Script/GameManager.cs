@@ -8,6 +8,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    private const string player_data_key = "player_data";
+
     public static GameManager instance;
 
     public TrainManager trainManager;
@@ -20,6 +22,7 @@ public class GameManager : MonoBehaviour
     public BoggyData currentBoggyData = null;
     public List<Debries> debriesList = new();
     public DebriesDataForSave debriesDataForSave = new();
+    public PlayerDataForSave playerDataForSave = new();
 
     private Dictionary<Vector2, List<DebriesData>> _debrisLookup = new();
 
@@ -36,6 +39,7 @@ public class GameManager : MonoBehaviour
     }
     void OnDisable()
     {
+        SavePlayerData();
         SaveGrid("level_01");
 
         debriesDataForSave.debriesDatas.Clear();
@@ -75,6 +79,18 @@ public class GameManager : MonoBehaviour
         //     // boggyDatas.Add(currentBoggyData);
         // }
 
+        bool isPlayerData = IsPathAvailable(player_data_key);
+        if (isPlayerData)
+        {
+            LoadPlayerData();
+        }
+        else
+        {
+            playerDataForSave = new();
+            UpdateUIOnStart();
+        }
+
+
         bool isAvailable = IsPathAvailable("level_01");
         if (!isAvailable)
         {
@@ -90,8 +106,19 @@ public class GameManager : MonoBehaviour
         {
             LoadGrid(clockwiseRingGenerator.spawnedCubes, "level_01");
         }
+
+        trainManager.trainLoopHandler.CallStart();
+
         crusherArea.UpdateArePosition();
     }
+
+    private void UpdateUIOnStart()
+    {
+        uIHandler.UpdateCoinText(playerDataForSave.playerData.collectedCoin);
+        uIHandler.UpdateLevelProgress(playerDataForSave.playerData.levelProgress);
+    }
+
+
     public void SetCurrentBoggyConfigOnStart()
     {
         BoggyConfig bogeyConfig = boggyConfigs[trainManager.trainSaveData.boggyConfigIndex];
@@ -126,6 +153,12 @@ public class GameManager : MonoBehaviour
     [Button]
     public void MeargeBoggy()
     {
+        if (!trainManager.trainMeargeConfig.IsEnoughMoneyForMeargeBoggy)
+        {
+            return;
+        }
+
+        bool isMearged = false;
         List<Boggy> boggies = trainManager.trainSplineDriver.boggies;
         for (int i = 0; i < boggies.Count - 1; i++)
         {
@@ -137,6 +170,7 @@ public class GameManager : MonoBehaviour
             // if (first.boggyType == second.boggyType)
             if (first.boggyLevel == second.boggyLevel)
             {
+                isMearged = true;
                 first.UpdateBoggy();
                 boggies.RemoveAt(i + 1);
                 second.DestroyObj();
@@ -147,13 +181,24 @@ public class GameManager : MonoBehaviour
         {
             boggies[i].index = i;
         }
-        trainManager.trainMeargeConfig.UpdateMearge();
+
+        if (isMearged)
+        {
+            DeductCoinAndCheck(trainManager.trainMeargeConfig.GetCurrentCost);
+            trainManager.trainMeargeConfig.UpdateMearge();
+        }
         trainManager.SetMeargeLevelForSave();
 
         uIHandler.SetUpMeargeText();
     }
     public void IncreaseTrainSpeed()
     {
+        if (!trainManager.trainSpeedConfig.IsEnoughMoneyForUpgradeSpeed)
+        {
+            return;
+        }
+
+        DeductCoinAndCheck(trainManager.trainSpeedConfig.GetCurrentCost);
         trainManager.trainSpeedConfig.UpdateSpeed();
         trainManager.trainSplineDriver.UpdateSpeed(0.5f);
         trainManager.SetSpeedLevelForSave();
@@ -162,6 +207,10 @@ public class GameManager : MonoBehaviour
     }
     public void UpdateStorageCapacity()
     {
+        if (!trainManager.storageBoggy.storageBoggyConfig.IsEnoughMoneyForUpgradeCapacity)
+            return;
+
+        DeductCoinAndCheck(trainManager.storageBoggy.storageBoggyConfig.GetCurrentUpgradeCost);
         trainManager.storageBoggy.UpdateStorage();
         trainManager.trainSaveData.capacityLevel = trainManager.storageBoggy.storageBoggyConfig.level;
     }
@@ -239,13 +288,39 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+    public void AddCoinAndCheck(IdleCurrency collectedCoin)
+    {
+        playerDataForSave.playerData.collectedCoin += collectedCoin;
+
+        trainManager.CheckNextBoggyADD();
+        trainManager.trainMeargeConfig.CheckMoney();
+        trainManager.trainSpeedConfig.CheckMoney();
+        trainManager.storageBoggy.storageBoggyConfig.CheckMoney();
+
+        uIHandler.UpdateCoinText(playerDataForSave.playerData.collectedCoin);
+        uIHandler.UpdateAllButtonUI();
+
+    }
+    public void DeductCoinAndCheck(IdleCurrency deductCoin)
+    {
+        playerDataForSave.playerData.collectedCoin -= deductCoin;
+
+        trainManager.CheckNextBoggyADD();
+        trainManager.trainMeargeConfig.CheckMoney();
+        trainManager.trainSpeedConfig.CheckMoney();
+        trainManager.storageBoggy.storageBoggyConfig.CheckMoney();
+
+        uIHandler.UpdateCoinText(playerDataForSave.playerData.collectedCoin);
+        uIHandler.UpdateAllButtonUI();
+    }
+
 
     public bool IsPathAvailable(string fileName)
     {
         string path = GetPath(fileName);
         if (!File.Exists(path))
         {
-            Debug.LogError("Level Not Found");
+            Debug.LogError("path Not Found");
             return false;
         }
         return true;
@@ -327,6 +402,20 @@ public class GameManager : MonoBehaviour
         cell.gridCellDataForSave = data;
         return data;
     }
+    private void LoadPlayerData()
+    {
+        string path = GetPath(player_data_key);
+        string json = File.ReadAllText(path);
+        playerDataForSave = JsonConvert.DeserializeObject<PlayerDataForSave>(json);
+
+        //Update coin text
+        UpdateUIOnStart();
+    }
+    private void SavePlayerData()
+    {
+        string json = JsonConvert.SerializeObject(playerDataForSave);
+        File.WriteAllText(GetPath(player_data_key), json);
+    }
 
     private void UpdateProgress()
     {
@@ -337,6 +426,7 @@ public class GameManager : MonoBehaviour
 
         // Percentage Formula: (Cleared / Total) * 100
         float progressPercent = (clearedCount / totalCount) * 100f;
+        playerDataForSave.playerData.levelProgress = progressPercent;
 
         //TODO:- UI Update
         uIHandler.UpdateLevelProgress(progressPercent);

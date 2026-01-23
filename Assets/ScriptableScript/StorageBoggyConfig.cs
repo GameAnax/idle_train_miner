@@ -19,10 +19,13 @@ public class StorageBoggyConfig : ScriptableObject
     public IdleCurrency filledCapacity;
 
     [Header("Cost")]
-    public IdleCurrency currentCost;
+    private IdleCurrency currentCost;
 
     public int GetCurrentLevel => level;
     public IdleCurrency GetCurrentUpgradeCost => currentCost;
+
+    private bool isEnoughMoneyForUpgradeCapacity;
+    public bool IsEnoughMoneyForUpgradeCapacity => isEnoughMoneyForUpgradeCapacity;
 
     public double GetFilled()
     {
@@ -46,6 +49,10 @@ public class StorageBoggyConfig : ScriptableObject
     {
         UpdateCost();
     }
+    public void CheckMoney()
+    {
+        isEnoughMoneyForUpgradeCapacity = currentCost < GameManager.instance.playerDataForSave.playerData.collectedCoin;
+    }
     private void UpdateCost()
     {
         var (isFound, data) = CheckDirectLevel();
@@ -62,6 +69,8 @@ public class StorageBoggyConfig : ScriptableObject
         // IdleCurrency newUpgradePrice = (IdleCurrency)Mathf.Pow(Mathf.Round(level), multiplierData.multiplier);
         // IdleCurrency newUpgradePrice = (IdleCurrency)newValue;
         currentCost = (IdleCurrency)newValue;
+
+        CheckMoney();
         Debug.Log($"New upgrade Price - {currentCost}");
 
     }

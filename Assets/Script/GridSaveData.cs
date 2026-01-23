@@ -1,4 +1,5 @@
 
+using System;
 using System.Collections.Generic;
 using Dreamteck.Splines;
 using UnityEngine;
@@ -49,15 +50,15 @@ public class NeighborData
 [System.Serializable]
 public class TrainSaveData
 {
-    public List<Vector3> previewsSplinePoints;
-    public List<Vector3> mainSplinePoints;
-    public int totalBoggyAddCount;
-    public int meargeLevel;
-    public int trainSpeedLevel;
-    public int capacityLevel;
+    public List<Vector3> previewsSplinePoints = new();
+    public List<Vector3> mainSplinePoints = new();
+    public int totalBoggyAddCount = 1;
+    public int meargeLevel = 1;
+    public int trainSpeedLevel = 1;
+    public int capacityLevel = 1;
     public int boggyConfigIndex;
     public int boggyCountCurrentConfig;
-    public List<int> boggyLevel;
+    public List<int> boggyLevel = new();
     public Vector2 lastGridPosition;
 
     public double trainSplinePercentage;
@@ -78,4 +79,19 @@ public class DebriesData
     public Vector3 debriesPosition;
     public int damageValue;
     public string colorHex;
+}
+
+
+
+[System.Serializable]
+public class PlayerDataForSave
+{
+    public PlayerData playerData = new();
+}
+
+[System.Serializable]
+public class PlayerData
+{
+    public IdleCurrency collectedCoin;
+    public float levelProgress;
 }

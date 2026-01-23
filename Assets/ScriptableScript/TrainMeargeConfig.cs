@@ -8,11 +8,14 @@ public class TrainMeargeConfig : ScriptableObject
     // public IdleCurrency baseCoast;
     public int level = 1;
     // public List<MeargeMultiplierData> meargeMultiplierDatas;
-    public IdleCurrency currentCost;
+    private IdleCurrency currentCost;
 
 
     public int GetCurrentLevel => level;
     public IdleCurrency GetCurrentCost => currentCost;
+
+    private bool isEnoughMoneyForMearge;
+    public bool IsEnoughMoneyForMeargeBoggy => isEnoughMoneyForMearge;
 
 
     public void UpdateMearge()
@@ -26,12 +29,18 @@ public class TrainMeargeConfig : ScriptableObject
         UpdateCost();
     }
 
+    public void CheckMoney()
+    {
+        isEnoughMoneyForMearge = currentCost < GameManager.instance.playerDataForSave.playerData.collectedCoin;
+    }
+
     private void UpdateCost()
     {
 
         if (level >= 0 && level <= 10)
         {
-            currentCost = (IdleCurrency)(Mathf.Pow(5.08f * (level), 2) - (4.63f * level) + 1.02f);
+            float cal = Mathf.Pow(5.08f * (level), 2) - (4.63f * level) + 1.02f;
+            currentCost = new(cal);
         }
         else if (level >= 11 && level <= 20)
         {
@@ -53,6 +62,9 @@ public class TrainMeargeConfig : ScriptableObject
         {
             currentCost = (IdleCurrency)(1235.71f * level) - 37814.29f;
         }
+
+        CheckMoney();
+
         Debug.Log($"Current Cost - {currentCost}");
     }
 

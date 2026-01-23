@@ -8,10 +8,15 @@ public class TrainSpeedConfig : ScriptableObject
     public IdleCurrency baseCost;
     public int level = 1;
     public List<SpeedMultiplierData> speedMultiplierDatas;
-    public IdleCurrency currentCost;
+    private IdleCurrency currentCost;
 
     public IdleCurrency GetCurrentCost => currentCost;
     public int GetCurrentLevel => level;
+
+
+    private bool isEnoughMoneyForUpgradeSpeed;
+    public bool IsEnoughMoneyForUpgradeSpeed => isEnoughMoneyForUpgradeSpeed;
+
 
     public void UpdateSpeed()
     {
@@ -23,7 +28,10 @@ public class TrainSpeedConfig : ScriptableObject
     {
         UpdateCost();
     }
-
+    public void CheckMoney()
+    {
+        isEnoughMoneyForUpgradeSpeed = currentCost < GameManager.instance.playerDataForSave.playerData.collectedCoin;
+    }
     private void UpdateCost()
     {
         SpeedMultiplierData speedMultiplierData = GetMultiplierData();
@@ -41,6 +49,7 @@ public class TrainSpeedConfig : ScriptableObject
             {
                 currentCost = (IdleCurrency)Mathf.Pow((18 * level), 2.2f);
             }
+            CheckMoney();
             Debug.Log($"Current cost = {currentCost}");
         }
         catch (Exception e)

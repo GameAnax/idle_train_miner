@@ -27,6 +27,10 @@ public class TrainLoopHandler : MonoBehaviour
 
     void Start()
     {
+
+    }
+    public void CallStart()
+    {
         customeGrids = new(splineGen.splineGridPath);
         // Debug.Log($"Total Grid - {customeGrids.Count}");
         pointsPerSpline = customeGrids.Count / 3;
@@ -38,12 +42,27 @@ public class TrainLoopHandler : MonoBehaviour
         }
         else
         {
+            trainManager.trainSaveData = new();
+
             GameManager.instance.SetCurrentBoggyConfigOnStart();
 
             UpdateSpline(spline: splines[0]);
             UpdateSpline(spline: splines[1]);
 
             MergeTwoSplines();
+
+            trainManager.UpdateBoggyAddCost();
+            trainManager.trainMeargeConfig.SetUp();
+
+            trainManager.trainSpeedConfig.SetUp();
+
+            trainManager.storageBoggy.storageBoggyConfig.SetUp();
+            trainManager.storageBoggy.storageBoggyConfig.SetUpCoast();
+
+            GameManager.instance.uIHandler.SetUpAddBoggyText();
+            GameManager.instance.uIHandler.SetUpCapcityText();
+            GameManager.instance.uIHandler.SetUpSpeedText();
+            GameManager.instance.uIHandler.SetUpMeargeText();
         }
 
         follower = GetComponent<SplineFollower>();

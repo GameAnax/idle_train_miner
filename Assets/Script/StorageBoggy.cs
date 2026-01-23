@@ -11,7 +11,7 @@ public class StorageBoggy : MonoBehaviour
     public StorageBoggyConfig storageBoggyConfig;
     public TextMeshProUGUI coinAmountText;
     private int collectedCount = 0; // Total kitne cubes aaye
-    private int totalCoinCollected = 0;
+    private IdleCurrency totalCoinCollected = 0;
 
     public List<Debries> collectedDebries;
 
@@ -73,6 +73,9 @@ public class StorageBoggy : MonoBehaviour
     }
     public List<Debries> TransferAndClearStorage()
     {
+        GameManager.instance.AddCoinAndCheck(totalCoinCollected);
+
+
         List<Debries> temp = new(collectedDebries);
         collectedDebries.Clear();
         storageBoggyConfig.filledCapacity = 0;

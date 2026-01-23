@@ -112,7 +112,6 @@ public class CrusherArea : MonoBehaviour
             .OnComplete(() =>
             {
                 isRotating = false; // Khatam hone par bool reset
-                Debug.Log("Rotation Finished!");
             });
     }
 }

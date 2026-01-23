@@ -17,7 +17,7 @@ MonoBehaviour:
     Value: 15
     Exp: 0
   maxBoggy: 32
-  totalSpawn: 0
+  totalSpawn: 1
   isLimitReached: 0
   boggyDamage:
     Value: 1
