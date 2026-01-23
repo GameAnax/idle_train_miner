@@ -43,6 +43,7 @@ public class CustomeGrid : MonoBehaviour
     [Header("Track References")]
     public GameObject myStraightPiece;
     public GameObject myCornerPiece;
+    public GameObject myDummyPiece;
     private GameObject currentActivePiece;
 
 
@@ -405,6 +406,7 @@ public class CustomeGrid : MonoBehaviour
     {
         if (myStraightPiece != null) myStraightPiece.SetActive(false);
         if (myCornerPiece != null) myCornerPiece.SetActive(false);
+        if (myDummyPiece != null) EnableDummy(false);
         currentActivePiece = null;
     }
 
@@ -514,5 +516,14 @@ public class CustomeGrid : MonoBehaviour
                 debries.UpdateData(gridPosition);
             }
         }
+    }
+
+    public void EnableDummy(bool value)
+    {
+        if (gridPosition.x == 19 && gridPosition.y == 24)
+        {
+            Debug.Log("Found");
+        }
+        myDummyPiece.SetActive(value);
     }
 }

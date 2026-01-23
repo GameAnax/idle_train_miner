@@ -3,7 +3,12 @@ guid: b23d57a885cbe55459f0481f5d6114b0
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pastel_Atlas_Mat
+    second: {fileID: 2100000, guid: 801ea7fa7d0faa346ab33461da866748, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

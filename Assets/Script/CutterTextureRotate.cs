@@ -26,6 +26,6 @@ public class CutterTextureRotate : MonoBehaviour
         float offsetY = Time.time * scrollSpeedY;
 
         // Material ki main texture offset set karein
-        rend.material.mainTextureOffset = new Vector2(offsetX, offsetY);
+        rend.materials[materialIndex].mainTextureOffset = new Vector2(offsetX, offsetY);
     }
 }

@@ -669,10 +669,6 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: -7511558181221131132, guid: 23e5ed4780c2f354aac885cdb1c1cc15, type: 3}
-      propertyPath: 'm_Materials.Array.data[1]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 24c836aca660b438690df021054dbd7a, type: 2}
     - target: {fileID: 919132149155446097, guid: 23e5ed4780c2f354aac885cdb1c1cc15, type: 3}
       propertyPath: m_Name
       value: Grass Mover_V3
@@ -711,7 +707,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56db2b06383c448fe92304e00b04c5ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  materialIndex: 0
+  materialIndex: 1
   scrollSpeedX: 0.5
   scrollSpeedY: 0
   rend: {fileID: 3487846881200734782}
@@ -784,13 +780,13 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: -7511558181221131132, guid: 32d9fbeedecb23448ad8b1524c8a41c9, type: 3}
-      propertyPath: 'm_Materials.Array.data[1]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 24c836aca660b438690df021054dbd7a, type: 2}
     - target: {fileID: 919132149155446097, guid: 32d9fbeedecb23448ad8b1524c8a41c9, type: 3}
       propertyPath: m_Name
       value: Grass Mover_V1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 32d9fbeedecb23448ad8b1524c8a41c9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -822,7 +818,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56db2b06383c448fe92304e00b04c5ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  materialIndex: 0
+  materialIndex: 1
   scrollSpeedX: 0.5
   scrollSpeedY: 0
   rend: {fileID: 5916279624801641657}
@@ -895,10 +891,6 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: -7511558181221131132, guid: a356ed9e19346b34c96d0a7682173ced, type: 3}
-      propertyPath: 'm_Materials.Array.data[1]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 24c836aca660b438690df021054dbd7a, type: 2}
     - target: {fileID: 919132149155446097, guid: a356ed9e19346b34c96d0a7682173ced, type: 3}
       propertyPath: m_Name
       value: Grass Mover_V2
@@ -932,7 +924,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56db2b06383c448fe92304e00b04c5ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  materialIndex: 0
+  materialIndex: 1
   scrollSpeedX: 0.5
   scrollSpeedY: 0
   rend: {fileID: 6732439337946476707}

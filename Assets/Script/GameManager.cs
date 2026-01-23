@@ -101,6 +101,7 @@ public class GameManager : MonoBehaviour
                 gridSaveData.AddData(GetSerializableData(item));
             }
             SaveGrid("level_01");
+            trainManager.trainLoopHandler.splineGen.GenerateSpline();
         }
         else
         {
@@ -368,6 +369,21 @@ public class GameManager : MonoBehaviour
                     targetScript.GenerateDebriesOnLevelStart(debrisPositions);
                 }
             }
+        }
+        foreach (var item in scriptLookup)
+        {
+            var script = item.Value;
+            // if (script.gridPosition.x == 19 && script.gridPosition.y == 24)
+            // {
+            if (script.isClear && !script.isUsable)
+            {
+                if (script.myDummyPiece != null)
+                {
+                    script.EnableDummy(true);
+                    // script.myDummyPiece.SetActive(true);
+                }
+            }
+            // }
         }
         clockwiseRingGenerator.splineGen.GenerateSpline();
         trainManager.trainSplineDriver.modularGridAligner.StartGeneration();

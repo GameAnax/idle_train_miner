@@ -15,6 +15,7 @@ public class ModularGridAligner : MonoBehaviour
     [Header("Prefabs")]
     public GameObject straightPiece;
     public GameObject cornerPiece;
+    public GameObject dummyPiece;
 
     [Header("Animation Settings")]
     public float startYOffset = 5f;
@@ -47,8 +48,12 @@ public class ModularGridAligner : MonoBehaviour
             if (grid.myCornerPiece == null)
                 grid.myCornerPiece = Instantiate(cornerPiece, grid.transform);
 
+            if (grid.myDummyPiece == null)
+                grid.myDummyPiece = Instantiate(dummyPiece, grid.transform);
+
             grid.myStraightPiece.name = "straight";
             grid.myCornerPiece.name = "corner";
+            grid.myDummyPiece.name = "dummy";
             grid.HideAllTracks();
         }
     }
@@ -76,6 +81,14 @@ public class ModularGridAligner : MonoBehaviour
                 if (Application.isPlaying) Destroy(grid.myCornerPiece);
                 else DestroyImmediate(grid.myCornerPiece);
                 grid.myCornerPiece = null;
+                count++;
+            }
+
+            if (grid.myDummyPiece != null)
+            {
+                if (Application.isPlaying) Destroy(grid.myDummyPiece);
+                else DestroyImmediate(grid.myDummyPiece);
+                grid.myDummyPiece = null;
                 count++;
             }
         }
@@ -137,6 +150,14 @@ public class ModularGridAligner : MonoBehaviour
 
             float minDistanceEmpty = float.MaxValue;
             float minDistanceAny = float.MaxValue;
+
+            if (oldGrid.isClear && !oldGrid.isUsable)
+            {
+                oldGrid.myStraightPiece.SetActive(false);
+                oldGrid.myCornerPiece.SetActive(false);
+                oldGrid.EnableDummy(true);
+                // oldGrid.myDummyPiece.SetActive(true);
+            }
 
             // Manual loop instead of LINQ OrderBy
             foreach (var g in newPathSet)

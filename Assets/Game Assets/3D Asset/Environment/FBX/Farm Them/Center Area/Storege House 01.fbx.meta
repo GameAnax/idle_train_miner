@@ -7,6 +7,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Pastel_Atlas_Mat
+    second: {fileID: 2100000, guid: 801ea7fa7d0faa346ab33461da866748, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Pastel_Color_Mat
     second: {fileID: 2100000, guid: cee594be1b4d75443b07224ef92b5f28, type: 2}
   - first:
