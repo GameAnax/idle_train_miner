@@ -68,7 +68,7 @@ public class UIHandler : MonoBehaviour
 
     private bool isEnoughMoneyForAddBoggy = true; //internal check for not update ui every time
 
-    private bool isEnoughMoneyForMeargeBoggy = true;
+    // private bool isEnoughMoneyForMeargeBoggy = true;
 
     private bool isEnoughMoneyForUpgradeSpeed = true;
 
@@ -223,6 +223,10 @@ public class UIHandler : MonoBehaviour
         {
             trainMeargeConfig = GameManager.instance.trainManager.trainMeargeConfig;
         }
+        if (trainManager == null)
+        {
+            trainManager = GameManager.instance.trainManager;
+        }
 
         meargeCostText.text = $"{trainMeargeConfig.GetCurrentCost}";
         UpdateMeargeBoggyButtonUI();
@@ -231,25 +235,25 @@ public class UIHandler : MonoBehaviour
     {
         if (!trainMeargeConfig.IsEnoughMoneyForMeargeBoggy)
         {
-            if (isEnoughMoneyForMeargeBoggy)
-            {
-                isEnoughMoneyForMeargeBoggy = trainMeargeConfig.IsEnoughMoneyForMeargeBoggy;
-                meargeBgImage.sprite = disableBG;
-                meargeBalanceBGImage.sprite = disableBalanceBG;
-                meargeCostText.color = disableBalanceTextColor;
-            }
+            // if (isEnoughMoneyForMeargeBoggy)
+            // {
+            // isEnoughMoneyForMeargeBoggy = trainMeargeConfig.IsEnoughMoneyForMeargeBoggy;
+            meargeBgImage.sprite = disableBG;
+            meargeBalanceBGImage.sprite = disableBalanceBG;
+            meargeCostText.color = disableBalanceTextColor;
+            // }
         }
         else
         {
             if (trainManager.IsSameBoggyForMearge)
             {
-                if (!isEnoughMoneyForMeargeBoggy)
-                {
-                    isEnoughMoneyForMeargeBoggy = trainMeargeConfig.IsEnoughMoneyForMeargeBoggy;
-                    meargeBgImage.sprite = enableBG;
-                    meargeBalanceBGImage.sprite = enableBalanceBG;
-                    meargeCostText.color = enableBalanceTextColor;
-                }
+                // if (!isEnoughMoneyForMeargeBoggy)
+                // {
+                // isEnoughMoneyForMeargeBoggy = trainMeargeConfig.IsEnoughMoneyForMeargeBoggy;
+                meargeBgImage.sprite = enableBG;
+                meargeBalanceBGImage.sprite = enableBalanceBG;
+                meargeCostText.color = enableBalanceTextColor;
+                // }
             }
             else
             {

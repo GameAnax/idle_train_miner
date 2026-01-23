@@ -120,8 +120,11 @@ public class StorageBoggy : MonoBehaviour
         }
 
         // 4. Final local position fix karein
-        cubeTransform.localPosition = localTargetPos;
-        cubeTransform.localRotation = Quaternion.identity;
+        if (cubeTransform != null)
+        {
+            cubeTransform.localPosition = localTargetPos;
+            cubeTransform.localRotation = Quaternion.identity;
+        }
     }
 
 }

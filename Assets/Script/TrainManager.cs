@@ -148,11 +148,11 @@ public class TrainManager : MonoBehaviour
                 break;
             }
         }
-        if (isSameBoggyForMearge != checkPossible)
-        {
-            isSameBoggyForMearge = checkPossible;
-            GameManager.instance.uIHandler.SetUpMeargeText();
-        }
+        // if (isSameBoggyForMearge != checkPossible)
+        // {
+        isSameBoggyForMearge = checkPossible;
+        GameManager.instance.uIHandler.SetUpMeargeText();
+        // }
     }
 
 

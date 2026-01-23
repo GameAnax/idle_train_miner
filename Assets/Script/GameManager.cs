@@ -102,6 +102,7 @@ public class GameManager : MonoBehaviour
             }
             SaveGrid("level_01");
             trainManager.trainLoopHandler.splineGen.GenerateSpline();
+            trainManager.trainSplineDriver.modularGridAligner.StartGeneration();
         }
         else
         {

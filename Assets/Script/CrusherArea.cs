@@ -12,10 +12,14 @@ public class CrusherArea : MonoBehaviour
     public Transform debriesStorePoint;
 
     public Transform windMillFan;
+    public Transform dotedLine;
 
     private bool isRotating = false;
     private float rotationDuration = 3f;
     private int totalRounds = 2;
+
+    private bool isTrainInside;
+
     // private Vector3 rotationAmount = new Vector3(0, 0, 360);
 
     void Start()
@@ -34,6 +38,38 @@ public class CrusherArea : MonoBehaviour
         // {
         //     nextGridNeedClear.Add(currentGridList[2].leftGrid);
         // }
+    }
+
+    void Update()
+    {
+        foreach (var item in GameManager.instance.trainManager.trainSplineDriver.boggies)
+        {
+            if (CheckBoggyInsideStorageArea(item.transform.position))
+            {
+                if (!isTrainInside)
+                {
+                    isTrainInside = true;
+                    DoAnimation();
+                }
+                return;
+            }
+        }
+        if (isTrainInside)
+        {
+            isTrainInside = false;
+            DoAnimation();
+        }
+    }
+    private void DoAnimation()
+    {
+        if (isTrainInside)
+        {
+            dotedLine.localScale = Vector3.one * 0.7f;
+        }
+        else
+        {
+            dotedLine.localScale = Vector3.one * 0.58f;
+        }
     }
 
     public void UpdateArePosition()

@@ -494,6 +494,7 @@ public class CustomeGrid : MonoBehaviour
             var item = debriesDatas[i];
             Debries debri = Instantiate(debriPrefab, cubeContainer.position, Quaternion.identity, cubeContainer);
             debri.debriCapacity = item.damageValue;
+            debri.Multiplier = chunkCapacity;
             debri.transform.position = GetRandom(transform.position);
             if (UnityEngine.ColorUtility.TryParseHtmlString(item.colorHex, out Color loadedColor))
             {
