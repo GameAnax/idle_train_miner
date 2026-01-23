@@ -348,7 +348,7 @@ public class CustomeGrid : MonoBehaviour
 
         float GetNewPos(float value)
         {
-            float tempRandom = UnityEngine.Random.Range(-0.3f, 0.3f);
+            float tempRandom = UnityEngine.Random.Range(-0.5f, 0.5f);
             value += tempRandom;
             return value;
         }

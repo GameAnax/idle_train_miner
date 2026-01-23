@@ -42,7 +42,7 @@ public class StorageBoggy : MonoBehaviour
     }
     public void UpdateText()
     {
-        coinAmountText.text = $"{totalCoinCollected}";
+        coinAmountText.text = $"{totalCoinCollected.ToShortString()}";
         float progress = (float)storageBoggyConfig.GetFilled();
         GameManager.instance.uIHandler.UpdateCapacityStorageProgress(progress, (int)storageBoggyConfig.filledCapacity, (int)storageBoggyConfig.GetCapacity);
     }
