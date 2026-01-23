@@ -153,7 +153,7 @@ public class GameManager : MonoBehaviour
     [Button]
     public void MeargeBoggy()
     {
-        if (!trainManager.trainMeargeConfig.IsEnoughMoneyForMeargeBoggy)
+        if (!trainManager.trainMeargeConfig.IsEnoughMoneyForMeargeBoggy || !trainManager.IsSameBoggyForMearge)
         {
             return;
         }
@@ -186,6 +186,7 @@ public class GameManager : MonoBehaviour
         {
             DeductCoinAndCheck(trainManager.trainMeargeConfig.GetCurrentCost);
             trainManager.trainMeargeConfig.UpdateMearge();
+            trainManager.CheckIsMeargePossible();
         }
         trainManager.SetMeargeLevelForSave();
 

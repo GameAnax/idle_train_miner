@@ -241,12 +241,21 @@ public class UIHandler : MonoBehaviour
         }
         else
         {
-            if (!isEnoughMoneyForMeargeBoggy)
+            if (trainManager.IsSameBoggyForMearge)
             {
-                isEnoughMoneyForMeargeBoggy = trainMeargeConfig.IsEnoughMoneyForMeargeBoggy;
-                meargeBgImage.sprite = enableBG;
-                meargeBalanceBGImage.sprite = enableBalanceBG;
-                meargeCostText.color = enableBalanceTextColor;
+                if (!isEnoughMoneyForMeargeBoggy)
+                {
+                    isEnoughMoneyForMeargeBoggy = trainMeargeConfig.IsEnoughMoneyForMeargeBoggy;
+                    meargeBgImage.sprite = enableBG;
+                    meargeBalanceBGImage.sprite = enableBalanceBG;
+                    meargeCostText.color = enableBalanceTextColor;
+                }
+            }
+            else
+            {
+                meargeBgImage.sprite = disableBG;
+                meargeBalanceBGImage.sprite = disableBalanceBG;
+                meargeCostText.color = disableBalanceTextColor;
             }
         }
     }

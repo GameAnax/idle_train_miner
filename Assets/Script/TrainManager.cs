@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.IO;
 using EasyButtons;
 using Newtonsoft.Json;
@@ -28,6 +29,8 @@ public class TrainManager : MonoBehaviour
 
     private bool isEnoughMoneyForMeargeBoggy = false;
     public bool IsEnoughMoneyForMeargeBoggy => isEnoughMoneyForMeargeBoggy;
+    private bool isSameBoggyForMearge = false;
+    public bool IsSameBoggyForMearge => isSameBoggyForMearge;
 
 
 
@@ -96,6 +99,7 @@ public class TrainManager : MonoBehaviour
         {
             Debug.Log("Boggy Limit Reaced");
         }
+        CheckIsMeargePossible();
     }
     public void SpawnBoggy(int boggyLevel)
     {
@@ -121,6 +125,33 @@ public class TrainManager : MonoBehaviour
         if (trainSplineDriver.boggies.Count == maxBoggyCount)
         {
             Debug.Log("Boggy Limit Reaced");
+        }
+        CheckIsMeargePossible();
+    }
+
+    public void CheckIsMeargePossible()
+    {
+        bool checkPossible = false;
+        List<Boggy> boggies = trainSplineDriver.boggies;
+        for (int i = 0; i < boggies.Count - 1; i++)
+        {
+            Boggy first = boggies[i];
+            if (first.boggyType == BoggyType.Storage || first.boggyType == BoggyType.TrackUpdate) continue;
+            Boggy second = boggies[i + 1];
+            if (second.boggyType == BoggyType.Storage || second.boggyType == BoggyType.TrackUpdate) continue;
+
+            // if (first.boggyType == second.boggyType)
+            if (first.boggyLevel == second.boggyLevel)
+            {
+                //TODO:- mearge possible
+                checkPossible = true;
+                break;
+            }
+        }
+        if (isSameBoggyForMearge != checkPossible)
+        {
+            isSameBoggyForMearge = checkPossible;
+            GameManager.instance.uIHandler.SetUpMeargeText();
         }
     }
 
@@ -249,6 +280,7 @@ public class TrainManager : MonoBehaviour
         //Set up mearge
         trainMeargeConfig.level = trainSaveData.meargeLevel;
         trainMeargeConfig.SetUp();
+        CheckIsMeargePossible();
         //
 
         GameManager.instance.uIHandler.SetUpAddBoggyText();

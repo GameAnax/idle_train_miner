@@ -53,6 +53,7 @@ public class TrainLoopHandler : MonoBehaviour
 
             trainManager.UpdateBoggyAddCost();
             trainManager.trainMeargeConfig.SetUp();
+            trainManager.CheckIsMeargePossible();
 
             trainManager.trainSpeedConfig.SetUp();
 
