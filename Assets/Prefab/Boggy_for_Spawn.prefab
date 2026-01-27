@@ -708,7 +708,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   materialIndex: 1
-  scrollSpeedX: 0.5
+  scrollSpeedX: 3
   scrollSpeedY: 0
   rend: {fileID: 3487846881200734782}
 --- !u!23 &3487846881200734782 stripped
@@ -819,7 +819,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   materialIndex: 1
-  scrollSpeedX: 0.5
+  scrollSpeedX: 3
   scrollSpeedY: 0
   rend: {fileID: 5916279624801641657}
 --- !u!23 &5916279624801641657 stripped
@@ -925,7 +925,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   materialIndex: 1
-  scrollSpeedX: 0.5
+  scrollSpeedX: 3
   scrollSpeedY: 0
   rend: {fileID: 6732439337946476707}
 --- !u!4 &5558921009978248140 stripped
