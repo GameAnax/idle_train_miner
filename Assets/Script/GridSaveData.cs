@@ -78,6 +78,7 @@ public class DebriesData
     public Vector2 gridPosition;
     public Vector3 debriesPosition;
     public int damageValue;
+    public int Multiplier;
     public string colorHex;
 }
 
@@ -94,4 +95,12 @@ public class PlayerData
 {
     public IdleCurrency collectedCoin;
     public float levelProgress;
+}
+
+[System.Serializable]
+public class StorageBoggyDataForSave
+{
+    public int totalDebris;
+    public IdleCurrency totalCapacity;
+    public IdleCurrency totalCoins;
 }
