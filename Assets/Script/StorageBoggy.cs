@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using Newtonsoft.Json;
 using TMPro;
 using UnityEngine;
 
@@ -14,6 +16,12 @@ public class StorageBoggy : MonoBehaviour
     private IdleCurrency totalCoinCollected = 0;
 
     public List<Debries> collectedDebries;
+    private StorageBoggyDataForSave storageBoggyDataForSave = new();
+
+
+    private string GetPath(string fileName) => Path.Combine(Application.persistentDataPath, fileName + ".json");
+    private const string storageBoggySaveKey = "storage_boggy_collected_data";
+
 
     void Awake()
     {
@@ -23,6 +31,33 @@ public class StorageBoggy : MonoBehaviour
 
     void Start()
     {
+        LoadStorageBoggyData();
+    }
+
+    void OnDisable()
+    {
+        SaveStorageBoggyData();
+    }
+    private void LoadStorageBoggyData()
+    {
+        string path = GetPath(storageBoggySaveKey);
+        if (!File.Exists(path))
+        {
+            Debug.LogError("Storage Boggy Data Not Found");
+            return;
+        }
+        string json = File.ReadAllText(path);
+        storageBoggyDataForSave = JsonConvert.DeserializeObject<StorageBoggyDataForSave>(json);
+        collectedCount = storageBoggyDataForSave.totalDebris;
+        totalCoinCollected = storageBoggyDataForSave.totalCoins;
+        storageBoggyConfig.filledCapacity = storageBoggyDataForSave.totalCapacity;
+
+        UpdateText();
+    }
+    private void SaveStorageBoggyData()
+    {
+        string json = JsonConvert.SerializeObject(storageBoggyDataForSave);
+        File.WriteAllText(GetPath(storageBoggySaveKey), json);
     }
 
     public void SetUpDebrie(Debries debries)
@@ -31,9 +66,11 @@ public class StorageBoggy : MonoBehaviour
         var tempDebrie = debries;
         tempDebrie.isCollected = true;
         collectedCount += 1;
+        storageBoggyDataForSave.totalDebris = collectedCount;
         ADDDebriesInStorage(tempDebrie.debriCapacity);
         StartCoroutine(MoveCubeToStackLocal(tempDebrie.transform));
         totalCoinCollected += debries.GetCoinAmount();
+        storageBoggyDataForSave.totalCoins = totalCoinCollected;
         UpdateText();
     }
     public void UpdateStorage()
@@ -59,6 +96,7 @@ public class StorageBoggy : MonoBehaviour
     public void ADDDebriesInStorage(int amountToStore)
     {
         storageBoggyConfig.filledCapacity += amountToStore;
+        storageBoggyDataForSave.totalCapacity = storageBoggyConfig.filledCapacity;
     }
     public Vector3 CalculateStackPosition()
     {
@@ -79,8 +117,11 @@ public class StorageBoggy : MonoBehaviour
         List<Debries> temp = new(collectedDebries);
         collectedDebries.Clear();
         storageBoggyConfig.filledCapacity = 0;
+        storageBoggyDataForSave.totalCapacity = 0;
         collectedCount = 0;
+        storageBoggyDataForSave.totalDebris = collectedCount;
         totalCoinCollected = 0;
+        storageBoggyDataForSave.totalCoins = totalCoinCollected;
         UpdateText();
         return temp;
     }
