@@ -63,6 +63,8 @@ public class CustomeGrid : MonoBehaviour
     private int lastDamageValue;
     public bool isSpawnChunk;
 
+    private float storEDamageForSpawnChunk;
+
     private static readonly int BaseColorId = Shader.PropertyToID("_BaseColor");
 
     [Header("References"), HideInInspector]
@@ -213,7 +215,14 @@ public class CustomeGrid : MonoBehaviour
         currentHealth -= tempDamageValue;
 
         //Calculation
-        int chunkDrop = (int)(maxHealth - (currentHealth - tempDamageValue)) / chunkCapacity;
+        // int chunkDrop = (int)(maxHealth - (currentHealth - tempDamageValue)) / chunkCapacity;
+        storEDamageForSpawnChunk += (currentHealth - (currentHealth - tempDamageValue)) / chunkCapacity;
+
+        int chunkDrop = (int)storEDamageForSpawnChunk;
+        if (storEDamageForSpawnChunk > 0)
+        {
+            storEDamageForSpawnChunk = Mathf.Abs(chunkDrop - storEDamageForSpawnChunk);
+        }
         isSpawnChunk = chunkDrop > 0;
         lastDamageValue = chunkDrop;
         //
