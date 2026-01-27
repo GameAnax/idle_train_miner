@@ -496,6 +496,7 @@ public class CustomeGrid : MonoBehaviour
             debri.debriCapacity = item.damageValue;
             debri.Multiplier = chunkCapacity;
             debri.transform.position = GetRandom(transform.position);
+            debri.UpdateData(gridPosition);
             if (UnityEngine.ColorUtility.TryParseHtmlString(item.colorHex, out Color loadedColor))
             {
                 debri.UpdateColor(loadedColor);
@@ -521,10 +522,6 @@ public class CustomeGrid : MonoBehaviour
 
     public void EnableDummy(bool value)
     {
-        if (gridPosition.x == 19 && gridPosition.y == 24)
-        {
-            Debug.Log("Found");
-        }
         myDummyPiece.SetActive(value);
     }
 }

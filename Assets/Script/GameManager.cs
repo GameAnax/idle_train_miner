@@ -45,6 +45,8 @@ public class GameManager : MonoBehaviour
         debriesDataForSave.debriesDatas.Clear();
         foreach (Debries debries in debriesList)
         {
+            if (debries.isCollected) continue;
+
             debriesDataForSave.debriesDatas.Add(new()
             {
                 gridPosition = debries.gridPostion,
