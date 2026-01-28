@@ -45,6 +45,7 @@ public class TrainManager : MonoBehaviour
     }
 
 
+    private string train_data_key => $"{HomeScene.instance.GetCurrentLevelID}_trainData";
     private string GetPath(string fileName) => Path.Combine(Application.persistentDataPath, fileName + ".json");
 
     public void AddBoggy()
@@ -226,12 +227,12 @@ public class TrainManager : MonoBehaviour
         trainSaveData.trainSplinePercentage = trainSplineDriver.GetSplineFollower.result.percent;
 
         string json = JsonConvert.SerializeObject(trainSaveData, settings);
-        File.WriteAllText(GetPath("trainData"), json);
+        File.WriteAllText(GetPath(train_data_key), json);
         Debug.Log("save success");
     }
     public void Load()
     {
-        string path = GetPath("trainData");
+        string path = GetPath(train_data_key);
 
         string json = File.ReadAllText(path);
         trainSaveData = JsonConvert.DeserializeObject<TrainSaveData>(json);
@@ -296,7 +297,7 @@ public class TrainManager : MonoBehaviour
 
     public bool IsPathAvailable()
     {
-        string path = GetPath("trainData");
+        string path = GetPath(train_data_key);
         if (!File.Exists(path))
         {
             Debug.LogError("Train Data not found");

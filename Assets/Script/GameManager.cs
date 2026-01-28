@@ -8,7 +8,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    private const string player_data_key = "player_data";
+    private static string player_data_key = $"{HomeScene.instance.GetCurrentLevelID}_player_data";
 
     public static GameManager instance;
 
@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
     void OnDisable()
     {
         SavePlayerData();
-        SaveGrid("level_01");
+        SaveGrid($"{HomeScene.instance.GetCurrentLevelID}_level_01");
 
         debriesDataForSave.debriesDatas.Clear();
         foreach (Debries debries in debriesList)
@@ -94,7 +94,7 @@ public class GameManager : MonoBehaviour
         }
 
 
-        bool isAvailable = IsPathAvailable("level_01");
+        bool isAvailable = IsPathAvailable($"{HomeScene.instance.GetCurrentLevelID}_level_01");
         if (!isAvailable)
         {
             gridSaveData ??= new();
@@ -103,13 +103,13 @@ public class GameManager : MonoBehaviour
 
                 gridSaveData.AddData(GetSerializableData(item));
             }
-            SaveGrid("level_01");
+            SaveGrid($"{HomeScene.instance.GetCurrentLevelID}_level_01");
             trainManager.trainLoopHandler.splineGen.GenerateSpline();
             trainManager.trainSplineDriver.modularGridAligner.StartGeneration();
         }
         else
         {
-            LoadGrid(clockwiseRingGenerator.spawnedCubes, "level_01");
+            LoadGrid(clockwiseRingGenerator.spawnedCubes, $"{HomeScene.instance.GetCurrentLevelID}_level_01");
         }
 
         trainManager.trainLoopHandler.CallStart();
@@ -252,12 +252,12 @@ public class GameManager : MonoBehaviour
         };
 
         string json = JsonConvert.SerializeObject(debriesDataForSave, settings);
-        File.WriteAllText(GetPath("debries"), json);
+        File.WriteAllText(GetPath($"{HomeScene.instance.GetCurrentLevelID}_debries"), json);
         Debug.Log("save success debries data");
     }
     public void LoadDebriData()
     {
-        string path = GetPath("debries");
+        string path = GetPath($"{HomeScene.instance.GetCurrentLevelID}_debries");
         if (!File.Exists(path))
         {
             Debug.LogError("Debries Not Found");
