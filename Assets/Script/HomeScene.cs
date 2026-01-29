@@ -56,6 +56,7 @@ public class HomeScene : MonoBehaviour
             Debug.Log("No Any Active Level, Start From Scratch");
             //TODO:- start from first level
             levelDataForSave.currentActiveLevel = levelDataForSave.levelDatas[0];
+            StartGame();
         }
         else
         {
@@ -73,6 +74,7 @@ public class HomeScene : MonoBehaviour
             {
                 Debug.Log($"Level is not completed - Start {levelDataForSave.currentActiveLevel.scene_name}");
             }
+            StartGame();
         }
     }
     void OnDisable()
@@ -136,7 +138,11 @@ public class HomeScene : MonoBehaviour
             }
         }
     }
-
+    public void MarkeAsDoneCurrentLevel()
+    {
+        levelDataForSave.currentActiveLevel.isLevelCompleted = true;
+        LoadNextLevel();
+    }
 
 
 
