@@ -8,7 +8,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    private static string player_data_key = $"{HomeScene.instance.GetCurrentLevelID}_player_data";
+    private static string player_data_key = HomeScene.instance != null ? $"{HomeScene.instance.GetCurrentLevelID}_player_data" : "level_1_player_data";
+    private static string debries_key = HomeScene.instance != null ? $"{HomeScene.instance.GetCurrentLevelID}_debries" : $"level_1_debries";
+    private static string grid_data_key = HomeScene.instance != null ? $"{HomeScene.instance.GetCurrentLevelID}_level_01" : $"level_1_level_01";
 
     public static GameManager instance;
 
@@ -40,7 +42,7 @@ public class GameManager : MonoBehaviour
     void OnDisable()
     {
         SavePlayerData();
-        SaveGrid($"{HomeScene.instance.GetCurrentLevelID}_level_01");
+        SaveGrid(grid_data_key);
 
         debriesDataForSave.debriesDatas.Clear();
         foreach (Debries debries in debriesList)
@@ -94,7 +96,7 @@ public class GameManager : MonoBehaviour
         }
 
 
-        bool isAvailable = IsPathAvailable($"{HomeScene.instance.GetCurrentLevelID}_level_01");
+        bool isAvailable = IsPathAvailable(grid_data_key);
         if (!isAvailable)
         {
             gridSaveData ??= new();
@@ -103,13 +105,13 @@ public class GameManager : MonoBehaviour
 
                 gridSaveData.AddData(GetSerializableData(item));
             }
-            SaveGrid($"{HomeScene.instance.GetCurrentLevelID}_level_01");
+            SaveGrid(grid_data_key);
             trainManager.trainLoopHandler.splineGen.GenerateSpline();
             trainManager.trainSplineDriver.modularGridAligner.StartGeneration();
         }
         else
         {
-            LoadGrid(clockwiseRingGenerator.spawnedCubes, $"{HomeScene.instance.GetCurrentLevelID}_level_01");
+            LoadGrid(clockwiseRingGenerator.spawnedCubes, grid_data_key);
         }
 
         trainManager.trainLoopHandler.CallStart();
@@ -172,9 +174,17 @@ public class GameManager : MonoBehaviour
             Boggy second = boggies[i + 1];
             if (second.boggyType == BoggyType.Storage || second.boggyType == BoggyType.TrackUpdate) continue;
 
+
             // if (first.boggyType == second.boggyType)
             if (first.boggyLevel == second.boggyLevel)
             {
+                if (i == 1 && (i + 1) == 2)
+                {
+                    Debug.Log($"New Boggy Unlock - Current Level - {first.boggyLevel}, New Level - {first.boggyLevel + 1}");
+                    uIHandler.boggyUnlockScreen.ShowScreen();
+                    uIHandler.boggyUnlockScreen.SetUpData(first.boggyLevel);
+                }
+
                 isMearged = true;
                 first.UpdateBoggy();
                 boggies.RemoveAt(i + 1);
@@ -253,12 +263,12 @@ public class GameManager : MonoBehaviour
         };
 
         string json = JsonConvert.SerializeObject(debriesDataForSave, settings);
-        File.WriteAllText(GetPath($"{HomeScene.instance.GetCurrentLevelID}_debries"), json);
+        File.WriteAllText(GetPath(debries_key), json);
         Debug.Log("save success debries data");
     }
     public void LoadDebriData()
     {
-        string path = GetPath($"{HomeScene.instance.GetCurrentLevelID}_debries");
+        string path = GetPath(debries_key);
         if (!File.Exists(path))
         {
             Debug.LogError("Debries Not Found");

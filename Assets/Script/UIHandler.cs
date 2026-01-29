@@ -64,6 +64,9 @@ public class UIHandler : MonoBehaviour
     public GameObject levelCompleteObj;
     public Button startNextLevelButton;
 
+    [Header("Script")]
+    public BoggyUnlockScreen boggyUnlockScreen;
+
 
     private StorageBoggyConfig storageBoggyConfig;
     private TrainSpeedConfig trainSpeedConfig;

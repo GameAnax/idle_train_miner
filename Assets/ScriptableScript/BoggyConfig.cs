@@ -3,6 +3,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "BoggyConfig", menuName = "Scriptable Objects/BoggyConfig")]
 public class BoggyConfig : ScriptableObject
 {
+    public int boggyLevel;
+    public Sprite boggySprite;
     public BoggyType boggyType;
     public IdleCurrency baseValue;
     public int maxBoggy = 32;
