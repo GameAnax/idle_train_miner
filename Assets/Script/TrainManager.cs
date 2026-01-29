@@ -27,6 +27,9 @@ public class TrainManager : MonoBehaviour
     private bool isEnoughMoneyForAddBoggy = false;
     public bool IsEnoughMoneyForADDBoggy => isEnoughMoneyForAddBoggy;
 
+    private bool isSpawnBoggyLimitReached = false;
+    public bool IsSpawnBoggyLimitReached => isSpawnBoggyLimitReached;
+
     private bool isEnoughMoneyForMeargeBoggy = false;
     public bool IsEnoughMoneyForMeargeBoggy => isEnoughMoneyForMeargeBoggy;
     private bool isSameBoggyForMearge = false;
@@ -55,6 +58,7 @@ public class TrainManager : MonoBehaviour
             CheckNextBoggyADD(); //check current status
             if (!IsEnoughMoneyForADDBoggy) return;
         }
+        if (IsSpawnBoggyLimitReached) return;
 
         GameManager.instance.DeductCoinAndCheck(boggyAddCost);
         boggyAddCount += 1;
@@ -78,7 +82,7 @@ public class TrainManager : MonoBehaviour
     [Button]
     public void SpawnBoggy()
     {
-        if (maxBoggyCount == trainSplineDriver.boggies.Count)
+        if (isSpawnBoggyLimitReached)
         {
             Debug.Log("Boggy Limit Reaced");
             return;
@@ -100,7 +104,9 @@ public class TrainManager : MonoBehaviour
 
         if (trainSplineDriver.boggies.Count == maxBoggyCount)
         {
-            Debug.Log("Boggy Limit Reaced");
+            isSpawnBoggyLimitReached = true;
+            GameManager.instance.uIHandler.UpdateADDBoggyButtonUI();
+            Debug.Log("Boggy Spawn Limit Reaced");
         }
         CheckIsMeargePossible();
     }
@@ -136,7 +142,13 @@ public class TrainManager : MonoBehaviour
     {
         bool checkPossible = false;
         List<Boggy> boggies = trainSplineDriver.boggies;
-        for (int i = 0; i < boggies.Count - 1; i++)
+
+        int boggiesCount = boggies.Count;
+        isSpawnBoggyLimitReached = boggiesCount == maxBoggyCount;
+
+
+
+        for (int i = 0; i < boggiesCount - 1; i++)
         {
             Boggy first = boggies[i];
             if (first.boggyType == BoggyType.Storage || first.boggyType == BoggyType.TrackUpdate) continue;
