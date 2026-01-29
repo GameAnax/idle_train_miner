@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe9eb3d1a13604438871b79da7aacaf5, type: 3}
   m_Name: 17_BogeyConfig
   m_EditorClassIdentifier: 
+  boggyLevel: 17
+  boggySprite: {fileID: 21300000, guid: 9afa306c8d78940b785ee5611b099f6d, type: 3}
   boggyType: 19
   baseValue:
     Value: 48

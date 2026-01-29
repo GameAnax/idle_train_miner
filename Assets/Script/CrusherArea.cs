@@ -103,9 +103,12 @@ public class CrusherArea : MonoBehaviour
                 List<Debries> debries = GameManager.instance.trainManager.storageBoggy.TransferAndClearStorage();
                 foreach (Debries debrie in debries)
                 {
-                    debrie.transform.SetParent(debriesStorePoint, false);
+                    collectedCount += 1;
+                    StartCoroutine(MoveCubeToStackLocal(debrie.transform));
+                    // debrie.transform.SetParent(debriesStorePoint, false);
                 }
                 Invoke(nameof(ClearStorage), 1f);
+                collectedCount = 0;
                 StartRotation();
                 break;
             }

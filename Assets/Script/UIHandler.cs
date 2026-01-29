@@ -1,5 +1,6 @@
 using System;
 using DG.Tweening;
+using EasyButtons;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -334,6 +335,7 @@ public class UIHandler : MonoBehaviour
 
 
     #region  Level Complete Screen
+    [Button]
     public void EnableLevelCompleteScreen()
     {
         levelCompleteObj.SetActive(true);

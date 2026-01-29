@@ -20,7 +20,7 @@ public class StorageBoggy : MonoBehaviour
 
 
     private string GetPath(string fileName) => Path.Combine(Application.persistentDataPath, fileName + ".json");
-    private static string storageBoggySaveKey = $"{HomeScene.instance.GetCurrentLevelID}_storage_boggy_collected_data";
+    private static string storageBoggySaveKey = HomeScene.instance != null ? $"{HomeScene.instance.GetCurrentLevelID}_storage_boggy_collected_data" : "level_1_storage_boggy_collected_data";
 
 
     void Awake()

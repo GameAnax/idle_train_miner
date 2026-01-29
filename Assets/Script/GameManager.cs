@@ -19,6 +19,9 @@ public class GameManager : MonoBehaviour
     public UIHandler uIHandler;
     public CrusherArea crusherArea;
 
+    public GameObject storageBoggyWorldCameraObj;
+
+
     public List<BoggyConfig> boggyConfigs;
     // public List<BoggyData> boggyDatas = new();
     public BoggyData currentBoggyData = null;

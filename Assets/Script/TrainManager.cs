@@ -48,7 +48,7 @@ public class TrainManager : MonoBehaviour
     }
 
 
-    private string train_data_key => $"{HomeScene.instance.GetCurrentLevelID}_trainData";
+    private string train_data_key => HomeScene.instance != null ? $"{HomeScene.instance.GetCurrentLevelID}_trainData" : "level_1_trainData";
     private string GetPath(string fileName) => Path.Combine(Application.persistentDataPath, fileName + ".json");
 
     public void AddBoggy()
