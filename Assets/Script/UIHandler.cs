@@ -2,6 +2,7 @@ using System;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIHandler : MonoBehaviour
@@ -59,6 +60,10 @@ public class UIHandler : MonoBehaviour
     public Image capacityBGImage;
     public Image capacityBalanceImage;
 
+    [Header("Level Complete")]
+    public GameObject levelCompleteObj;
+    public Button startNextLevelButton;
+
 
     private StorageBoggyConfig storageBoggyConfig;
     private TrainSpeedConfig trainSpeedConfig;
@@ -82,6 +87,9 @@ public class UIHandler : MonoBehaviour
         meargeBoggy.onClick.AddListener(OnClickMeargeBoggy);
         speedBoggy.onClick.AddListener(OnClickIncreaseBoggySpeed);
         capcityBoggy.onClick.AddListener(OnClickIncreaseStorageCapacity);
+
+        // Level Complete Screen Button
+        startNextLevelButton.onClick.AddListener(OnClickStartLevel);
     }
 
     public void UpdateAllButtonUI()
@@ -286,21 +294,53 @@ public class UIHandler : MonoBehaviour
             if (isEnoughMoneyForAddBoggy) //check for update ui if not match, Set disable UI
             {
                 isEnoughMoneyForAddBoggy = trainManager.IsEnoughMoneyForADDBoggy;
-                addBgImage.sprite = disableBG;
-                addBalanceBGImage.sprite = disableBalanceBG;
-                boggyAddCostText.color = disableBalanceTextColor;
+                DisableUI();
             }
         }
         else
         {
-            if (!isEnoughMoneyForAddBoggy) //Set enable UI
+            if (!isEnoughMoneyForAddBoggy && !trainManager.IsSpawnBoggyLimitReached) //Set enable UI
             {
                 isEnoughMoneyForAddBoggy = trainManager.IsEnoughMoneyForADDBoggy;
-                addBgImage.sprite = enableBG;
-                addBalanceBGImage.sprite = enableBalanceBG;
-                boggyAddCostText.color = enableBalanceTextColor;
+                EnableUI();
+            }
+            else if (!trainManager.IsSpawnBoggyLimitReached)
+            {
+                EnableUI();
+            }
+            else if (trainManager.IsSpawnBoggyLimitReached)
+            {
+                DisableUI();
             }
         }
+
+        void EnableUI()
+        {
+            addBgImage.sprite = enableBG;
+            addBalanceBGImage.sprite = enableBalanceBG;
+            boggyAddCostText.color = enableBalanceTextColor;
+        }
+        void DisableUI()
+        {
+            addBgImage.sprite = disableBG;
+            addBalanceBGImage.sprite = disableBalanceBG;
+            boggyAddCostText.color = disableBalanceTextColor;
+        }
     }
+
+
+
+    #region  Level Complete Screen
+    public void EnableLevelCompleteScreen()
+    {
+        levelCompleteObj.SetActive(true);
+    }
+    public void OnClickStartLevel()
+    {
+        HomeScene.instance.MarkeAsDoneCurrentLevel();
+        SceneManager.LoadScene(HomeScene.instance.levelDataForSave.currentActiveLevel.scene_name);
+    }
+    #endregion
+
 
 }

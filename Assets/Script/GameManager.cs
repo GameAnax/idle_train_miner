@@ -226,6 +226,7 @@ public class GameManager : MonoBehaviour
         if (isLevelFinished)
         {
             Debug.Log($"Level Complte");
+            uIHandler.EnableLevelCompleteScreen();
         }
         UpdateProgress();
     }
