@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
@@ -13,6 +14,10 @@ public class CrusherArea : MonoBehaviour
 
     public Transform windMillFan;
     public Transform dotedLine;
+
+    public Vector3 spacing = new Vector3(0.0f, 0.0f, 0.0f); // Cube ki size ke hisaab se gap
+    private int collectedCount = 0; // Total kitne cubes aaye
+
 
     private bool isRotating = false;
     private float rotationDuration = 3f;
@@ -149,5 +154,48 @@ public class CrusherArea : MonoBehaviour
             {
                 isRotating = false; // Khatam hone par bool reset
             });
+    }
+
+
+    IEnumerator MoveCubeToStackLocal(Transform cubeTransform)
+    {
+        int x = (collectedCount - 1) % 3;           // Column (0, 1, 2)
+        int z = ((collectedCount - 1) / 3) % 3;     // Row (0, 1, 2)
+        int y = (collectedCount - 1) / 9;
+
+        Vector3 localTargetPos = new Vector3(x * spacing.x, y * spacing.y, z * spacing.z);
+
+        // 2. IMPORTANT: Jump shuru hote hi Cube ko Storage ka child bana dein
+        // Isse ab cube storage ke saath-saath move karega
+        cubeTransform.SetParent(debriesStorePoint);
+
+        Vector3 localStartPos = cubeTransform.localPosition; // Ab ye storage ke hisaab se local pos hai
+        float timer = 0;
+
+        while (timer < 1.0f)
+        {
+            if (cubeTransform == null) yield break;
+
+            timer += Time.deltaTime * 2f;
+
+            // 3. Local Space mein Lerp karein
+            // Ab storage kitna bhi move ya rotate ho, cube uske andar hi move hoga
+            Vector3 currentLocalPos = Vector3.Lerp(localStartPos, localTargetPos, timer);
+
+            // Sin wave height (Y axis par jump effect)
+            float height = Mathf.Sin(timer * Mathf.PI) * 2;
+            currentLocalPos.y += height;
+
+            cubeTransform.localPosition = currentLocalPos;
+
+            yield return null;
+        }
+
+        // 4. Final local position fix karein
+        if (cubeTransform != null)
+        {
+            cubeTransform.localPosition = localTargetPos;
+            cubeTransform.localRotation = Quaternion.identity;
+        }
     }
 }
