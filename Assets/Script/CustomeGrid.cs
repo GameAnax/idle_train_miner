@@ -232,7 +232,7 @@ public class CustomeGrid : MonoBehaviour
 
         // Blink effect start karein
         StopAllCoroutines();
-        StartCoroutine(BlinkRoutine());
+        // StartCoroutine(BlinkRoutine());
         StartCoroutine(SpeedRoutine());
         GridRenderManager.instance.UpdateGrassHeight(meshType: meshType, gpuMeshIndex, currentHealth / maxHealth);
 

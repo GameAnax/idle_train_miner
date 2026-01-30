@@ -13,7 +13,7 @@ public class GridRenderManager : MonoBehaviour
         public MeshType meshType;
         public Mesh mesh;
         public Material material;
-        public Color color;
+        // public Color color;
         public List<CustomeGrid> allGridCells = new();
         public List<Matrix4x4[]> matrixBatches = new();
         public List<Vector4[]> ListOfCOllisionBendings = new();
@@ -107,7 +107,7 @@ public class GridRenderManager : MonoBehaviour
                     meshData.ListOfCOllisionBendings[i][j].z = 0;
                     meshData.ListOfCOllisionBendings[i][j].y = 1;
 
-                    meshData.listOfColors[i][j] = meshData.color;
+                    // meshData.listOfColors[i][j] = meshData.color;
                     meshData.speed[i][j] = 1f;
                     meshData.grassHeight[i][j] = tempCustomeGrid.currentHealth / tempCustomeGrid.maxHealth;
                 }

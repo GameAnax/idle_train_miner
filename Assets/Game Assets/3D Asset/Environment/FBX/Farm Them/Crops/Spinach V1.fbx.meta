@@ -9,6 +9,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Pastel_Atlas_Mat
     second: {fileID: 2100000, guid: 801ea7fa7d0faa346ab33461da866748, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pastel_Atlas_Mat.001
+    second: {fileID: 2100000, guid: 801ea7fa7d0faa346ab33461da866748, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
