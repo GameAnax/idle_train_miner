@@ -93,7 +93,7 @@ public class ClockwiseRingGenerator : MonoBehaviour
         newGrid.isOuterBoundary = (layer == targetLayer);
         newGrid.gridLayerInt = layer;
         newGrid.objectIndex = globalIndexCounter++;
-        newGrid.name = $"Grid_{posX}_{posZ}";
+        newGrid.name = $"L_{layer}_Grid_{posX}_{posZ}";
         newGrid.splineGenerator = splineGen;
         newGrid.trainSplineDriver = trainSplineDriver;
         newGrid.currentHealth = newGrid.maxHealth;

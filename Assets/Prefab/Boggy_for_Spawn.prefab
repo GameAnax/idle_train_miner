@@ -674,6 +674,10 @@ PrefabInstance:
       value: Grass Mover_V3
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 23e5ed4780c2f354aac885cdb1c1cc15, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 23e5ed4780c2f354aac885cdb1c1cc15, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -785,6 +789,10 @@ PrefabInstance:
       value: Grass Mover_V1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 32d9fbeedecb23448ad8b1524c8a41c9, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 32d9fbeedecb23448ad8b1524c8a41c9, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -894,6 +902,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a356ed9e19346b34c96d0a7682173ced, type: 3}
       propertyPath: m_Name
       value: Grass Mover_V2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a356ed9e19346b34c96d0a7682173ced, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a356ed9e19346b34c96d0a7682173ced, type: 3}
       propertyPath: m_IsActive

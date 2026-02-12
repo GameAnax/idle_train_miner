@@ -232,16 +232,18 @@ public class CustomeGrid : MonoBehaviour
 
         // Blink effect start karein
         StopAllCoroutines();
-        // StartCoroutine(BlinkRoutine());
+        StartCoroutine(BlinkRoutine());
         StartCoroutine(SpeedRoutine());
-        GridRenderManager.instance.UpdateGrassHeight(meshType: meshType, gpuMeshIndex, currentHealth / maxHealth);
+        if (GridRenderManager.instance != null)
+            GridRenderManager.instance.UpdateGrassHeight(meshType: meshType, gpuMeshIndex, currentHealth / maxHealth);
 
 
         if (currentHealth <= 0)
         {
             currentHealth = 0;
             if (meshRenderer != null) meshRenderer.enabled = false;
-            GridRenderManager.instance.HideMesh(meshType: meshType, gpuMeshIndex: gpuMeshIndex);
+            if (GridRenderManager.instance != null)
+                GridRenderManager.instance.HideMesh(meshType: meshType, gpuMeshIndex: gpuMeshIndex);
             gridCellDataForSave.currentHealth = 0;
             // OnGridDestroyed();
         }
@@ -292,15 +294,17 @@ public class CustomeGrid : MonoBehaviour
     }
     IEnumerator SpeedRoutine()
     {
+        if (GridRenderManager.instance == null) yield break;
         GridRenderManager.instance.UpdateSpeed(meshType: meshType, gpuMeshIndex, 5f);
         yield return _waitForSeconds1;
         GridRenderManager.instance.UpdateSpeed(meshType: meshType, gpuMeshIndex, 1f);
     }
     IEnumerator BlinkRoutine()
     {
+        if (GridRenderManager.instance == null) yield break;
         // Color change to Blink Color
         // SetColor(blinkColor);
-        GridRenderManager.instance.BlinkMesh(meshType: meshType, gpuMeshIndex, blinkColor);
+        GridRenderManager.instance.BlinkMesh(meshType: meshType, gpuMeshIndex, Color.black);
         // GridRenderManager.instance.TouchEffect(meshType: meshType, gpuMeshIndex, 0.5f);
 
 

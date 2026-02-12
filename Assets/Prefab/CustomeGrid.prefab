@@ -132,15 +132,33 @@ MonoBehaviour:
   objectIndex: 0
   maxHealth: 100
   currentHealth: 0
+  chunkCapacity: 0
+  topColor: {r: 0, g: 0, b: 0, a: 0}
+  bottomColor: {r: 0, g: 0, b: 0, a: 0}
   blinkColor: {r: 1, g: 1, b: 1, a: 1}
   blinkDuration: 0.15
   rightGrid: {fileID: 0}
   leftGrid: {fileID: 0}
   topGrid: {fileID: 0}
   bottomGrid: {fileID: 0}
-  myStraightPiece: {fileID: 0}
-  myCornerPiece: {fileID: 0}
+  myStraightPiece: {fileID: 2494543698711377920, guid: 00a23b6083b2e40df927cb8d04473cb7, type: 3}
+  myCornerPiece: {fileID: 2354009302238479222, guid: ab46a59e4d1734861a1c89dc8a409a40, type: 3}
+  myDummyPiece: {fileID: 1526568321824616433, guid: 594a1aafaaa544896910b936ce3529ee, type: 3}
   distance: 0
   splineGenerator: {fileID: 0}
   trainSplineDriver: {fileID: 0}
   debriPrefab: {fileID: -3458669210325171208, guid: 07b16c1d9fdb342fdb986e29dc41d3f8, type: 3}
+  gridCellDataForSave:
+    meshType: 0
+    isClear: 0
+    isUsable: 0
+    isOuterBoundary: 0
+    isPermanentlyDisabled: 0
+    gridLayerInt: 0
+    gridPosition: {x: 0, y: 0}
+    objectIndex: 0
+    maxHealth: 0
+    currentHealth: 0
+    gpuMeshIndex: 0
+  isSpawnChunk: 0
+  cubeContainer: {fileID: 0}

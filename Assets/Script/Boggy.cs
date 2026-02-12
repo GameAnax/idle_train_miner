@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using Dreamteck.Splines;
-using Dreamteck.Splines.Examples;
 using TMPro;
 using UnityEngine;
 
@@ -48,6 +47,8 @@ public partial class Boggy : MonoBehaviour
     }
     public void UpdateBoggy()
     {
+        if (boggyTypeDatas.Count <= 0) return;
+
         boggyLevel += 1;
         boggyLevel = Mathf.Min(boggyLevel, boggyTypeDatas.Count - 1);
 

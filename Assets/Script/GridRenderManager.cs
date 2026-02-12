@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class GridRenderManager : MonoBehaviour
 {
@@ -57,10 +58,11 @@ public class GridRenderManager : MonoBehaviour
             foreach (var innerItem in item.Value.matrixBatches)
             {
                 mpb.SetVectorArray("_CollisionBending", item.Value.ListOfCOllisionBendings[0]);
-                mpb.SetVectorArray("_TintColor2", item.Value.listOfColors[0]);
+                // mpb.SetVectorArray("_TintColor2", item.Value.listOfColors[0]);
                 mpb.SetFloatArray("_Speed", item.Value.speed[0]);
                 mpb.SetFloatArray("_Height", item.Value.grassHeight[0]);
-                Graphics.DrawMeshInstanced(item.Value.mesh, 0, item.Value.material, innerItem, innerItem.Length, mpb);
+                // Graphics.DrawMeshInstanced(item.Value.mesh, 0, item.Value.material, innerItem, innerItem.Length, mpb);
+                Graphics.DrawMeshInstanced(item.Value.mesh, 0, item.Value.material, innerItem, innerItem.Length, mpb, UnityEngine.Rendering.ShadowCastingMode.Off, false, 10);
             }
         }
 
@@ -98,8 +100,11 @@ public class GridRenderManager : MonoBehaviour
                     Quaternion rot = tempCustomeGrid.transform.rotation;
                     Vector3 scale = tempCustomeGrid.transform.localScale;
 
-                    pos.x += UnityEngine.Random.Range(-0.3f, 0.3f);
-                    pos.z += UnityEngine.Random.Range(-0.3f, 0.3f);
+                    float randomZ = Random.Range(0, 4) * 90f;
+                    rot.eulerAngles = new Vector3(0, randomZ, 0);
+
+                    // pos.x += UnityEngine.Random.Range(-0.3f, 0.3f);
+                    // pos.z += UnityEngine.Random.Range(-0.3f, 0.3f);
 
                     // batch[j].SetTRS(pos, Quaternion.identity, Vector3.one);
                     batch[j] = Matrix4x4.TRS(pos, rot, scale);

@@ -379,7 +379,8 @@ public class GameManager : MonoBehaviour
 
                 if (data.currentHealth <= 0)
                 {
-                    GridRenderManager.instance.HideMesh(meshType: data.meshType, gpuMeshIndex: data.gpuMeshIndex);
+                    if (GridRenderManager.instance != null)
+                        GridRenderManager.instance.HideMesh(meshType: data.meshType, gpuMeshIndex: data.gpuMeshIndex);
                 }
 
                 if (_debrisLookup.TryGetValue(data.gridPosition, out List<DebriesData> debrisPositions))

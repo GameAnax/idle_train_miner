@@ -77,6 +77,7 @@ public class CrusherArea : MonoBehaviour
         }
     }
 
+    [EasyButtons.Button]
     public void UpdateArePosition()
     {
         if (nextGridNeedClear == null) return;
